@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:26 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/11/28 18:56:01 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/02 20:16:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int		main()
 {
-	char	*i = "afreis";
+	char	i[] = "afres";
 
-	ft_printf("%-#12.15hs", 12, i);
+	printf("%.3c\n", 'c');
+	//printf("%0% %-5c\n", 'b');
 	return (0);
 }

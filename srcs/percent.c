@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*   percent.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 20:34:41 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/02 17:12:18 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/02 17:56:59 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	initialise_flags(t_flags *flags)
+int		percent(t_flags *flags, t_var *var, const char *str)
 {
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->hashtag = 0;
-	flags->space = 0;
-	flags->zero = 0;
-	flags->precision = -1;
-	flags->fwidth = 0;
-}
+	int		ind;
 
-int		parse(const char *str, t_var *var, va_list *ap
-		, int (*f[256])())
-{
-	t_flags flags;
-	
-	initialise_flags(&flags);
-	while (str[var->index])
+	ind = 1;
+	while (str[var->index + ind] && (str[var->index + ind] != '%'))
+		ind++;
+	if (flags->fwidth > ind)
+		flags->fwidth -= ind;
+	else
+		flags->fwidth = 0;
+	if (flags->fwidth != 0 && flags->minus == 0)
+		addwp(flags, var);
+	while (ind-- > 0)
 	{
-		if (f[(int)str[var->index]](&flags, var, str, ap) == 0)
-			return (1);
+		addchar(str[var->index], var);
 		var->index++;
 	}
+	if (flags->fwidth != 0 && flags->minus == 1)
+		addwp(flags, var);
+	var->index--;
 	return (0);
 }

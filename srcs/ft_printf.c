@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/11/29 17:39:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/02 17:35:11 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	initialis_var(t_var *var)
+void	initialise_var(t_var *var)
 {
 	var->index = 0;
 	var->bufindex = 0;
@@ -20,31 +20,11 @@ void	initialis_var(t_var *var)
 	ft_bzero(var->buf, BUFF_SIZE);
 }
 
-void	initialise_f(int (*f[128])(t_flags, t_var, const char*, va_arg))
+static void	init_conv(int (*f[256])())
 {
-	int		i;
-
-	i = 0;
-	while (i < 127)
-		f[i++] = ft_error;
-	i = 0;
-	f['0'] = ft_zero;
-	f['.'] = ft_preci;
-	f['+'] = ft_plus;
-	f['-'] = ft_minus;
-	f['#'] = ft_hashtag;
-	while (i < 9)
-		f['1' + i++] = ft_preci;
-	//f['h'] = ft_h;
-	//f['l'] = ft_l;
-	//f['j'] = ft_j;
-	//f['z'] = ft_z;
-	return (ft_initialise_conv(void f));
-}
-
-void	ft_initialise_conv(int (*f[128])(t_flags, t_var, const char*, va_arg))
-{
-	//f['s'] = ft_s;
+	f['%'] = percent;
+	f['s'] = ft_s;
+	f['c'] = ft_c;
 	//f['S'] = ft_cap_s;
 	//f['p'] = ft_p;
 	//f['d'] = ft_d;
@@ -56,29 +36,63 @@ void	ft_initialise_conv(int (*f[128])(t_flags, t_var, const char*, va_arg))
 	//f['U'] = ft_cap_u;
 	//f['x'] = ft_x;
 	//f['X'] = ft_cap_x;
-	//f['c'] = ft_c;
 	//f['C'] = ft_cap_c;
-	return ;
 }
 
-int		ft_printf(const char *format, ...)
+static void	init_flags(int (*f[256])())
 {
-	va_list	ap;
-	t_var	var;
-	int		(*f[128])(t_flags, t_var, const char*, va_arg);
+	int		i;
 
-	if (!format)
-		return ;
-	initialise_var(&var);
-	initialise_f(f(;
-	while (format[var.index])
+	i = 0;
+	while (i < 256)
 	{
-		if (format[var.index] == '%' && format[var.index + 1])
-				parse(format, &var, ap, f);
+		f[i] = ft_error;
+		i++;
+	}
+	i = 0;
+	f['0'] = ft_zero;
+	f['.'] = ft_preci;
+	f['+'] = ft_plus;
+	f['-'] = ft_minus;
+	f['#'] = ft_hashtag;
+	while (i < 9)
+	{
+		f['1' + i] = ft_preci;
+		i++;
+	}
+	//f['h'] = ft_h;
+	//f['l'] = ft_l;
+	//f['j'] = ft_j;
+	//f['z'] = ft_z;
+}
+
+int		ft_printf(const char *str, ...)
+{
+	static int	(*f[256])() = {NULL};
+	va_list		ap;
+	t_var		var;
+
+	if (!str)
+		return (0);
+	if (f[0] == NULL)
+	{
+		init_flags(f);
+		init_conv(f);
+	}
+	initialise_var(&var);
+	va_start(ap, str);
+	while (str[var.index])
+	{
+		if (str[var.index] == '%' && str[var.index + 1])
+		{
+			var.index++;
+			parse(str, &var, &ap, f);
+		}
 		else
-			addchar(format[var.index], &var);
+			addchar(str[var.index], &var);
 		var.index++;
 	}
 	va_end(ap);
-	return (0);
+	write(1, var.buf, var.bufindex);
+	return (var.bufindex);
 }

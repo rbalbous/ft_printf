@@ -6,45 +6,51 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/21 17:34:45 by rbalbous          #+#    #+#              #
-#    Updated: 2017/11/28 18:03:22 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/02 17:34:44 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g
 
 SRCS =	ft_printf.c \
 		add.c \
 		ft_parse.c \
-		create.c
+		ft_error.c \
+		ft_hashtag.c \
+		ft_minus.c \
+		ft_plus.c \
+		ft_preci.c \
+		ft_space.c \
+		ft_zero.c \
+		percent.c \
+		ft_s.c \
+		ft_c.c \
+		addwp.c
+		
 SRC = $(addprefix srcs/, $(SRCS))
 
-INCLUDES = includes/
-INCLUDE = $(addprefix -I, $(INCLUDES))
-
-
 OBJ = $(SRC:.c=.o)
+
+INCLUDES = includes
+
 
 all : $(NAME)
 
 $(NAME):	$(OBJ)
-			@ar rc $(NAME) $^
-			@ranlib $(NAME)
-			@echo "\r\033[32;5;117m✓ libftprintf\033[0m\033[K"
+			ar rc $(NAME) $^
+			ranlib $(NAME)
 
-%.o :		%.c
-			@$(CC) -o $@ -c $< $(INCLUDE) $(FLAGS)
-			@printf "\033[32;5;117m>"
+%.o :		%.c $(INCLUDES)/ft_printf.h
+			$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 			
 clean:
-			@rm -f $(OBJ)
-			@echo "\r\033[38;5;202m✗ clean $(NAME).\033[0m\033[K"
+			rm -f $(OBJ)
 
-fclean: clean
-		@rm -f $(NAME)
-		@echo "\r\033[38;5;196m✗ fclean $(NAME).\033[0m\033[K"
+fclean: 	clean
+			rm -f $(NAME)
 		
-re : fclean all
+re :		fclean all
 
 .PHONY: all clean fclean re
