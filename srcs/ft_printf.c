@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 17:35:11 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/05 14:32:00 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ static void	init_conv(int (*f[256])())
 	f['c'] = ft_c;
 	//f['S'] = ft_cap_s;
 	//f['p'] = ft_p;
-	//f['d'] = ft_d;
+	f['d'] = ft_d;
 	//f['D'] = ft_cap_d;
-	//f['i'] = ft_i;
+	f['i'] = ft_d;
 	//f['o'] = ft_o;
 	//f['O'] = ft_cap_o;
 	//f['u'] = ft_u;
@@ -55,6 +55,7 @@ static void	init_flags(int (*f[256])())
 	f['+'] = ft_plus;
 	f['-'] = ft_minus;
 	f['#'] = ft_hashtag;
+	f[' '] = ft_space;
 	while (i < 9)
 	{
 		f['1' + i] = ft_preci;

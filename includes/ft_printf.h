@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 17:34:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/03 21:51:00 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,9 @@ int		ft_space(t_flags *flags);
 int		ft_zero(t_flags *flags);
 int		ft_s(t_flags *flags, t_var *var, const char *str, va_list *ap);
 int		ft_c(t_flags *flags, t_var *var, const char *str, va_list *ap);
+int		ft_d(t_flags *flags, t_var *var, const char *str, va_list *ap);
 int		percent(t_flags *flags, t_var *var, const char *str);
-int		addwp(t_flags *flags, t_var *var);
+int		addwp(t_flags *flags, t_var *var, char n);
+int		wandp(t_flags *flags, t_var *var);
 
 #endif

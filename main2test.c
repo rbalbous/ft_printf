@@ -6,18 +6,23 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:26 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 20:16:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/05 17:47:59 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "includes/ft_printf.h"
 
+#define TEST "%05d\n", -42
+
 int		main()
 {
 	char	i[] = "afres";
+	int		r_nb = 0;
+	int		m_nb = 0;
 
-	printf("%.3c\n", 'c');
-	//printf("%0% %-5c\n", 'b');
+	m_nb = ft_printf(TEST);
+	r_nb = printf(TEST);
+	printf("m_nb : %d\nr_nb : %d\n", m_nb, r_nb);
 	return (0);
 }

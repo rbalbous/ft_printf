@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 16:55:35 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 20:09:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/05 17:20:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 
 int		wandp(t_flags *flags, t_var *var)
 {
-	if (flags->fwidth && flags->precision)
+	if (flags->fwidth != 0 && flags->precision != -1)
 	{
 		if (flags->fwidth > flags->precision)
 			flags->fwidth -= flags->precision;
 		else
-			flags->fwidth = 0; 
+			flags->fwidth = 0;
 	}
-	else if (flags->fwidth != 0)
-		addwp(flags, var, f)
+	if (flags->fwidth != 0)
+		addwp(flags, var, 'f');
+	if (flags->precision != -1)
+		addwp(flags, var, 'p');
+	return (1);
 }
 
 int		addwp(t_flags *flags, t_var *var, char n)
 {
-	char c;
-	if (n = 'f')
+	if (n == 'f')
 	{
 		while (flags->fwidth > 0)
 		{
@@ -36,12 +38,12 @@ int		addwp(t_flags *flags, t_var *var, char n)
 			flags->fwidth--;
 		}
 	}
-	else if (n = 'p')
+	else if (n == 'p')
 	{
-		while (flags->fwidth > 0)
+		while (flags->precision > 0)
 			{
-				addchar(' ', var);
-				flags->fwidth--;
+				addchar('0', var);
+				flags->precision--;
 			}
 	}
 	return (1);

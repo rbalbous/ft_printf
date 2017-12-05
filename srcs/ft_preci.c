@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 20:32:15 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/03 16:22:36 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		ft_preci(t_flags *flags, t_var *var, const char *str)
 {
 	if (str[var->index] == '.')
 	{
-		flags->precison = 0;
+		var->index++;
+		flags->precision = 0;
 		while (str[var->index] && ft_isdigit(str[var->index]) == 1)
 		{
 			flags->precision = flags->precision * 10 + (str[var->index] - 48);
