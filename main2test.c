@@ -6,18 +6,19 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:26 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/05 17:47:59 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/06 20:42:32 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "includes/ft_printf.h"
+#include <limits.h>
 
 #define TEST "%05d\n", -42
 
 int		main()
 {
-	char	i[] = "afres";
+	char	i[] = "afoures";
 	int		r_nb = 0;
 	int		m_nb = 0;
 

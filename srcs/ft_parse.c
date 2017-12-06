@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/02 20:34:41 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/06 15:43:01 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	initialise_flags(t_flags *flags)
 	flags->hashtag = 0;
 	flags->space = 0;
 	flags->zero = 0;
-	flags->precision = -1;
+	flags->isw = 0;
+	flags->isp = 0;
+	flags->precision = 0;
 	flags->fwidth = 0;
 }
 

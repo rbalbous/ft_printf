@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/03 21:51:00 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/06 16:36:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct	s_flags
 	t_uint8		hashtag : 1;
 	t_uint8		space : 1;
 	t_uint8		zero : 1;
+	t_uint8		isp : 1;
+	t_uint8		isw : 1;
 	t_int32		precision;
 	t_int32		fwidth;
 }				t_flags;
@@ -55,6 +57,7 @@ int		parse(const char *str, t_var *var, va_list *ap
 void	addchar(const char c, t_var *var);
 void	addnstr(const char *str, size_t len, t_var *var);
 void	addstr(const char *str, t_var *var);
+void	addnull(t_var *var);
 int		ft_error();
 int		ft_hashtag(t_flags *flags);
 int		ft_minus(t_flags *flags);

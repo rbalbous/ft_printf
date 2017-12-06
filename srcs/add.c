@@ -6,11 +6,27 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/01 20:56:32 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/06 16:36:00 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	addnull(t_var *var)
+{
+	var->buf[var->bufindex] = '(';
+	var->bufindex++;
+	var->buf[var->bufindex] = 'n';
+	var->bufindex++;
+	var->buf[var->bufindex] = 'u';
+	var->bufindex++;
+	var->buf[var->bufindex] = 'l';
+	var->bufindex++;
+	var->buf[var->bufindex] = 'l';
+	var->bufindex++;
+	var->buf[var->bufindex] = ')';
+	var->bufindex++;
+}
 
 void	addchar(const char c, t_var *var)
 {
