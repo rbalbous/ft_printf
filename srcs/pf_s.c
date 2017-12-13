@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_s.c                                             :+:      :+:    :+:   */
+/*   pf_s.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/06 16:36:12 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:18:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_s(t_flags *flags, t_var *var, const char *str, va_list *ap)
+int		pf_s(t_flags *flags, t_var *var, va_list *ap)
 {
-	(void)str;
 	char	*tmp;
+	char	width;
 
+	//if (flags->conv == 3)
+	//	return (pf_ls(flags, var, ap));
 	tmp = va_arg(*ap, char*);
 	if (tmp == NULL)
+		return (addnull(var));
+	flags->len = ft_strlen(tmp);
+	width = ' ' + 16 * (flags->zero);
+	if (flags->isp > 0 && flags->precision < flags->len)
+		flags->len -= flags->precision;
+	flags->fwidth -= flags->len;
+	flags->fwidth *= (flags->fwidth > 0);
+	if (flags->minus == 0)
 	{
-		addnull(var);
-		return (0);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		addnstr(tmp, (size_t)flags->len, var);
 	}
-	if (flags->isp == 1 && (size_t)flags->precision < ft_strlen(tmp))
-		tmp[flags->precision] = 0;
-	if ((size_t)flags->fwidth > ft_strlen(tmp))
-		flags->fwidth -= ft_strlen(tmp);
 	else
-		flags->isw = 0;
-	if (flags->isw == 1 && flags->minus == 0)
-		addwp(flags, var, 'f');
-	addstr(tmp, var);
-	if (flags->isw == 1 && flags->minus == 1)
-		addwp(flags, var, 'f');
+	{
+		addnstr(tmp, (size_t)flags->len, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	}
 	return (0);
 }

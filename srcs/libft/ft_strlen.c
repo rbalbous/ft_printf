@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 16:59:01 by home              #+#    #+#             */
-/*   Updated: 2017/11/06 19:02:40 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:21:22 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ size_t		ft_strlen(const char *str)
 {
 	size_t	i;
 
-	i = -1;
-	while (str[++i])
-		;
+	i = 0;
+	while (str[i])
+		i++;
 	return (i);
 }

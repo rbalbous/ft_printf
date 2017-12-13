@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/07 21:52:38 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/11/08 16:28:41 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 14:43:51 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 char	*ft_strnew(size_t len)
 {
 	char	*str;
+	size_t 	i;
 
+	i = 0;
 	if ((str = (char*)malloc(sizeof(*str) * len + 1)) == 0)
 		return (NULL);
-	ft_memset(str, 0, len + 1);
+	while (i < len + 1)
+	{
+		str[i] = 0;
+		i++;
+	}
 	return (str);
 }

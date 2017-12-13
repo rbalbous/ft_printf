@@ -1,0 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pf_o.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/11/29 16:36:28 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/12 22:58:19 by rbalbous         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static void init_len_o(int (*len_o[7])())
+{
+	len_o[0] = pf_spe_o;
+	len_o[1] = pf_hho;
+	len_o[2] = pf_ho;
+	len_o[3] = pf_cap_o;
+	len_o[4] = pf_llo;
+	len_o[5] = pf_jo;
+	len_o[6] = pf_zo;
+}
+
+static void	create(t_flags *flags, t_var *var, int d)
+{
+	if (flags->hashtag)
+		addchar('0', var);
+	flags->precision = addmchar('0', var, flags->precision);
+	pf_uitoa_base(d, 8, flags, var);
+}
+
+static char	initialise(t_flags *flags, int d)
+{
+	int		test;
+
+	flags->len = pf_uintlen(d, 8);
+	test = (d < 0);
+	flags->hashtag *= (d != 0 && flags->precision <= 0);
+	flags->precision -= (flags->len - test);
+	flags->precision *= flags->precision > 0;
+	flags->fwidth -= flags->len + flags->precision + flags->hashtag;
+	flags->fwidth *= (flags->fwidth > 0);
+	return (' ');
+}
+
+int		pf_o(t_flags *flags, t_var *var, va_list *ap)
+{
+	static int	(*len_o[7])();
+
+	if (len_o[0] == NULL)
+		init_len_o(len_o);
+	return (len_o[flags->conv](flags, var, ap));	
+}
+
+int		pf_spe_o(t_flags *flags, t_var *var, va_list *ap)
+{
+	char		width;
+	int			d;
+	
+	d = va_arg(*ap, int);
+	if (d == 0 && flags->precision == 0 && !flags->hashtag)
+		return (pf_empty(flags, var));
+	width = initialise(flags, d);
+	if (!flags->minus)
+	{
+		if (flags->zero && !flags->precision)
+		{
+			flags->precision = flags->fwidth;
+			flags->fwidth = 0;
+		}
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		create(flags, var, d);
+	}
+	else
+	{
+		create(flags, var, d);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	}
+	return (0);
+}

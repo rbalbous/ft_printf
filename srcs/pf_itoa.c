@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   pf_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/10 13:19:22 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/07 18:36:17 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/08 15:00:03 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/13 14:37:14 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t		ft_intlen(int n)
+size_t	pf_intlen(intmax_t n, int base)
 {
 	size_t	count;
 
@@ -24,10 +24,31 @@ size_t		ft_intlen(int n)
 		n = -n;
 		count++;
 	}
-	while (n > 0)
+	while (n != 0)
 	{
-		n /= 10;
+		n /= base;
 		count++;
 	}
 	return (count);
+}
+
+void	pf_itoa_base(intmax_t n, int base, t_flags *flags, t_var *var)
+{
+	char		*str;
+	intmax_t	tn;
+	size_t		count;
+
+	if (n == 0)
+		return (addchar('0', var));
+	count = flags->len;
+	if ((str = ft_strnew(count)) == NULL)
+		return ;
+	tn = n;
+	while (count-- > 0)
+	{
+		str[count] = -(tn % base) + 48;
+		tn /= base;
+	}
+	addstr(str, var);
+	free(str);
 }

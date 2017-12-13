@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/05 15:17:28 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:29:39 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int		ft_zero(t_flags *flags)
 {
-	if (flags->minus == 1)
-		return (1);
-	flags->zero = 1;
+	flags->zero = 1 * (flags->minus == 0);
 	return (1);
 }

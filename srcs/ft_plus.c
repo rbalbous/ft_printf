@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:34 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/01 16:29:49 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:25:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 int		ft_plus(t_flags *flags)
 {
-	if (flags->space == 1)
-		flags->space = 0;
+	flags->space = 0;
 	flags->plus = 1;
 	return (1);
 }

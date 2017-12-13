@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   percent.c                                          :+:      :+:    :+:   */
+/*   pf_c.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/02 17:12:18 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/03 16:09:24 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/11/29 15:35:43 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/12 16:21:01 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		percent(t_flags *flags, t_var *var, const char *str)
+int		pf_c(t_flags *flags, t_var *var, va_list *ap)
 {
-	int		ind;
+	char	c;
+	char	width;
 
-	ind = 1;
-	while (str[var->index + ind] && (str[var->index + ind] != '%'))
-		ind++;
-	if (flags->fwidth > ind)
-		flags->fwidth -= ind;
-	else
-		flags->fwidth = 0;
-	if (flags->fwidth != 0 && flags->minus == 0)
-		addwp(flags, var, 'f');
-	while (ind-- > 0)
+	c = va_arg(*ap, int);
+	width = ' ' + 16 * (flags->zero);
+	flags->fwidth -= 1;
+	flags->fwidth *= (flags->fwidth > 0);
+	if (flags->minus == 0)
 	{
-		addchar(str[var->index], var);
-		var->index++;
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		addchar(c, var);
 	}
-	if (flags->fwidth != 0 && flags->minus == 1)
-		addwp(flags, var, 'f');
-	var->index--;
+	else
+	{
+		addchar(c, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	}
 	return (0);
 }

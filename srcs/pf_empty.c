@@ -1,13 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_none.c                                          :+:      :+:    :+:   */
+/*   pf_empty.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 12:25:08 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/11/29 16:36:25 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/12 17:09:57 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/12 17:32:55 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		pf_empty(t_flags *flags, t_var *var)
+{	
+	char	width;
+
+	width = ' ' + 16 * (flags->zero);
+	flags->fwidth = addmchar(width, var, flags->fwidth);
+	return (0);
+}

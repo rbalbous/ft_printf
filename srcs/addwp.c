@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/02 16:55:35 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/06 18:12:02 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/08 16:01:46 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,21 @@ int		wandp(t_flags *flags, t_var *var)
 
 int		addwp(t_flags *flags, t_var *var, char n)
 {
-	int wid;
-	int pre;
-
-	wid = flags->fwidth;
-	pre = flags->precision;
 	if (n == 'f')
 	{
-		while (wid> 0)
+		while (flags->fwidth > 0)
 		{
 			addchar(' ', var);
-			wid--;
+			flags->fwidth--;
 		}
-		flags->isw = 0;
 	}
 	else if (n == 'p')
 	{
-		while (pre > 0)
-			{
-				addchar('0', var);
-				pre--;
-			}
-			flags->isp = 0;
+		while (flags->precision > 0)
+		{
+			addchar('0', var);
+			flags->precision--;
+		}
 	}
 	return (1);
 }

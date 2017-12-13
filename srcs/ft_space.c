@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 17:10:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/05 14:35:52 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:28:44 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		ft_space(t_flags *flags)
 {
-	if (flags->plus == 0)
-		flags->space = 1;
+	flags->space = 1 * (flags->plus == 0);
 	return (1);
 }

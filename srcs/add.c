@@ -6,18 +6,18 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/06 16:36:00 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 15:16:13 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	addnull(t_var *var)
+int		addnull(t_var *var)
 {
 	var->buf[var->bufindex] = '(';
 	var->bufindex++;
 	var->buf[var->bufindex] = 'n';
-	var->bufindex++;
+	var->bufindex++; 
 	var->buf[var->bufindex] = 'u';
 	var->bufindex++;
 	var->buf[var->bufindex] = 'l';
@@ -26,6 +26,17 @@ void	addnull(t_var *var)
 	var->bufindex++;
 	var->buf[var->bufindex] = ')';
 	var->bufindex++;
+	return (0);
+}
+
+int		addmchar(char c, t_var *var, int len)
+{
+	while (len-- > 0)
+	{
+		var->buf[var->bufindex] = c;
+		var->bufindex++;
+	}
+	return (0);
 }
 
 void	addchar(const char c, t_var *var)
@@ -51,10 +62,13 @@ void	addstr(const char *str, t_var *var)
 
 void	addnstr(const char *str, size_t len, t_var *var)
 {
-	while (len > 0)
+	size_t i;
+	
+	i = 0;
+	while (len > i)
 	{
-		var->buf[var->bufindex] = str[var->index - len];
-		len--;
+		var->buf[var->bufindex] = str[i];
+		i++;
 		var->bufindex++;
 	}
 	return ;

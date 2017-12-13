@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hashtag.c                                       :+:      :+:    :+:   */
+/*   pf_cap_x.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 15:36:40 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/05 15:18:16 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/11/29 15:36:31 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/12 14:52:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_hashtag(t_flags *flags)
+int		pf_cap_x(t_flags *flags, t_var *var, va_list *ap)
 {
-	flags->hashtag = 1;
-	return (1);
+	flags->capx = 1;
+	pf_x(flags, var, ap);
+	return (0);
 }
