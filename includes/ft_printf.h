@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 14:52:41 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:37:28 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int		pf_zo(t_flags *flags, t_var *var, va_list *ap);
 
 int		pf_x(t_flags *flags, t_var *var, va_list *ap);
 int		pf_spe_x(t_flags *flags, t_var *var, va_list *ap);
-int		pf_lx(t_flags *flags, t_var *var, va_list *ap);
+int		pf_lx(t_flags *flags, t_var *var, va_list *ap, const char *str);
 int		pf_llx(t_flags *flags, t_var *var, va_list *ap);
 int		pf_hx(t_flags *flags, t_var *var, va_list *ap);
 int		pf_hhx(t_flags *flags, t_var *var, va_list *ap);
@@ -137,12 +137,12 @@ int		ft_j(t_flags *flags);
 int		pf_h(t_flags *flags);
 int		pf_z(t_flags *flags);
 
-void	pf_itoa_base(intmax_t n, int base, t_flags *flags, t_var *var);
+void	pf_itoa(intmax_t n, t_flags *flags, t_var *var);
 size_t	pf_intlen(intmax_t n, int base);
 
 size_t	pf_uintlen(uintmax_t n, int base);
 void	pf_uitoa_base(uintmax_t n, int base, t_flags *flags, t_var *var);
 
-void	pf_uitoa_hexa(uintmax_t n, int base, t_flags *flags, t_var *var);
+void	pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
 
 #endif

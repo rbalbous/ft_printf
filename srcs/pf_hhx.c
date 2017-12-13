@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:14:37 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 21:57:59 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	create(t_flags *flags, t_var *var, t_uint8 d)
 		addchar(x, var);
 	}
 	flags->precision = addmchar('0', var, flags->precision);
-	pf_uitoa_hexa(d, 16, flags, var);
+	pf_uitoa_hexa(d, flags, var);
 }
 
 static char	dinitialise(t_flags *flags, t_uint8 d)

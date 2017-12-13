@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 20:40:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 22:47:29 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 16:21:06 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	pf_initoa(char modu[16])
 	modu[15] = 'f';
 }
 
-void	pf_uitoa_hexa(uintmax_t n, int base, t_flags *flags, t_var *var)
+void	pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var)
 {
 	char			*str;
 	uintmax_t		tn;
@@ -50,9 +50,9 @@ void	pf_uitoa_hexa(uintmax_t n, int base, t_flags *flags, t_var *var)
 	tn = n;
 	while (count-- > 0)
 	{
-		flag = flags->capx * (tn % base > 9);
-		str[count] = modu[tn % base] - flag * 32;
-		tn /= base;
+		flag = flags->capx * ((tn & 15) > 9);
+		str[count] = modu[tn & 15] - flag * 32;
+		tn /= 16;
 	}
 	addstr(str, var);
 	free(str);

@@ -6,13 +6,13 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/21 17:34:45 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/13 15:37:47 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/13 15:49:10 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g -Ofast
+CFLAGS = -Wall -Wextra -Werror -pg -Ofast
 
 SRCS =	ft_printf.c \
 		add.c \

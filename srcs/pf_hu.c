@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:36:58 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 22:04:03 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		pf_hu(t_flags *flags, t_var *var, va_list *ap)
 	char			width;
 	t_uint16		d;
 
-	d = (t_uint8)va_arg(*ap, t_uint32);
+	d = (t_uint16)va_arg(*ap, t_uint32);
 	if (d == 0 && flags->precision == 0)
 		return (pf_empty(flags, var));
 	width = dinitialise(flags, d);

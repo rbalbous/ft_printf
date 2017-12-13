@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:28 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 22:58:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void init_len_o(int (*len_o[7])())
 	len_o[6] = pf_zo;
 }
 
-static void	create(t_flags *flags, t_var *var, int d)
+static void	create(t_flags *flags, t_var *var, t_uint32 d)
 {
 	if (flags->hashtag)
 		addchar('0', var);
@@ -31,14 +31,11 @@ static void	create(t_flags *flags, t_var *var, int d)
 	pf_uitoa_base(d, 8, flags, var);
 }
 
-static char	initialise(t_flags *flags, int d)
+static char	initialise(t_flags *flags, t_uint32 d)
 {
-	int		test;
-
 	flags->len = pf_uintlen(d, 8);
-	test = (d < 0);
 	flags->hashtag *= (d != 0 && flags->precision <= 0);
-	flags->precision -= (flags->len - test);
+	flags->precision -= flags->len;
 	flags->precision *= flags->precision > 0;
 	flags->fwidth -= flags->len + flags->precision + flags->hashtag;
 	flags->fwidth *= (flags->fwidth > 0);
@@ -57,9 +54,9 @@ int		pf_o(t_flags *flags, t_var *var, va_list *ap)
 int		pf_spe_o(t_flags *flags, t_var *var, va_list *ap)
 {
 	char		width;
-	int			d;
+	t_uint32	d;
 	
-	d = va_arg(*ap, int);
+	d = va_arg(*ap, t_uint32);
 	if (d == 0 && flags->precision == 0 && !flags->hashtag)
 		return (pf_empty(flags, var));
 	width = initialise(flags, d);

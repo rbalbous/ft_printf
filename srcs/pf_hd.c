@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/09 18:56:13 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 23:15:46 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	create(t_flags *flags, t_var *var, t_int16 d)
 		addchar(flags->plus ? '+' : ' ', var);
 	d = (d > 0) ? -d : d;
 	flags->precision = addmchar('0', var, flags->precision);
-	pf_itoa_base(d, 10, flags, var);
+	pf_itoa(d, flags, var);
 }
 
 static char	dinitialise(t_flags *flags, t_int16 d)

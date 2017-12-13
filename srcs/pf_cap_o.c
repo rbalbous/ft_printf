@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:12 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/12 22:58:52 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/13 19:49:44 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	create(t_flags *flags, t_var *var, long int d)
+static void	create(t_flags *flags, t_var *var, unsigned long int d)
 {
 	if (flags->hashtag)
 		addchar('0', var);
@@ -20,10 +20,10 @@ static void	create(t_flags *flags, t_var *var, long int d)
 	pf_uitoa_base(d, 8, flags, var);
 }
 
-static char	initialise(t_flags *flags, long int d)
+static char	initialise(t_flags *flags, unsigned long int d)
 {
 	flags->len = pf_uintlen(d, 8);
-	flags->hashtag *= (d != 0 && !flags->precision);
+	flags->hashtag *= (d != 0 && !flags->isp);
 	flags->precision -= flags->len;
 	flags->precision *= flags->precision > 0;
 	flags->fwidth -= flags->len + flags->precision + flags->hashtag;
@@ -33,10 +33,12 @@ static char	initialise(t_flags *flags, long int d)
 
 int		pf_cap_o(t_flags *flags, t_var *var, va_list *ap)
 {
-	char		width;
-	long int 	d;
+	char				width;
+	unsigned long int 	d;
 	
-	d = va_arg(*ap, long int);
+	d = va_arg(*ap, unsigned long int);
+	if (d == 0 && flags->precision == 0 && !flags->hashtag)
+		return (pf_empty(flags, var));
 	width = initialise(flags, d);
 	if (!flags->minus)
 	{
