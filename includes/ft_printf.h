@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:37:28 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/15 15:42:22 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <wchar.h>
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
@@ -90,6 +91,7 @@ int		ft_zero(t_flags *flags);
 
 int		pf_s(t_flags *flags, t_var *var, va_list *ap);
 int		pf_c(t_flags *flags, t_var *var, va_list *ap);
+int		pf_cap_c(t_flags *flags, t_var *var, va_list *ap);
 
 int		pf_d(t_flags *flags, t_var *var, va_list *ap);
 int		pf_spe_d(t_flags *flags, t_var *var, va_list *ap);
