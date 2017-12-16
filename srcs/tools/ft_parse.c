@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 17:15:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:40:47 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parse(const char *str, t_var *var, va_list *ap, int (*f[256])())
+int		parse(unsigned char *str, t_var *var, va_list *ap, int (*f[256])())
 {
 	t_flags flags;
 

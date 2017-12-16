@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/15 15:42:22 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:43:53 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ typedef struct	s_flags
 }				t_flags;
 
 int		ft_printf(const char *str, ...);
-int		parse(const char *str, t_var *var, va_list *ap
+int		parse(unsigned char *str, t_var *var, va_list *ap
 		, int (*f[256])());
 
 void	addchar(const char c, t_var *var);
-void	addnstr(const char *str, size_t len, t_var *var);
-void	addstr(const char *str, t_var *var);
+void	addnstr(void *str, size_t len, t_var *var);
+void	addstr(char *str, t_var *var);
 int		addnull(t_var *var);
 int		addmchar(char c, t_var *var, int len);
 int		addwp(t_flags *flags, t_var *var, char n);
@@ -84,8 +84,8 @@ int		ft_error();
 int		pf_hashtag(t_flags *flags);
 int		ft_minus(t_flags *flags);
 int		ft_plus(t_flags *flags);
-int		ft_preci(t_flags *flags, t_var *var, va_list *ap, const char *str);
-int		pf_fwidth(t_flags *flags, t_var *var, va_list *ap, const char *str);
+int		ft_preci(t_flags *flags, t_var *var, va_list *ap, unsigned char *str);
+int		pf_fwidth(t_flags *flags, t_var *var, va_list *ap, unsigned char *str);
 int		ft_space(t_flags *flags);
 int		ft_zero(t_flags *flags);
 
@@ -122,7 +122,7 @@ int		pf_zo(t_flags *flags, t_var *var, va_list *ap);
 
 int		pf_x(t_flags *flags, t_var *var, va_list *ap);
 int		pf_spe_x(t_flags *flags, t_var *var, va_list *ap);
-int		pf_lx(t_flags *flags, t_var *var, va_list *ap, const char *str);
+int		pf_lx(t_flags *flags, t_var *var, va_list *ap, unsigned char *str);
 int		pf_llx(t_flags *flags, t_var *var, va_list *ap);
 int		pf_hx(t_flags *flags, t_var *var, va_list *ap);
 int		pf_hhx(t_flags *flags, t_var *var, va_list *ap);
@@ -131,10 +131,10 @@ int		pf_zx(t_flags *flags, t_var *var, va_list *ap);
 
 int		pf_cap_x(t_flags *flags, t_var *var, va_list *ap);
 
-int		pf_percent(t_flags *flags, t_var *var, va_list *ap, const char *str);
+int		pf_percent(t_flags *flags, t_var *var, va_list *ap, unsigned char *str);
 int		pf_empty(t_flags *flags, t_var *var);
 
-int		pf_l(t_flags *flags, t_var *var, va_list *ap, const char *str);
+int		pf_l(t_flags *flags, t_var *var, va_list *ap, unsigned char *str);
 int		ft_j(t_flags *flags);
 int		pf_h(t_flags *flags);
 int		pf_z(t_flags *flags);

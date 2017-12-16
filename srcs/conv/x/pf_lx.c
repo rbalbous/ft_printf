@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:48:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:43:34 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:40:47 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	create(t_flags *flags, t_var *var, unsigned long int d, const char *str)
+static void	create(t_flags *flags, t_var *var, unsigned long int d, unsigned char *str)
 {
 	char	x;
 
@@ -26,7 +26,7 @@ static void	create(t_flags *flags, t_var *var, unsigned long int d, const char *
 	pf_uitoa_hexa(d, flags, var);
 }
 
-static char	dinitialise(t_var *var, t_flags *flags, unsigned long int d, const char *str)
+static char	dinitialise(t_var *var, t_flags *flags, unsigned long int d, unsigned char *str)
 {
 	flags->len = pf_uintlen(d, 16);
 	flags->hashtag = (str[var->index] == 'p');
@@ -37,7 +37,7 @@ static char	dinitialise(t_var *var, t_flags *flags, unsigned long int d, const c
 	return (' ');
 }
 
-int		pf_lx(t_flags *flags, t_var *var, va_list *ap, const char *str)
+int		pf_lx(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
 {
 	char		width;
 	unsigned long int	d;

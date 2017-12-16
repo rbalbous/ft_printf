@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:47:30 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 14:52:46 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:40:47 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_fwidth(t_flags *flags, t_var *var, va_list *ap, const char *str)
+int		pf_fwidth(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
 {
 	(void)ap;
 	flags->isw = 1;

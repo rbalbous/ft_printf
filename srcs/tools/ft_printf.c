@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 14:51:27 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:45:22 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	init_conv(int (*f[256])())
 	f['U'] = pf_cap_u;
 	f['x'] = pf_x;
 	f['X'] = pf_cap_x;
-	//f['C'] = ft_cap_c;
+	f['C'] = pf_cap_c;
 }
 
 static void	init_flags(int (*f[256])())
@@ -86,7 +86,7 @@ int		ft_printf(const char *str, ...)
 		if (str[var.index] == '%' && str[var.index + 1])
 		{
 			var.index++;
-			if (parse(str, &var, &ap, f) == 0)
+			if (parse((unsigned char*)str, &var, &ap, f) == 0)
 				break ;
 		}
 		else if (str[var.index] != '%')

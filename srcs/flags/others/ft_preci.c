@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 14:49:10 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:40:47 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_preci(t_flags *flags, t_var *var, va_list *ap, const char *str)
+int		ft_preci(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
 {
 	(void)ap;
 	flags->precision = 0;

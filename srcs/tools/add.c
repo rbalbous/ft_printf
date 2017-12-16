@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 15:16:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:41:40 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	addchar(const char c, t_var *var)
 	return ;
 }
 
-void	addstr(const char *str, t_var *var)
+void	addstr(char *str, t_var *var)
 {
 	int i;
 
@@ -60,14 +60,16 @@ void	addstr(const char *str, t_var *var)
 	return ;
 }
 
-void	addnstr(const char *str, size_t len, t_var *var)
+void	addnstr(void *str, size_t len, t_var *var)
 {
-	size_t i;
+	size_t	i;
+	char	*tmp;
 	
+	tmp = str;
 	i = 0;
 	while (len > i)
 	{
-		var->buf[var->bufindex] = str[i];
+		var->buf[var->bufindex] = tmp[i];
 		i++;
 		var->bufindex++;
 	}
