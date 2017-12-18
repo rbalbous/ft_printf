@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 15:00:03 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 16:19:15 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:23:09 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	pf_itoa(intmax_t n, t_flags *flags, t_var *var)
 	while (count-- > 0)
 	{
 		str[count] = -(tn % 10) + 48;
-		tn /=	10;
+		tn /= 10;
 	}
 	addstr(str, var);
 	free(str);

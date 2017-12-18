@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/16 18:40:47 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:56:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,15 @@
 int		parse(unsigned char *str, t_var *var, va_list *ap, int (*f[256])())
 {
 	t_flags flags;
+	int		ret;
 
 	flags = (t_flags){0, 0, 0, 0, 0, 0, 0, -1, 0, 0, ' ', 0, none};
-	//initialise_flags(&flags);
+	var->index++;
 	while (str[var->index])
 	{
-		if (f[(int)str[var->index]](&flags, var, ap, str) == 0)
-			return (1);
+		if ((ret = f[(int)str[var->index]](&flags, var, ap, str)) == 0)
+			return (ret);
 		var->index++;
 	}
-	return (0);
+	return (-2);
 }

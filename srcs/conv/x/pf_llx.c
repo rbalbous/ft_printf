@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:11:07 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:54:47 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ static char	dinitialise(t_flags *flags, long long int d)
 	return (' ');
 }
 
-int		pf_llx(t_flags *flags, t_var *var, va_list *ap)
+int			pf_llx(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
 {
-	char		width;
+	char			width;
 	long long int	d;
 
 	d = va_arg(*ap, long long int);
 	if (d == 0 && flags->precision == 0)
-		return (pf_empty(flags, var));
+		return (pf_empty_x(flags, var, str));
 	width = dinitialise(flags, d);
 	if (!flags->minus)
 	{
-		if (flags->zero && !flags->precision)
+		if (flags->zero && !flags->isp)
 		{
 			flags->precision = flags->fwidth;
 			flags->fwidth = 0;

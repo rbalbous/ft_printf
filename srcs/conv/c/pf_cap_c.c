@@ -6,71 +6,72 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/16 18:59:52 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:25:14 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		len_one(t_flags *flags, t_var *var, char c)
+int		len_one(wint_t c, t_var *var)
 {
-	char	width;
-	
-	(void)var;
-	printf("1\n");
-	width = ' ' + 16 * (flags->zero);
-	flags->fwidth -=  1;
-	flags->fwidth *= (flags->fwidth > 0);
-	if (flags->minus == 0)
-	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-		addchar(c, var);
-	}
-	else
-	{
-		addchar(c, var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-	}
-	return (0);
+	addchar((const char)c, var);
+	return (1);
 }
 
-static int		wsize(wint_t c, t_flags *flags, t_var *var)
+int		len_two(wint_t c, t_var *var)
 {
-	if ((c | 0x7F) == 0x7F)
-		len_one(flags, var, (char)c);
-	else if (c <= 0x07FF)
-	{
-		flags->len = 2;
-	}
-	else if (c <= 0xFFFF)
-	{
-		flags->len = 3;
-	}
-	else if (c <= 0x10FFFF)
-	{
-		flags->len = 4;
-	}
-	return (0);
+	t_uint32	byte;
+
+	byte = (((c & 0x3F) << 8) | (c >> 6)) | 0x80C0;
+	addnstr(&byte, 2, var);
+	return (1);
+}
+
+int		len_three(wint_t c, t_var *var)
+{
+	t_uint32	byte;
+
+	byte = ((((c & 0x3F) << 16) | (((c >> 6) & 0x3F) << 8))
+	| (c >> 12)) | 0x8080E0;
+	addnstr(&byte, 3, var);
+	return (1);
+}
+
+int		len_four(wint_t c, t_var *var)
+{
+	t_uint32	byte;
+
+	byte = (((c & 0x3F) << 24) | (((c >> 6) & 0x3F) << 16)
+	| (((c >> 12) & 0x3F) << 8) | (c >> 18)) | 0x808080F0;
+	addnstr(&byte, 4, var);
+	return (1);
 }
 
 int		pf_cap_c(t_flags *flags, t_var *var, va_list *ap)
 {
-	wint_t			c;
-	unsigned int	byte;
+	wint_t		c;
+	char		width;
+	static int	(*u[4])() = {len_one, len_two, len_three, len_four};
 
 	c = va_arg(*ap, wint_t);
-	wsize(c, flags, var);
-	if (!((c >> 7) + ((MB_CUR_MAX) == 1)))
-		len_one(flags, var, (char)c);
-	if (flags->len == 2)
+	if (c > 0x10FFFF || (0xD800 >= c && c >= 0xDFFF) || c < 0)
+		return (-1);
+	flags->len = 1 * (!(c >> (7 + (MB_CUR_MAX == 1))));
+	flags->len += 2 * (!(c >> 11) && !flags->len);
+	flags->len += 3 * (!(c >> 16) && !flags->len);
+	flags->len += 4 * (!(c >> 21) && !flags->len);
+	width = ' ' + 16 * (flags->zero);
+	flags->fwidth -= flags->len;
+	flags->fwidth *= (flags->fwidth > 0);
+	if (flags->minus == 0)
 	{
-		byte = (((c & 0x3F) << 8) | (c & 0x7F));
-		addnstr(&byte, 2, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		u[flags->len - 1](c, var);
 	}
-	return (0); 
+	else
+	{
+		u[flags->len - 1](c, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	}
+	return (0);
 }
-/*
-1100 1011      1011 1000
-0110 0101      1101 1100
-0011 1111      0111 1111
-*/

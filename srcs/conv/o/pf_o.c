@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:28 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:27:25 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void init_len_o(int (*len_o[7])())
+static void	init_len_o(int (*len_o[7])())
 {
 	len_o[0] = pf_spe_o;
 	len_o[1] = pf_hho;
@@ -34,35 +34,35 @@ static void	create(t_flags *flags, t_var *var, t_uint32 d)
 static char	initialise(t_flags *flags, t_uint32 d)
 {
 	flags->len = pf_uintlen(d, 8);
-	flags->hashtag *= (d != 0 && flags->precision <= 0);
 	flags->precision -= flags->len;
 	flags->precision *= flags->precision > 0;
+	flags->hashtag *= (d != 0 && flags->precision <= 0);
 	flags->fwidth -= flags->len + flags->precision + flags->hashtag;
 	flags->fwidth *= (flags->fwidth > 0);
 	return (' ');
 }
 
-int		pf_o(t_flags *flags, t_var *var, va_list *ap)
+int			pf_o(t_flags *flags, t_var *var, va_list *ap)
 {
 	static int	(*len_o[7])();
 
 	if (len_o[0] == NULL)
 		init_len_o(len_o);
-	return (len_o[flags->conv](flags, var, ap));	
+	return (len_o[flags->conv](flags, var, ap));
 }
 
-int		pf_spe_o(t_flags *flags, t_var *var, va_list *ap)
+int			pf_spe_o(t_flags *flags, t_var *var, va_list *ap)
 {
 	char		width;
 	t_uint32	d;
-	
+
 	d = va_arg(*ap, t_uint32);
 	if (d == 0 && flags->precision == 0 && !flags->hashtag)
-		return (pf_empty(flags, var));
+		return (pf_empty_o(flags, var));
 	width = initialise(flags, d);
 	if (!flags->minus)
 	{
-		if (flags->zero && !flags->precision)
+		if (flags->zero && !flags->isp)
 		{
 			flags->precision = flags->fwidth;
 			flags->fwidth = 0;

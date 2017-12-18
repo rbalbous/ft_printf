@@ -6,13 +6,14 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/16 16:24:56 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/17 19:20:59 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS = srcs/conv
 
-CONVS = pf_s.c
+CONVS = pf_s.c \
+		pf_cap_s.c
 SPATH = srcs/conv/s
 CONVS_PATH = $(addprefix $(SPATH)/, $(CONVS))
 OBJ = $(addprefix $(OBJ_PATH)/, $(CONVS:.c=.o))

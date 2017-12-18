@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:12 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:49:44 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:30:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,22 @@ static void	create(t_flags *flags, t_var *var, unsigned long int d)
 static char	initialise(t_flags *flags, unsigned long int d)
 {
 	flags->len = pf_uintlen(d, 8);
-	flags->hashtag *= (d != 0 && !flags->isp);
 	flags->precision -= flags->len;
 	flags->precision *= flags->precision > 0;
+	flags->hashtag *= (d != 0 && !flags->precision);
 	flags->fwidth -= flags->len + flags->precision + flags->hashtag;
 	flags->fwidth *= (flags->fwidth > 0);
 	return (' ');
 }
 
-int		pf_cap_o(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_o(t_flags *flags, t_var *var, va_list *ap)
 {
 	char				width;
-	unsigned long int 	d;
-	
+	unsigned long int	d;
+
 	d = va_arg(*ap, unsigned long int);
 	if (d == 0 && flags->precision == 0 && !flags->hashtag)
-		return (pf_empty(flags, var));
+		return (pf_empty_o(flags, var));
 	width = initialise(flags, d);
 	if (!flags->minus)
 	{

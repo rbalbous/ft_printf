@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:48 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/13 19:37:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:33:25 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void init_len_u(int (*len_u[7])())
+static void	init_len_u(int (*len_u[7])())
 {
 	len_u[0] = pf_spe_u;
 	len_u[1] = pf_hhu;
@@ -22,6 +22,7 @@ static void init_len_u(int (*len_u[7])())
 	len_u[5] = pf_ju;
 	len_u[6] = pf_zu;
 }
+
 static void	create(t_flags *flags, t_var *var, t_uint32 d)
 {
 	flags->precision = addmchar('0', var, flags->precision);
@@ -38,7 +39,7 @@ static char	dinitialise(t_flags *flags, t_uint32 d)
 	return (' ');
 }
 
-int		pf_u(t_flags *flags, t_var *var, va_list *ap)
+int			pf_u(t_flags *flags, t_var *var, va_list *ap)
 {
 	static int	(*len_u[7])();
 
@@ -47,18 +48,18 @@ int		pf_u(t_flags *flags, t_var *var, va_list *ap)
 	return (len_u[flags->conv](flags, var, ap));
 }
 
-int		pf_spe_u(t_flags *flags, t_var *var, va_list *ap)
+int			pf_spe_u(t_flags *flags, t_var *var, va_list *ap)
 {
 	char		width;
 	t_uint32	d;
 
 	d = va_arg(*ap, t_uint32);
 	if (d == 0 && flags->precision == 0)
-		return (pf_empty(flags, var));
+		return (pf_empty_u(flags, var));
 	width = dinitialise(flags, d);
 	if (!flags->minus)
 	{
-		if (flags->zero && !flags->precision)
+		if (flags->zero && !flags->isp)
 		{
 			flags->precision = flags->fwidth;
 			flags->fwidth = 0;

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/16 18:41:40 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 18:22:44 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		addnull(t_var *var)
 	var->buf[var->bufindex] = '(';
 	var->bufindex++;
 	var->buf[var->bufindex] = 'n';
-	var->bufindex++; 
+	var->bufindex++;
 	var->buf[var->bufindex] = 'u';
 	var->bufindex++;
 	var->buf[var->bufindex] = 'l';
@@ -64,7 +64,7 @@ void	addnstr(void *str, size_t len, t_var *var)
 {
 	size_t	i;
 	char	*tmp;
-	
+
 	tmp = str;
 	i = 0;
 	while (len > i)

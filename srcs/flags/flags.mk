@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:50:54 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/16 16:05:50 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/17 22:22:14 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ OTH =		pf_hashtag.c \
 			ft_space.c \
 			ft_zero.c \
 			pf_percent.c \
-			pf_empty.c
+			pf_empty.c \
+			pf_wildcard.c 
 OTH_PATH = srcs/flags/others
 FLAGS_OTH_PATH = $(addprefix srcs/flags/others/, $(OTH))
 OBJ += $(addprefix $(OBJ_PATH)/, $(OTH:.c=.o))

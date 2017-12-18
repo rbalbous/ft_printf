@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:26 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/16 18:54:42 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/18 19:21:39 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 #include <limits.h>
 #include <locale.h>
 
-int		main()
+int		main(void)
 {
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
 	setlocale(LC_ALL, "");
-	ft_printf("%C\n", 720);
-	printf("%C\n", 720);
+	i = ft_printf("");
+	j = printf("");
+	ft_printf("%d | %d", i, j);
 	return (0);
 }
-
-//3073
