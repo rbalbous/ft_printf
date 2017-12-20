@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   pf_b.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/05 17:50:27 by raf               #+#    #+#             */
-/*   Updated: 2017/12/18 22:43:53 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/18 21:00:58 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/18 21:17:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int			pf_b(t_flags *flags, t_var *var, va_list *ap)
 {
-	char *dd;
-	char *ss;
+	t_uint32	d;
 
-	dd = (char*)dest;
-	ss = (char*)src;
-	while (n-- > 0)
-		*(dd++) = *(ss++);
-	return (dest);
+	d = va_arg(*ap, t_uint32);
+	flags->len = pf_uintlen(d, 2);
+	pf_uitoa_base(d, 2, flags, var);
+	return (0);
 }

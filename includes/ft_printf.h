@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 19:15:22 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/20 20:12:14 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <math.h>
 # include <wchar.h>
 # include "../srcs/libft/libft.h"
 
@@ -68,6 +69,8 @@ typedef struct	s_flags
 }				t_flags;
 
 int				ft_printf(const char *str, ...);
+int				ft_sprintf(char *dest, const char *str, ...);
+int				ft_dprintf(int fd, const char *str, ...);
 int				parse(unsigned char *str, t_var *var, va_list *ap
 				, int (*f[256])());
 
@@ -148,6 +151,21 @@ int				pf_zx(t_flags *flags, t_var *var, va_list *ap
 int				pf_cap_x(t_flags *flags, t_var *var, va_list *ap
 				, unsigned char *str);
 
+int				pf_n(t_flags *flags, t_var *var, va_list *ap);
+int				pf_spe_n(t_var *var, va_list *ap);
+int				pf_hhn(t_var *var, va_list *ap);
+int				pf_hn(t_var *var, va_list *ap);
+int				pf_zn(t_var *var, va_list *ap);
+int				pf_ln(t_var *var, va_list *ap);
+int				pf_lln(t_var *var, va_list *ap);
+int				pf_jn(t_var *var, va_list *ap);
+
+int				pf_b(t_flags *flags, t_var *var, va_list *ap);
+
+int				pf_f(t_flags *flags, t_var *var, va_list *ap);
+int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap);
+int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
+
 int				pf_percent(t_flags *flags, t_var *var, va_list *ap
 				, unsigned char *str);
 int				pf_empty_d(t_flags *flags, t_var *var);
@@ -168,7 +186,9 @@ size_t			pf_intlen(intmax_t n, int base);
 size_t			pf_uintlen(uintmax_t n, int base);
 void			pf_uitoa_base(uintmax_t n, int base, t_flags *flags
 				, t_var *var);
-
+void			pf_ftoa(double n, t_flags *flags, t_var *var);
 void			pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
+int				pf_round(char *str, t_flags *flags, t_var *var);
 
+int				pf_memcpy(void *dest, const void *src, int n);
 #endif

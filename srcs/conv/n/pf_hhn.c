@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   pf_hhn.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/05 17:50:27 by raf               #+#    #+#             */
-/*   Updated: 2017/12/18 22:43:53 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/19 18:59:41 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/19 19:31:01 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int			pf_hhn(t_var *var, va_list *ap)
 {
-	char *dd;
-	char *ss;
+	t_int8		*tmp;
 
-	dd = (char*)dest;
-	ss = (char*)src;
-	while (n-- > 0)
-		*(dd++) = *(ss++);
-	return (dest);
+	tmp = va_arg(*ap, t_int8*);
+	*tmp = var->bufindex + 1;
+	return (0);
 }

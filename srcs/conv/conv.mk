@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/17 19:20:59 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/20 17:41:11 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,28 @@ XPATH = srcs/conv/x
 CONVX_PATH = $(addprefix srcs/conv/x/, $(CONVX))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVX:.c=.o))
 
+CONVB =		pf_b.c
+BPATH = srcs/conv/b
+CONVB_PATH = $(addprefix srcs/conv/b/, $(CONVB))
+OBJ += $(addprefix $(OBJ_PATH)/, $(CONVB:.c=.o))
+
+CONVF =		pf_f.c \
+			pf_cap_f.c
+FPATH = srcs/conv/f
+CONVF_PATH = $(addprefix srcs/conv/f/, $(CONVF))
+OBJ += $(addprefix $(OBJ_PATH)/, $(CONVF:.c=.o))
+
+CONVN =		pf_n.c \
+			pf_hn.c \
+			pf_hhn.c \
+			pf_lln.c \
+			pf_ln.c \
+			pf_jn.c \
+			pf_zn.c
+NPATH = srcs/conv/n
+CONVN_PATH = $(addprefix srcs/conv/n/, $(CONVN))
+OBJ += $(addprefix $(OBJ_PATH)/, $(CONVN:.c=.o))
+
 $(OBJ_PATH)/%.o : $(SPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
@@ -86,4 +108,13 @@ $(OBJ_PATH)/%.o : $(OPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
 $(OBJ_PATH)/%.o : $(XPATH)/%.c $(INCLUDES)/ft_printf.h
+	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+
+$(OBJ_PATH)/%.o : $(BPATH)/%.c $(INCLUDES)/ft_printf.h
+	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+
+$(OBJ_PATH)/%.o : $(FPATH)/%.c $(INCLUDES)/ft_printf.h
+	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+
+$(OBJ_PATH)/%.o : $(NPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)

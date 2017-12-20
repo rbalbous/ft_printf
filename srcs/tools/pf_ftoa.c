@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   pf_ftoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/05 17:50:27 by raf               #+#    #+#             */
-/*   Updated: 2017/12/18 22:43:53 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/19 22:08:43 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/20 17:50:38 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	pf_ftoa(double n, t_flags *flags, t_var *var)
 {
-	char *dd;
-	char *ss;
+	char	str[flags->precision + 1];
+	int		i;
 
-	dd = (char*)dest;
-	ss = (char*)src;
-	while (n-- > 0)
-		*(dd++) = *(ss++);
-	return (dest);
+	i = 0;
+	n = (n > 0) ? n : -n;
+	pf_itoa(-(intmax_t)n, flags, var);
+	addchar('.', var);
+	n -= (intmax_t)n;
+	while (i < flags->precision + 1)
+	{
+		n = (n - (intmax_t)n) * 10;
+		str[i] = (intmax_t)n + '0';
+		i++;
+	}
+	str[i] = 0;
+	addstr(str, var);
 }

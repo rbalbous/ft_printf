@@ -6,17 +6,21 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 22:07:59 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/18 18:29:22 by rbalbous         ###   ########.fr        #
+#    Updated: 2017/12/19 22:37:21 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TOOLS =		ft_printf.c \
+			ft_sprintf.c \
+			ft_dprintf.c \
 			add.c \
 			ft_parse.c \
 			addwp.c \
 			pf_itoa.c \
 			pf_uitoa.c \
-			pf_uitoa_hexa.c
+			pf_ftoa.c \
+			pf_uitoa_hexa.c \
+			pf_memcpy.c
 TOOLS_PATH = srcs/tools/
 
 OBJ += $(addprefix $(OBJ_PATH)/, $(TOOLS:.c=.o))

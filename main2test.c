@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/21 16:49:26 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 19:21:39 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/20 22:05:02 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,32 @@ int		main(void)
 {
 	int i;
 	int j;
+	double z = 0;
 
-	i = 0;
-	j = 0;
 	setlocale(LC_ALL, "");
-	i = ft_printf("");
-	j = printf("");
-	ft_printf("%d | %d", i, j);
+	i = ft_printf("{%+-#7.2f}\n", 2.9999999);
+	j = printf("{%+-#7.2f}\n", 2.9999999);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%#7.2f}\n", 2.9999999);
+	j = printf("{%#7.2f}\n", 2.9999999);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%+-#7.0f}\n", 2.9999999);
+	j = printf("{%+-#7.0f}\n", 2.9999999);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%+-#7.2f}\n", 2.);
+	j = printf("{%+-#7.2f}\n", 2.);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%.2f}\n", 2.);
+	j = printf("{%.2f}\n", 2.);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%.0f}\n", 2.);
+	j = printf("{%.0f}\n", 2.);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("{%07.2f}\n", 2.9999999);
+	j = printf("{%07.2f}\n", 2.9999999);
+	ft_printf("%d %d\n", i, j);
+	i = ft_printf("%#+015f\n", z);
+	j = printf("%#+015f\n", z);
+	ft_printf("%d %d\n", i, j);
 	return (0);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/20 17:40:04 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/18 22:24:19 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/18 22:47:53 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ static void	init_conv(int (*f[256])())
 	f['*'] = pf_wildcard;
 	f['b'] = pf_b;
 	f['f'] = pf_f;
-	f['F'] = pf_cap_f;
-	f['n'] = pf_n;
 }
 
 static void	init_flags(int (*f[256])())
@@ -72,7 +70,7 @@ static void	init_flags(int (*f[256])())
 	init_conv(f);
 }
 
-int			ft_printf(const char *str, ...)
+int			ft_sprintf(char *dest, const char *str, ...)
 {
 	static int	(*f[256])() = {NULL};
 	va_list		ap;
@@ -98,5 +96,5 @@ int			ft_printf(const char *str, ...)
 			addchar(str[var.index], &var);
 	}
 	va_end(ap);
-	return (write(1, var.buf, var.bufindex));
+	return (pf_memcpy(dest, var.buf, var.bufindex));
 }
