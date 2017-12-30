@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/20 22:03:59 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/22 17:51:03 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		pf_infinite(double d, t_flags *flags, t_var *var)
+int		pf_infinite(double d, t_flags *flags, t_var *var)
 {
 	int		width;
 
@@ -41,7 +41,7 @@ static int		pf_infinite(double d, t_flags *flags, t_var *var)
 	return (0);
 }
 
-static int		pf_nan(t_flags *flags, t_var *var)
+int		pf_nan(t_flags *flags, t_var *var)
 {
 	char	width;
 
@@ -83,7 +83,6 @@ int				pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 		pf_round(&var->buf[var->bufindex - 1], flags, var);
 		flags->fwidth = addmchar(width, var, flags->fwidth);
 	}
-	
 	return (0);
 }
 
@@ -117,10 +116,8 @@ int				pf_round(char *str, t_flags *flags, t_var *var)
 int				pf_f(t_flags *flags, t_var *var, va_list *ap)
 {
 	double		d;
-	int			start;
 	char		width;
 
-	start = var->bufindex;
 	d = va_arg(*ap, double);
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));

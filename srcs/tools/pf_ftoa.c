@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 22:08:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/20 17:50:38 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/22 19:36:48 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ void	pf_ftoa(double n, t_flags *flags, t_var *var)
 	int		i;
 
 	i = 0;
-	n = (n > 0) ? n : -n;
-	pf_itoa(-(intmax_t)n, flags, var);
+	pf_itoa((intmax_t)(n * (2 * (n < 0) -1)), flags, var);
 	addchar('.', var);
-	n -= (intmax_t)n;
 	while (i < flags->precision + 1)
 	{
-		n = (n - (intmax_t)n) * 10;
+		n = (n - (intmax_t)n) * 10 * (-2 * (n < 0) + 1);
 		str[i] = (intmax_t)n + '0';
 		i++;
 	}

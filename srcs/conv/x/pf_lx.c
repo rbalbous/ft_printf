@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:48:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 17:51:56 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	xcreate(t_flags *flags, t_var *var, t_uint64 d, unsigned char *str)
+void	xcreate(t_flags *flags, t_var *var, t_uint64 d, t_uint8 *str)
 {
 	char	x;
 
@@ -26,7 +26,7 @@ void	xcreate(t_flags *flags, t_var *var, t_uint64 d, unsigned char *str)
 	pf_uitoa_hexa(d, flags, var);
 }
 
-char	xinitialise(t_var *var, t_flags *flags, t_uint64 d, unsigned char *str)
+char	xinitialise(t_var *var, t_flags *flags, t_uint64 d, t_uint8 *str)
 {
 	flags->len = pf_uintlen(d, 16);
 	flags->hashtag = (str[var->index] == 'p') || flags->hashtag * (d != 0);
@@ -37,7 +37,7 @@ char	xinitialise(t_var *var, t_flags *flags, t_uint64 d, unsigned char *str)
 	return (' ');
 }
 
-int		pf_lx(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
+int		pf_lx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
 {
 	char		width;
 	t_uint64	d;

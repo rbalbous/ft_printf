@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_percent.c                                       :+:      :+:    :+:   */
+/*   pf_dollar.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/02 17:12:18 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/30 14:58:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_percent(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
+int		pf_dollar(t_flags *flags, t_var *var, va_list *ap)
 {
-	char	width;
-	char	c;
+	int		len;
 
-	(void)ap;
-	c = str[var->index];
-	width = ' ' + 16 * (flags->zero);
-	flags->fwidth -= 1;
-	flags->fwidth *= (flags->fwidth > 0);
-	if (flags->minus == 0)
-	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-		addchar(c, var);
-	}
-	else
-	{
-		addchar(c, var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-	}
-	return (0);
+	len = flags->fwidth - (1 * (flags->fwidth > 0));
+	va_copy(*ap, flags->begin);
+	while (len-- > 0)
+		va_arg(*ap, int);
+	var->index++;
+	return (1);
 }

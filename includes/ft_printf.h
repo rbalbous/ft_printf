@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/20 20:12:14 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/30 15:44:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <math.h>
 # include <wchar.h>
+#include <locale.h>
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
@@ -58,10 +59,14 @@ typedef struct	s_flags
 	t_uint8		hashtag : 1;
 	t_uint8		space : 1;
 	t_uint8		zero : 1;
+	t_uint8		quote : 1;
 	t_uint8		isp : 1;
 	t_uint8		isw : 1;
 	t_int32		precision;
 	t_int32		fwidth;
+	va_list		begin;
+	char		tsep;
+	char		dpt;
 	t_uint8		capx : 1;
 	char		cast;
 	int			len;
@@ -71,8 +76,7 @@ typedef struct	s_flags
 int				ft_printf(const char *str, ...);
 int				ft_sprintf(char *dest, const char *str, ...);
 int				ft_dprintf(int fd, const char *str, ...);
-int				parse(unsigned char *str, t_var *var, va_list *ap
-				, int (*f[256])());
+int				parse(t_uint8 *str, t_var *var, va_list *ap, int (*f[256])());
 
 void			addchar(const char c, t_var *var);
 void			addnstr(void *str, size_t len, t_var *var);
@@ -86,13 +90,15 @@ int				pf_hashtag(t_flags *flags);
 int				ft_minus(t_flags *flags);
 int				ft_plus(t_flags *flags);
 int				ft_preci(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+				, t_uint8 *str);
 int				pf_fwidth(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+				, t_uint8 *str);
 int				ft_space(t_flags *flags);
 int				ft_zero(t_flags *flags);
 int				pf_wildcard(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+				, t_uint8 *str);
+int				pf_dollar(t_flags *flags, t_var *var, va_list *ap);
+int				pf_apostrophe(t_flags *flags);
 
 int				pf_s(t_flags *flags, t_var *var, va_list *ap);
 int				pf_cap_s(t_flags *flags, t_var *var, va_list *ap);
@@ -132,24 +138,15 @@ int				pf_llo(t_flags *flags, t_var *var, va_list *ap);
 int				pf_jo(t_flags *flags, t_var *var, va_list *ap);
 int				pf_zo(t_flags *flags, t_var *var, va_list *ap);
 
-int				pf_x(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_sp_x(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_lx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_llx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_hx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_hhx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_jx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_zx(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
-int				pf_cap_x(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+int				pf_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_sp_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_lx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_llx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_hx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_hhx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_jx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_zx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_cap_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
 
 int				pf_n(t_flags *flags, t_var *var, va_list *ap);
 int				pf_spe_n(t_var *var, va_list *ap);
@@ -165,17 +162,24 @@ int				pf_b(t_flags *flags, t_var *var, va_list *ap);
 int				pf_f(t_flags *flags, t_var *var, va_list *ap);
 int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap);
 int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
+int				pf_infinite(double d, t_flags *flags, t_var *var);
+int				pf_nan(t_flags *flags, t_var *var);
+int				pf_infinitec(double d, t_flags *flags, t_var *var);
+int				pf_nanc(t_flags *flags, t_var *var);
+
+int				pf_e(t_flags *flags, t_var *var, va_list *ap);
+int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap);
 
 int				pf_percent(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+				, t_uint8 *str);
 int				pf_empty_d(t_flags *flags, t_var *var);
 int				pf_empty_o(t_flags *flags, t_var *var);
 int				pf_empty_u(t_flags *flags, t_var *var);
-int				pf_empty_x(t_flags *flags, t_var *var, unsigned char *str);
+int				pf_empty_x(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_empty_s(t_flags *flags, t_var *var);
 
 int				pf_l(t_flags *flags, t_var *var, va_list *ap
-				, unsigned char *str);
+				, t_uint8 *str);
 int				ft_j(t_flags *flags);
 int				pf_h(t_flags *flags);
 int				pf_z(t_flags *flags);

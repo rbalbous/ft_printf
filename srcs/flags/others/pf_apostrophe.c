@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_percent.c                                       :+:      :+:    :+:   */
+/*   pf_apostrophe.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/02 17:12:18 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
+/*   Created: 2017/12/30 15:21:08 by rbalbous          #+#    #+#             */
+/*   Updated: 2017/12/30 15:44:18 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_percent(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
+int		pf_apostrophe(t_flags *flags)
 {
-	char	width;
-	char	c;
+	struct lconv	*apopo;
 
-	(void)ap;
-	c = str[var->index];
-	width = ' ' + 16 * (flags->zero);
-	flags->fwidth -= 1;
-	flags->fwidth *= (flags->fwidth > 0);
-	if (flags->minus == 0)
-	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-		addchar(c, var);
-	}
-	else
-	{
-		addchar(c, var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-	}
-	return (0);
+	apopo = localeconv();
+	flags->dpt = apopo->decimal_point[0];
+	flags->tsep = apopo->thousands_sep[0];
+	printf("%c\n", flags->dpt);
+	printf("%c\n", flags->tsep);
+	return(1);
 }

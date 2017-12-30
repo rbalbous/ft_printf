@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 22:54:48 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 22:55:30 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int			ft_dprintf(int fd, const char *str, ...)
 	{
 		if (str[var.index] == '%' && str[var.index + 1])
 		{
-			if ((ret = parse((unsigned char*)str, &var, &ap, f)) < 0)
+			if ((ret = parse((t_uint8*)str, &var, &ap, f)) < 0)
 			{
 				if (ret == -2)
 					break ;

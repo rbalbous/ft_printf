@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/20 20:12:36 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/21 15:29:20 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		pf_nanc(t_flags *flags, t_var *var)
+int		pf_nanc(t_flags *flags, t_var *var)
 {
 	char	width;
 	
@@ -32,7 +32,7 @@ static int		pf_nanc(t_flags *flags, t_var *var)
 	return (0);
 }
 
-static int		pf_infinitec(double d, t_flags *flags, t_var *var)
+int		pf_infinitec(double d, t_flags *flags, t_var *var)
 {
 	char	width;
 

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:09:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 18:09:48 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int		pf_empty_d(t_flags *flags, t_var *var)
 {
-	flags->fwidth -= (flags->plus);
+	flags->fwidth -= (flags->plus || flags->space);
+	flags->fwidth *= (flags->fwidth > 0);
 	if (flags->minus)
 	{
-		if (flags->plus)
-			addchar('+', var);
+		if (flags->plus || flags->space)
+			addchar(flags->plus ? '+' : ' ', var);
 		flags->fwidth = addmchar(' ', var, flags->fwidth);
 	}
 	else
 	{
 		flags->fwidth = addmchar(' ', var, flags->fwidth);
-		if (flags->plus)
-			addchar('+', var);
+		if (flags->plus || flags->space)
+			addchar(flags->plus ? '+' : ' ', var);
 	}
 	return (0);
 }
@@ -54,7 +55,7 @@ int		pf_empty_u(t_flags *flags, t_var *var)
 	return (0);
 }
 
-int		pf_empty_x(t_flags *flags, t_var *var, unsigned char *str)
+int		pf_empty_x(t_flags *flags, t_var *var, t_uint8 *str)
 {
 	flags->fwidth -= (str[var->index] == 'p') * 2;
 	if (flags->minus)

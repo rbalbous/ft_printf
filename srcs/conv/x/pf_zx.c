@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:16:58 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 17:43:46 by rbalbous         ###   ########.fr       */
+/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static char	dinitialise(t_flags *flags, size_t d)
 	return (' ');
 }
 
-int			pf_zx(t_flags *flags, t_var *var, va_list *ap, unsigned char *str)
+int			pf_zx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
 {
 	char	width;
 	size_t	d;
