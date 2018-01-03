@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:48 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 17:33:25 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 16:27:48 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@ static void	create(t_flags *flags, t_var *var, t_uint32 d)
 
 static char	dinitialise(t_flags *flags, t_uint32 d)
 {
+	int		apo;
+
 	flags->len = pf_uintlen(d, 10);
-	flags->precision -= flags->len;
+	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
+	flags->precision -= flags->len + apo;
 	flags->precision *= flags->precision > 0;
-	flags->fwidth -= flags->len + flags->precision;
+	flags->fwidth -= flags->len + flags->precision + apo;
 	flags->fwidth *= (flags->fwidth > 0);
 	return (' ');
 }

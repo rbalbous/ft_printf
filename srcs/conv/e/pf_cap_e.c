@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   pf_cap_e.c                                         :+:      :+:    :+:   */
@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/21 15:33:11 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:13:19 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		pf_create(t_flags *flags, t_var *var, double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 {
 	pf_ftoa(d, flags, var);
 	pf_round(&var->buf[var->bufindex - 1], flags, var);
@@ -30,7 +30,7 @@ static int		pf_create(t_flags *flags, t_var *var, double d, int count)
 	return (0);
 }
 
-static int		pf_tosc(double *d)
+static int	pf_tosc(double *d)
 {
 	int		count;
 
@@ -55,7 +55,7 @@ static int		pf_tosc(double *d)
 	return (count);
 }
 
-static int		initialise(t_flags *flags, t_var *var, double d)
+static int	initialise(t_flags *flags, t_var *var, double d)
 {
 	if (d == 9221120237041090560)
 		return (pf_nanc(flags, var));
@@ -69,7 +69,7 @@ static int		initialise(t_flags *flags, t_var *var, double d)
 	return (0);
 }
 
-int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
 {
 	double		d;
 	int			count;

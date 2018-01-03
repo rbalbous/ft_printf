@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 15:00:03 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/22 19:12:30 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:11:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,46 @@ size_t	pf_intlen(intmax_t n, int base)
 	return (count);
 }
 
+int		pf_tsep(t_flags *flags, t_var *var, char *toa)
+{
+	int		i;
+	int		j;
+	int		lenstr;
+	char	str[flags->len + (flags->len / 3) - (flags->len % 3 == 0)];
+
+	i = 1;
+	j = 1;
+	lenstr = flags->len + (flags->len / 3) - (flags->len % 3 == 0);
+	while (i < lenstr + 1)
+	{
+		if (i % 4 == 0 && i != 0)
+			str[lenstr - i] = flags->tsep;
+		else
+		{
+			str[lenstr - i] = toa[flags->len - j];
+			j++;
+		}
+		i++;
+	}
+	addnstr(str, lenstr, var);
+	return (1);
+}
+
 void	pf_itoa(intmax_t n, t_flags *flags, t_var *var)
 {
-	char		*str;
-	intmax_t	tn;
+	char		toa[flags->len];
 	size_t		count;
 
 	if (n == 0)
 		return (addchar('0', var));
 	count = flags->len;
-	if ((str = ft_strnew(count)) == NULL)
-		return ;
-	tn = n;
 	while (count-- > 0)
 	{
-		str[count] = -(tn % 10) + 48;
-		tn /= 10;
+		toa[count] = -(n % 10) + 48;
+		n /= 10;
 	}
-	addstr(str, var);
-	free(str);
+	if (!flags->tsep)
+		addnstr(toa, flags->len, var);
+	else
+		pf_tsep(flags, var, toa);
 }

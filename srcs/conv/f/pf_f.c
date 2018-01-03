@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/22 17:51:03 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:16:36 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int		pf_infinite(double d, t_flags *flags, t_var *var)
 	}
 	else
 	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
 		if (d < 0)
 			addchar('-', var);
 		else if (flags->plus || flags->space)
 			addchar(flags->plus ? '+' : ' ', var);
 		addnstr("inf", 3, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
 	}
 	return (0);
 }
@@ -61,7 +61,7 @@ int		pf_nan(t_flags *flags, t_var *var)
 	return (0);
 }
 
-int				pf_fcreate(t_flags *flags, t_var *var, double d, char width)
+int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 {
 	if (!flags->minus)
 	{
@@ -86,7 +86,7 @@ int				pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 	return (0);
 }
 
-int				pf_round(char *str, t_flags *flags, t_var *var)
+int		pf_round(char *str, t_flags *flags, t_var *var)
 {
 	if (*str >= '5')
 	{
@@ -113,10 +113,11 @@ int				pf_round(char *str, t_flags *flags, t_var *var)
 	return (0);
 }
 
-int				pf_f(t_flags *flags, t_var *var, va_list *ap)
+int		pf_f(t_flags *flags, t_var *var, va_list *ap)
 {
 	double		d;
 	char		width;
+	int			apo;
 
 	d = va_arg(*ap, double);
 	if (d == 9221120237041090560)
@@ -124,10 +125,11 @@ int				pf_f(t_flags *flags, t_var *var, va_list *ap)
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_infinite(d, flags, var));
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
+	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
 	flags->fwidth -= (flags->hashtag && flags->precision == 0);
 	flags->precision += 7 * (!flags->isp);
 	flags->fwidth -= flags->precision + flags->len + (flags->precision != 0)
-	+ (flags->space || flags->plus);
+	+ (flags->space || flags->plus) + apo;
 	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/21 15:29:20 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:16:12 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		pf_nanc(t_flags *flags, t_var *var)
 {
 	char	width;
-	
+
 	flags->fwidth -= 3;
 	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
@@ -51,31 +51,33 @@ int		pf_infinitec(double d, t_flags *flags, t_var *var)
 	}
 	else
 	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
 		if (d < 0)
 			addchar('-', var);
 		else if (flags->plus || flags->space)
 			addchar(flags->plus ? '+' : ' ', var);
 		addnstr("INF", 3, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
 	}
 	return (0);
 }
 
-int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap)
+int		pf_cap_f(t_flags *flags, t_var *var, va_list *ap)
 {
 	double		d;
-	int			start;
 	char		width;
+	int			apo;
 
-	start = var->bufindex;
 	d = va_arg(*ap, double);
 	if (d == 9221120237041090560)
 		return (pf_nanc(flags, var));
-	if (d == INFINITY || d == -INFINITY)
+	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_infinitec(d, flags, var));
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
+	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
+	flags->fwidth -= (flags->hashtag && flags->precision == 0);
 	flags->precision += 7 * (!flags->isp);
-	flags->fwidth -= flags->precision + flags->len + (flags->precision != 0);
+	flags->fwidth -= flags->precision + flags->len + (flags->precision != 0)
+	+ (flags->space || flags->plus) + apo;
 	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);

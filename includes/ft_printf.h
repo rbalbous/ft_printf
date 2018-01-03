@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 15:44:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 23:02:19 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include <unistd.h>
 # include <math.h>
 # include <wchar.h>
-#include <locale.h>
+# include <locale.h>
+# include <langinfo.h>
+# include <nl_types.h>
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
@@ -168,7 +170,10 @@ int				pf_infinitec(double d, t_flags *flags, t_var *var);
 int				pf_nanc(t_flags *flags, t_var *var);
 
 int				pf_e(t_flags *flags, t_var *var, va_list *ap);
+int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap);
+
+int				pf_g(t_flags *flags, t_var *var, va_list *ap);
 
 int				pf_percent(t_flags *flags, t_var *var, va_list *ap
 				, t_uint8 *str);
@@ -185,6 +190,7 @@ int				pf_h(t_flags *flags);
 int				pf_z(t_flags *flags);
 
 void			pf_itoa(intmax_t n, t_flags *flags, t_var *var);
+int				pf_tsep(t_flags *flags, t_var *var, char *toa);
 size_t			pf_intlen(intmax_t n, int base);
 
 size_t			pf_uintlen(uintmax_t n, int base);

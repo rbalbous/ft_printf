@@ -6,20 +6,20 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/22 21:58:02 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 23:05:33 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int			pf_tosc(double *d)
+static int		pf_tosc(double *d)
 {
 	int		count;
 
 	count = 0;
-	if ((intmax_t)*d == 0)
+	if ((intmax_t)(*d) == 0)
 	{
-		while ((intmax_t)*d == 0)
+		while ((intmax_t)(*d) == 0)
 		{
 			*d = *d * 10;
 			count++;
@@ -28,7 +28,7 @@ static int			pf_tosc(double *d)
 	}
 	else
 	{
-		while ((intmax_t)*d < -10 || (intmax_t)*d > 10)
+		while ((intmax_t)(*d) < -10 || (intmax_t)(*d) > 10)
 		{
 			*d /= 10;
 			count++;
@@ -39,8 +39,8 @@ static int			pf_tosc(double *d)
 
 static int		pf_create(t_flags *flags, t_var *var, double d, int count)
 {
-	int 	start;
-	
+	int		start;
+
 	start = var->bufindex;
 	pf_ftoa(d, flags, var);
 	pf_round(&var->buf[var->bufindex - 1], flags, var);
@@ -74,14 +74,21 @@ static int		initialise(t_flags *flags, t_var *var, double d)
 
 int				pf_e(t_flags *flags, t_var *var, va_list *ap)
 {
+	int			count;
 	double		d;
-	char		width;
-	int 		count;
 
 	count = 0;
 	d = va_arg(*ap, double);
-	initialise(flags, var, d);
 	count = pf_tosc(&d);
+	initialise(flags, var, d);
+	pf_spe_e(flags, var, d, count);
+	return (1);
+}
+
+int				pf_spe_e(t_flags *flags, t_var *var, double d, int count)
+{
+	char		width;
+
 	width = ' ' + 16 * flags->zero;
 	if (d < 0)
 		addchar('-', var);

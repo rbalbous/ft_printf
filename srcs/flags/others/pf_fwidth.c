@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:47:30 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 14:58:10 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:18:51 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		pf_fwidth(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
 {
-	(void)ap;
 	int		tmp;
 
+	(void)ap;
 	tmp = flags->fwidth;
 	flags->isw = 1;
 	flags->fwidth = 0;

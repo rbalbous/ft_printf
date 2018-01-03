@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:12 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 16:30:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:17:20 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ static void	create(t_flags *flags, t_var *var, unsigned long int d)
 
 static char	initialise(t_flags *flags, unsigned long int d)
 {
+	int		apo;
+
 	flags->len = pf_uintlen(d, 8);
+	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
 	flags->precision -= flags->len;
 	flags->precision *= flags->precision > 0;
 	flags->hashtag *= (d != 0 && !flags->precision);

@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/21 15:33:20 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/03 20:58:42 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,11 @@ EPATH = srcs/conv/e
 CONVE_PATH = $(addprefix srcs/conv/e/, $(CONVE))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVE:.c=.o))
 
+CONVG =		pf_g.c
+GPATH = srcs/conv/g
+CONVG_PATH = $(addprefix srcs/conv/g/, $(CONVG))
+OBJ += $(addprefix $(OBJ_PATH)/, $(CONVG:.c=.o))
+
 CONVN =		pf_n.c \
 			pf_hn.c \
 			pf_hhn.c \
@@ -126,4 +131,7 @@ $(OBJ_PATH)/%.o : $(NPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
 $(OBJ_PATH)/%.o : $(EPATH)/%.c $(INCLUDES)/ft_printf.h
+	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+
+$(OBJ_PATH)/%.o : $(GPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
