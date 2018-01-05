@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 23:12:45 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:11:39 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,9 @@
 
 int		main(void)
 {
-	int i;
-	int j;
-	double z = 2.99999;
-
 	setlocale(LC_ALL, "");
-	i = ft_printf("%C", 0x11ffff);
-	j = printf("%C", 0x11ffff);
-	printf("%d %d", i, j);
+	ft_printf("%C", 0x11ffff);
+	printf("%C", 0x11ffff);
 	printf("%.2g\n", 654248.235);
 	printf("%.2g\n", 654235.235); 
 	ft_printf("%'u\n", 2345678);
@@ -76,6 +71,12 @@ int		main(void)
 	ft_printf("{%'f}\n", 123456.123);
 	printf("{%'f}\n", 123456.123);
 	ft_printf("--------\n");
+	ft_printf("{%'.5f}\n", 123456.123);
+	printf("{%'.5f}\n", 123456.123);
+	ft_printf("--------\n");
+	ft_printf("{%'.8f}\n", 123456.123);
+	printf("{%'.8f}\n", 123456.123);
+	ft_printf("--------\n");
 	ft_printf("{%'16f}\n", 123456.123);
 	printf("{%'16f}\n", 123456.123);
 	ft_printf("--------\n");
@@ -97,7 +98,61 @@ int		main(void)
 	ft_printf("{%-12f}\n", -INFINITY);
 	printf("{%-12f}\n", -INFINITY);
 	ft_printf("--------\n");
-	ft_printf("%.12g\n", .0000123456);
-	printf("%.12g\n", 126.56);
+	ft_printf("%E\n", 00000.1234);
+	printf("%E\n", 00000.1234);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 21234567.5605);
+	printf("%g\n", 21234567.5605);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 2123.5605);
+	printf("%g\n", 2123.5605);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 2123.5655);
+	printf("%g\n", 2123.5655);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 212345.5655);
+	printf("%g\n", 212345.5655);
+	ft_printf("--------\n");
+	ft_printf("%.5g\n", 212345.5655);
+	printf("%.5g\n", 212345.5655);
+	ft_printf("--------\n");
+	ft_printf("%.9g\n", 212345.5655);
+	printf("%.9g\n", 212345.5655);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 0.00000212345675605);
+	printf("%g\n", 0.0000021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.9g\n", 0.00000212345675605);
+	printf("%.9g\n", 0.0000021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.5g\n", 0.000212345675605);
+	printf("%.5g\n", 0.00021234565605);
+	ft_printf("--------\n");
+	ft_printf("%g\n", 0.000212345675605);
+	printf("%g\n", 0.00021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.1g\n", 0.000212345675605);
+	printf("%.1g\n", 0.00021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.0g\n", 0.000212345675605);
+	printf("%.0g\n", 0.00021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.0g\n", 0.00000212345675605);
+	printf("%.0g\n", 0.0000021234565605);
+	ft_printf("--------\n");
+	ft_printf("%.0g\n", 2123456.75605);
+	printf("%.0g\n", 2123456.75605);
+	ft_printf("--------\n");
+	ft_printf("%g\n", INFINITY);
+	printf("%g\n", INFINITY);
+	ft_printf("--------\n");
+	ft_printf("%g\n", -INFINITY);
+	printf("%g\n", -INFINITY);
+	ft_printf("--------\n");
+	ft_printf("%g\n", NAN);
+	printf("%g\n", NAN);
+	ft_printf("--------\n");
+	ft_printf("%'.9g\n", 212345675.605);
+	printf("%'.9g\n", 21234565.605);
 	return (0);
 }

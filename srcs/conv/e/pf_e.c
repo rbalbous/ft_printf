@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 23:05:33 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:24:02 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int		pf_tosc(double *d)
+int			pf_tosc(double *d)
 {
 	int		count;
 
@@ -37,7 +37,7 @@ static int		pf_tosc(double *d)
 	return (count);
 }
 
-static int		pf_create(t_flags *flags, t_var *var, double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 {
 	int		start;
 
@@ -58,7 +58,7 @@ static int		pf_create(t_flags *flags, t_var *var, double d, int count)
 	return (0);
 }
 
-static int		initialise(t_flags *flags, t_var *var, double d)
+static int	initialise(t_flags *flags, t_var *var, double d)
 {
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));
@@ -72,7 +72,7 @@ static int		initialise(t_flags *flags, t_var *var, double d)
 	return (0);
 }
 
-int				pf_e(t_flags *flags, t_var *var, va_list *ap)
+int			pf_e(t_flags *flags, t_var *var, va_list *ap)
 {
 	int			count;
 	double		d;
@@ -85,7 +85,7 @@ int				pf_e(t_flags *flags, t_var *var, va_list *ap)
 	return (1);
 }
 
-int				pf_spe_e(t_flags *flags, t_var *var, double d, int count)
+int			pf_spe_e(t_flags *flags, t_var *var, double d, int count)
 {
 	char		width;
 

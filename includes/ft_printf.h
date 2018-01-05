@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 23:02:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:09:01 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,9 @@ int				pf_jn(t_var *var, va_list *ap);
 int				pf_b(t_flags *flags, t_var *var, va_list *ap);
 
 int				pf_f(t_flags *flags, t_var *var, va_list *ap);
+int				pf_spe_f(t_flags *flags, t_var *var, double d);
 int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap);
+int				pf_spe_cap_f(t_flags *flags, t_var *var, double d);
 int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
 int				pf_infinite(double d, t_flags *flags, t_var *var);
 int				pf_nan(t_flags *flags, t_var *var);
@@ -172,6 +174,8 @@ int				pf_nanc(t_flags *flags, t_var *var);
 int				pf_e(t_flags *flags, t_var *var, va_list *ap);
 int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap);
+int				pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count);
+int				pf_tosc(double *d);
 
 int				pf_g(t_flags *flags, t_var *var, va_list *ap);
 

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 22:13:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/05 18:23:34 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,6 @@ static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 	return (0);
 }
 
-static int	pf_tosc(double *d)
-{
-	int		count;
-
-	count = 0;
-	if (*d == 0)
-	{
-		while (*d == 0)
-		{
-			*d = *d * 10;
-			count++;
-		}
-		count *= -1;
-	}
-	else
-	{
-		while (*d > 10 || *d < -10)
-		{
-			*d = *d / 10;
-			count++;
-		}
-	}
-	return (count);
-}
-
 static int	initialise(t_flags *flags, t_var *var, double d)
 {
 	if (d == 9221120237041090560)
@@ -71,14 +46,22 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 
 int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
 {
-	double		d;
 	int			count;
+	double		d;
+
+	count = 0;
+	d = va_arg(*ap, double);
+	count = pf_tosc(&d);
+	initialise(flags, var, d);
+	pf_spe_cap_e(flags, var, d, count);
+	return (1);
+}
+
+int			pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count)
+{
 	char		width;
 
-	d = va_arg(*ap, double);
-	initialise(flags, var, d);
 	width = ' ' + 16 * flags->zero;
-	count = pf_tosc(&d);
 	if (d < 0)
 		addchar('-', var);
 	else if (flags->plus || flags->space)
