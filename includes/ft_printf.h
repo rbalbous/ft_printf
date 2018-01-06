@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/05 18:09:01 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/06 18:28:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct	s_flags
 	char		tsep;
 	char		dpt;
 	t_uint8		capx : 1;
+	t_uint8		bigshaq;
 	char		cast;
 	int			len;
 	t_conv		conv;
@@ -162,13 +163,14 @@ int				pf_jn(t_var *var, va_list *ap);
 int				pf_b(t_flags *flags, t_var *var, va_list *ap);
 
 int				pf_f(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_f(t_flags *flags, t_var *var, double d);
+int				pf_spe_f(t_flags *flags, t_var *var, long double d);
 int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_cap_f(t_flags *flags, t_var *var, double d);
-int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
-int				pf_infinite(double d, t_flags *flags, t_var *var);
+int				pf_spe_cap_f(t_flags *flags, t_var *var, long double d);
+int				pf_cap_l(t_flags *flags);
+int				pf_fcreate(t_flags *flags, t_var *var, long double d, char width);
+int				pf_infinite(long double d, t_flags *flags, t_var *var);
 int				pf_nan(t_flags *flags, t_var *var);
-int				pf_infinitec(double d, t_flags *flags, t_var *var);
+int				pf_infinitec(long double d, t_flags *flags, t_var *var);
 int				pf_nanc(t_flags *flags, t_var *var);
 
 int				pf_e(t_flags *flags, t_var *var, va_list *ap);
@@ -176,6 +178,12 @@ int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap);
 int				pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_tosc(double *d);
+
+int				pf_a(t_flags *flags, t_var *var, va_list *ap);
+void			pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
+void			pf_initoa(char modu[16]);
+int				pf_cap_a(t_flags *flags, t_var *var, va_list *ap);
+int				pf_toa(double *d);
 
 int				pf_g(t_flags *flags, t_var *var, va_list *ap);
 

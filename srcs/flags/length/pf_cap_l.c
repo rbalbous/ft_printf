@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_dollar.c                                        :+:      :+:    :+:   */
+/*   pf_cap_l.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 14:46:36 by rbalbous         ###   ########.fr       */
+/*   Created: 2018/01/06 17:31:49 by rbalbous          #+#    #+#             */
+/*   Updated: 2018/01/06 17:53:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_dollar(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_l(t_flags *flags)
 {
-	int		len;
-
-	len = flags->fwidth - (1 * (flags->fwidth > 0));
-	va_copy(*ap, flags->begin);
-	while (len-- > 0)
-		va_arg(*ap, int);
-	var->index++;
+	flags->bigshaq = 1;
 	return (1);
 }

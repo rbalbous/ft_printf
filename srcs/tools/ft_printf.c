@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 20:57:22 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/06 15:57:09 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,28 +52,24 @@ static void	init_flags(int (*f[256])())
 {
 	int		i;
 
-	i = 0;
-	while (i < 256)
-	{
+	i = -1;
+	while (++i < 256)
 		f[i] = pf_percent;
-		i++;
-	}
-	i = 0;
+	i = -1;
 	f['0'] = ft_zero;
 	f['.'] = ft_preci;
 	f['+'] = ft_plus;
 	f['-'] = ft_minus;
 	f['#'] = pf_hashtag;
 	f[' '] = ft_space;
-	while (i < 9)
-	{
+	while (++i < 9)
 		f['1' + i] = pf_fwidth;
-		i++;
-	}
 	f['h'] = pf_h;
 	f['l'] = pf_l;
 	f['j'] = ft_j;
 	f['z'] = pf_z;
+	f['a'] = pf_a;
+	f['A'] = pf_cap_a;
 	init_conv(f);
 }
 

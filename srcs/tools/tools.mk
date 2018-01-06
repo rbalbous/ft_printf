@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 22:07:59 by rbalbous          #+#    #+#              #
-#    Updated: 2017/12/19 22:37:21 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/06 12:32:37 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ TOOLS =		ft_printf.c \
 			pf_itoa.c \
 			pf_uitoa.c \
 			pf_ftoa.c \
+			pf_ftoa_hexa.c \
 			pf_uitoa_hexa.c \
 			pf_memcpy.c
 TOOLS_PATH = srcs/tools/

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 22:24:19 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/06 17:42:21 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,37 @@ static void	init_conv(int (*f[256])())
 	f['*'] = pf_wildcard;
 	f['b'] = pf_b;
 	f['f'] = pf_f;
+	f['F'] = pf_cap_f;
+	f['n'] = pf_n;
+	f['e'] = pf_e;
+	f['E'] = pf_cap_e;
+	f['$'] = pf_dollar;
+	f['\''] = pf_apostrophe;
+	f['g'] = pf_g;
 }
 
 static void	init_flags(int (*f[256])())
 {
 	int		i;
 
-	i = 0;
-	while (i < 256)
-	{
+	i = -1;
+	while (++i < 256)
 		f[i] = pf_percent;
-		i++;
-	}
-	i = 0;
+	i = -1;
 	f['0'] = ft_zero;
 	f['.'] = ft_preci;
 	f['+'] = ft_plus;
 	f['-'] = ft_minus;
 	f['#'] = pf_hashtag;
 	f[' '] = ft_space;
-	while (i < 9)
-	{
+	while (++i < 9)
 		f['1' + i] = pf_fwidth;
-		i++;
-	}
 	f['h'] = pf_h;
 	f['l'] = pf_l;
 	f['j'] = ft_j;
 	f['z'] = pf_z;
+	f['a'] = pf_a;
+	f['A'] = pf_cap_a;
 	init_conv(f);
 }
 
