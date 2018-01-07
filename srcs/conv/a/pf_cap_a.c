@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 15:54:27 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:57:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	pf_create(t_flags *flags, t_var *var, double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 {
 	int		start;
 
@@ -31,7 +31,7 @@ static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 	return (0);
 }
 
-static int	initialise(t_flags *flags, t_var *var, double d)
+static int	initialise(t_flags *flags, t_var *var, long double d)
 {
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));
@@ -48,7 +48,7 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 
 int			pf_cap_a(t_flags *flags, t_var *var, va_list *ap)
 {
-	double		d;
+	long double		d;
 	int			count;
 	char		width;
 

@@ -6,15 +6,15 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/05 18:26:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:55:59 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_gzer(t_flags *flags, t_var *var, double d)
+int		pf_gzer(t_flags *flags, t_var *var, long double d)
 {
-	double		tmp;
+	long double	tmp;
 	int			count;
 
 	tmp = d;
@@ -34,7 +34,7 @@ int		pf_gzer(t_flags *flags, t_var *var, double d)
 	return (1);
 }
 
-int		pf_gpos(t_flags *flags, t_var *var, double d)
+int		pf_gpos(t_flags *flags, t_var *var, long double d)
 {
 	int			count;
 
@@ -56,7 +56,7 @@ int		pf_gpos(t_flags *flags, t_var *var, double d)
 
 int		pf_g(t_flags *flags, t_var *var, va_list *ap)
 {
-	double		d;
+	long double		d;
 
 	d = va_arg(*ap, double);
 	if (d == 9221120237041090560)

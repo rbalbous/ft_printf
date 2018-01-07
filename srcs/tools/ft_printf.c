@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 15:57:09 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 00:48:21 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static void	init_flags(int (*f[256])())
 	f['z'] = pf_z;
 	f['a'] = pf_a;
 	f['A'] = pf_cap_a;
+	f['L'] = pf_cap_l;
 	init_conv(f);
 }
 

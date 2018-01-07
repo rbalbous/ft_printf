@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 16:49:25 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:57:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			pf_toa(double *d)
+int			pf_toa(long double *d)
 {
 	int		count;
 	int		sign;
@@ -36,7 +36,7 @@ int			pf_toa(double *d)
 	return (count * sign);
 }
 
-static int	pf_create(t_flags *flags, t_var *var, double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 {
 	int		start;
 
@@ -55,7 +55,7 @@ static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 	return (0);
 }
 
-static int	initialise(t_flags *flags, t_var *var, double d)
+static int	initialise(t_flags *flags, t_var *var, long double d)
 {
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));
@@ -71,7 +71,7 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 
 int			pf_a(t_flags *flags, t_var *var, va_list *ap)
 {
-	double		d;
+	long double		d;
 	int			count;
 	char		width;
 

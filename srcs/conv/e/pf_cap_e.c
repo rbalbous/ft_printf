@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/05 18:23:34 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:56:26 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	pf_create(t_flags *flags, t_var *var, double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 {
 	pf_ftoa(d, flags, var);
 	pf_round(&var->buf[var->bufindex - 1], flags, var);

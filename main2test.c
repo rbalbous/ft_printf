@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 18:29:14 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 12:52:31 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,9 +240,9 @@ int		main(void)
 	ft_printf("--------\n");
 	ft_printf("%a\n", 0.75);
 	printf("%a\n", 0.75);
+	ft_printf("--------\n");
 	char str[100];
 	char str2[100];
-
 	for (v = -1.0; v <= 1.0; v += 0.0001)
 	{
 		sprintf(str, "%a\n", v);
@@ -255,6 +255,13 @@ int		main(void)
 	}
 	ft_printf("done %C\n", L'👍');
 	ft_printf("--------\n");
-	ft_printf("%Lf\n", 0.75);
+	ft_printf("%.3LF\n", 0.333333333333333333L);
+	printf("%.3LF\n", 0.333333333333333333L);
+	ft_printf("--------\n");
+	ft_printf("%Lf\n", 0.333333333333333333L);
+	printf("%Lf\n", 0.333333333333333333L);
+	ft_printf("--------\n");
+	ft_printf("%Le\n", 0.000000030L);
+	printf("%Le\n", 0.0000003L);
 	return (0);
 }
