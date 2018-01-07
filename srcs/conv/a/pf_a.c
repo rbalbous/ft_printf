@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 12:57:42 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:18:41 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			pf_toa(long double *d)
+int			pf_toa(double *d)
 {
 	int		count;
 	int		sign;
@@ -36,7 +36,7 @@ int			pf_toa(long double *d)
 	return (count * sign);
 }
 
-static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 {
 	int		start;
 
@@ -55,7 +55,7 @@ static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 	return (0);
 }
 
-static int	initialise(t_flags *flags, t_var *var, long double d)
+static char	initialise(t_flags *flags, t_var *var, double d)
 {
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));
@@ -66,19 +66,21 @@ static int	initialise(t_flags *flags, t_var *var, long double d)
 	flags->fwidth -= 1 + flags->precision + 5
 	+ (d < 0 || flags->space || flags->plus);
 	flags->fwidth *= (flags->fwidth > 0);
-	return (0);
+	return (' ' + 16 * flags->zero);
 }
 
 int			pf_a(t_flags *flags, t_var *var, va_list *ap)
 {
-	long double		d;
+	double		d;
 	int			count;
 	char		width;
 
-	d = va_arg(*ap, double);
-	initialise(flags, var, d);
+	if (flags->bigl)
+		return (pf_la(flags, var, ap));
+	else
+		d = va_arg(*ap, double);
+	width =	initialise(flags, var, d);
 	count = pf_toa(&d);
-	width = ' ' + 16 * flags->zero;
 	if (d < 0)
 		addchar('-', var);
 	else if (flags->plus || flags->space)

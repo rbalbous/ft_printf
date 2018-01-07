@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 12:56:26 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
+static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 {
 	pf_ftoa(d, flags, var);
 	pf_round(&var->buf[var->bufindex - 1], flags, var);
@@ -47,10 +47,12 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
 {
 	int			count;
-	double		d;
+	double	d;
 
-	count = 0;
-	d = va_arg(*ap, double);
+	if (flags->bigl)
+		return (pf_le(flags, var, ap));
+	else
+		d = va_arg(*ap, double);
 	count = pf_tosc(&d);
 	initialise(flags, var, d);
 	pf_spe_cap_e(flags, var, d, count);

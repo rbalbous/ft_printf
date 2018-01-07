@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 00:58:07 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_infinite(long double d, t_flags *flags, t_var *var)
+int		pf_infinite(double d, t_flags *flags, t_var *var)
 {
 	int		width;
 
@@ -90,10 +90,10 @@ int		pf_round(char *str, t_flags *flags, t_var *var)
 
 int		pf_f(t_flags *flags, t_var *var, va_list *ap)
 {
-	long double		d;
+	double		d;
 
-	if (flags->bigshaq)
-		d = va_arg(*ap, long double);
+	if (flags->bigl)
+		return (pf_cap_fl(flags, var, ap));
 	else
 		d = va_arg(*ap, double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
@@ -108,7 +108,7 @@ int		pf_f(t_flags *flags, t_var *var, va_list *ap)
 	return (pf_spe_f(flags, var, d));
 }
 
-int		pf_spe_f(t_flags *flags, t_var *var, long double d)
+int		pf_spe_f(t_flags *flags, t_var *var, double d)
 {
 	char		width;
 	int			apo;

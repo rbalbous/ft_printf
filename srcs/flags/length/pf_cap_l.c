@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 17:31:49 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/06 17:53:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int			pf_cap_l(t_flags *flags)
 {
-	flags->bigshaq = 1;
+	flags->bigl = 1;
 	return (1);
 }

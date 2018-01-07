@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/06 15:38:47 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/07 17:10:59 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,13 +76,17 @@ CONVB_PATH = $(addprefix srcs/conv/b/, $(CONVB))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVB:.c=.o))
 
 CONVF =		pf_f.c \
-			pf_cap_f.c
+			pf_cap_f.c \
+			pf_cap_fl.c \
+			pf_fl.c
 FPATH = srcs/conv/f
 CONVF_PATH = $(addprefix srcs/conv/f/, $(CONVF))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVF:.c=.o))
 
 CONVE =		pf_e.c \
-			pf_cap_e.c
+			pf_le.c \
+			pf_cap_e.c \
+			pf_cap_le.c
 EPATH = srcs/conv/e
 CONVE_PATH = $(addprefix srcs/conv/e/, $(CONVE))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVE:.c=.o))
@@ -104,6 +108,7 @@ CONVN_PATH = $(addprefix srcs/conv/n/, $(CONVN))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVN:.c=.o))
 
 CONVA =		pf_a.c \
+			pf_la.c \
 			pf_cap_a.c
 APATH = srcs/conv/a
 CONVA_PATH = $(addprefix srcs/conv/a/, $(CONVA))

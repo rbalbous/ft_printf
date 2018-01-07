@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 12:52:31 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/07 18:42:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(void)
 	double v = -1.0;
 
 	setlocale(LC_ALL, "");
-	ft_printf("%C", 0x11ffff);
+	/*ft_printf("%C", 0x11ffff);
 	printf("%C", 0x11ffff);
 	printf("%.2g\n", 654248.235);
 	printf("%.2g\n", 654235.235); 
@@ -261,7 +261,11 @@ int		main(void)
 	ft_printf("%Lf\n", 0.333333333333333333L);
 	printf("%Lf\n", 0.333333333333333333L);
 	ft_printf("--------\n");
-	ft_printf("%Le\n", 0.000000030L);
+	ft_printf("%Le\n", 0.0000003L);
 	printf("%Le\n", 0.0000003L);
+	ft_printf("--------\n");*/
+	ft_printf("%La\n", 16.16L);
+	printf("%La\n", 16.16L);
+	printf("%La\n", 23.75L);
 	return (0);
 }
