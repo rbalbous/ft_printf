@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 22:24:19 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:40:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int			ft_sprintf(char *dest, const char *str, ...)
 	{
 		if (str[var.index] == '%' && str[var.index + 1])
 		{
-			if ((ret = parse((t_uint8*)str, &var, &ap, f)) < 0)
+			if ((ret = parse((t_uint8*)str, &var, ap, f)) < 0)
 			{
 				if (ret == -2)
 					break ;

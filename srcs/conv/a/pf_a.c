@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 17:02:14 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static char	initialise(t_flags *flags, t_var *var, double d)
 	return (' ' + 16 * flags->zero);
 }
 
-int			pf_a(t_flags *flags, t_var *var, va_list *ap)
+int			pf_a(t_flags *flags, t_var *var, va_list ap)
 {
 	double		d;
 	int			count;
@@ -78,7 +78,7 @@ int			pf_a(t_flags *flags, t_var *var, va_list *ap)
 	if (flags->bigl)
 		return (pf_la(flags, var, ap));
 	else
-		d = va_arg(*ap, double);
+		d = va_arg(ap, double);
 	width = initialise(flags, var, d);
 	count = pf_toa(&d);
 	if (d < 0)

@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:37:40 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_initflags(t_flags *flags, va_list *ap)
+int		pf_initflags(t_flags *flags, va_list ap)
 {
 	flags->minus = 0;
 	flags->plus = 0;
@@ -23,7 +23,7 @@ int		pf_initflags(t_flags *flags, va_list *ap)
 	flags->isw = 0;
 	flags->precision = -1;
 	flags->fwidth = 0;
-	va_copy(flags->begin, *ap);
+	va_copy(flags->begin, ap);
 	flags->capx = 0;
 	flags->cast = ' ';
 	flags->tsep = 0;
@@ -34,7 +34,7 @@ int		pf_initflags(t_flags *flags, va_list *ap)
 	return (0);
 }
 
-int		parse(t_uint8 *str, t_var *var, va_list *ap, int (*f[256])())
+int		parse(t_uint8 *str, t_var *var, va_list ap, int (*f[256])())
 {
 	t_flags flags;
 	int		ret;

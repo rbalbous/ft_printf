@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ int		pf_gpos(t_flags *flags, t_var *var, double d)
 	return (1);
 }
 
-int		pf_g(t_flags *flags, t_var *var, va_list *ap)
+int		pf_g(t_flags *flags, t_var *var, va_list ap)
 {
 	double		d;
 
-	d = va_arg(*ap, double);
+	d = va_arg(ap, double);
 	if (d == 9221120237041090560)
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)

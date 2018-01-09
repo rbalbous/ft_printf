@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:20 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 16:16:03 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ int		pf_addit(t_flags *flags, t_var *var, wchar_t *tmp, int stock[1000])
 	return (0);
 }
 
-int		pf_cap_s(t_flags *flags, t_var *var, va_list *ap)
+int		pf_cap_s(t_flags *flags, t_var *var, va_list ap)
 {
 	wchar_t		*tmp;
 	int			stock[1000];
 
-	tmp = va_arg(*ap, wchar_t*);
+	tmp = va_arg(ap, wchar_t*);
 	if (tmp == NULL && !flags->isp)
 		return (addnull(var));
 	else if (tmp == NULL && flags->isp)

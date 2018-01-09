@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 16:50:01 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ int		pf_flcreate(t_flags *flags, t_var *var, long double d, char width)
 	return (0);
 }
 
-int		pf_cap_fl(t_flags *flags, t_var *var, va_list *ap)
+int		pf_cap_fl(t_flags *flags, t_var *var, va_list ap)
 {
 	long double		d;
 
-	d = va_arg(*ap, long double);
+	d = va_arg(ap, long double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
 	flags->precision += 7 * (!flags->isp);
 	if (d == 0)

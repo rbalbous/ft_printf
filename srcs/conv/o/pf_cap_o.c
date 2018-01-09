@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:12 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 22:17:20 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ static char	initialise(t_flags *flags, unsigned long int d)
 	return (' ');
 }
 
-int			pf_cap_o(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_o(t_flags *flags, t_var *var, va_list ap)
 {
 	char				width;
 	unsigned long int	d;
 
-	d = va_arg(*ap, unsigned long int);
+	d = va_arg(ap, unsigned long int);
 	if (d == 0 && flags->precision == 0 && !flags->hashtag)
 		return (pf_empty_o(flags, var));
 	width = initialise(flags, d);

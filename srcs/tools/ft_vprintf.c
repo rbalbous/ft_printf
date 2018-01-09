@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:20:33 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:46:15 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int			ft_vprintf(const char *str, va_list ap)
 	{
 		if (str[var.index] == '%' && str[var.index + 1])
 		{
-			if ((ret = parse((t_uint8*)str, &var, &ap, f)) < 0)
+			if ((ret = parse((t_uint8*)str, &var, ap, f)) < 0)
 			{
 				if (ret == -2)
 					break ;

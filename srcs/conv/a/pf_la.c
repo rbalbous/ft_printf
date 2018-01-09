@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 18:37:15 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ static int	initialise(t_flags *flags, t_var *var, long double d)
 	return (0);
 }
 
-int			pf_la(t_flags *flags, t_var *var, va_list *ap)
+int			pf_la(t_flags *flags, t_var *var, va_list ap)
 {
 	long double	d;
 	int			count;
 	char		width;
 
-	d = va_arg(*ap, long double);
+	d = va_arg(ap, long double);
 	initialise(flags, var, d);
 	count = pf_tola(&d);
 	width = ' ' + 16 * flags->zero;

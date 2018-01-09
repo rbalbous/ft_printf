@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:40:38 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int				ft_dprintf(int fd, const char *str, ...);
 int				ft_vprintf(const char *str, va_list ap);
 int				ft_vdprintf(int fd, const char *str, va_list ap);
 int				ft_vsprintf(char *dest, const char *str, va_list ap);
-int				parse(t_uint8 *str, t_var *var, va_list *ap, int (*f[256])());
+int				parse(t_uint8 *str, t_var *var, va_list ap, int (*f[256])());
 
 void			addchar(const char c, t_var *var);
 void			addnstr(void *str, size_t len, t_var *var);
@@ -94,87 +94,87 @@ int				wandp(t_flags *flags, t_var *var);
 int				pf_hashtag(t_flags *flags);
 int				ft_minus(t_flags *flags);
 int				ft_plus(t_flags *flags);
-int				ft_preci(t_flags *flags, t_var *var, va_list *ap
+int				ft_preci(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
-int				pf_fwidth(t_flags *flags, t_var *var, va_list *ap
+int				pf_fwidth(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
 int				ft_space(t_flags *flags);
 int				ft_zero(t_flags *flags);
-int				pf_wildcard(t_flags *flags, t_var *var, va_list *ap
+int				pf_wildcard(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
-int				pf_dollar(t_flags *flags, t_var *var, va_list *ap);
+int				pf_dollar(t_flags *flags, t_var *var, va_list ap);
 int				pf_apostrophe(t_flags *flags);
 
-int				pf_s(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_s(t_flags *flags, t_var *var, va_list *ap);
+int				pf_s(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_s(t_flags *flags, t_var *var, va_list ap);
 
 int				len_one(wint_t c, t_var *var);
 int				len_two(wint_t c, t_var *var);
 int				len_three(wint_t c, t_var *var);
 int				len_four(wint_t c, t_var *var);
 
-int				pf_c(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_c(t_flags *flags, t_var *var, va_list *ap);
+int				pf_c(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_c(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_d(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_d(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_d(t_flags *flags, t_var *var, va_list *ap);
-int				pf_hd(t_flags *flags, t_var *var, va_list *ap);
-int				pf_hhd(t_flags *flags, t_var *var, va_list *ap);
-int				pf_lld(t_flags *flags, t_var *var, va_list *ap);
-int				pf_jd(t_flags *flags, t_var *var, va_list *ap);
-int				pf_zd(t_flags *flags, t_var *var, va_list *ap);
+int				pf_d(t_flags *flags, t_var *var, va_list ap);
+int				pf_spe_d(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_d(t_flags *flags, t_var *var, va_list ap);
+int				pf_hd(t_flags *flags, t_var *var, va_list ap);
+int				pf_hhd(t_flags *flags, t_var *var, va_list ap);
+int				pf_lld(t_flags *flags, t_var *var, va_list ap);
+int				pf_jd(t_flags *flags, t_var *var, va_list ap);
+int				pf_zd(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_u(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_u(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_u(t_flags *flags, t_var *var, va_list *ap);
-int				pf_hhu(t_flags *flags, t_var *var, va_list *ap);
-int				pf_hu(t_flags *flags, t_var *var, va_list *ap);
-int				pf_llu(t_flags *flags, t_var *var, va_list *ap);
-int				pf_ju(t_flags *flags, t_var *var, va_list *ap);
-int				pf_zu(t_flags *flags, t_var *var, va_list *ap);
+int				pf_u(t_flags *flags, t_var *var, va_list ap);
+int				pf_spe_u(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_u(t_flags *flags, t_var *var, va_list ap);
+int				pf_hhu(t_flags *flags, t_var *var, va_list ap);
+int				pf_hu(t_flags *flags, t_var *var, va_list ap);
+int				pf_llu(t_flags *flags, t_var *var, va_list ap);
+int				pf_ju(t_flags *flags, t_var *var, va_list ap);
+int				pf_zu(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_o(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_o(t_flags *flags, t_var *var, va_list *ap);
-int				pf_hho(t_flags *flags, t_var *var, va_list *ap);
-int				pf_ho(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_o(t_flags *flags, t_var *var, va_list *ap);
-int				pf_llo(t_flags *flags, t_var *var, va_list *ap);
-int				pf_jo(t_flags *flags, t_var *var, va_list *ap);
-int				pf_zo(t_flags *flags, t_var *var, va_list *ap);
+int				pf_o(t_flags *flags, t_var *var, va_list ap);
+int				pf_spe_o(t_flags *flags, t_var *var, va_list ap);
+int				pf_hho(t_flags *flags, t_var *var, va_list ap);
+int				pf_ho(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_o(t_flags *flags, t_var *var, va_list ap);
+int				pf_llo(t_flags *flags, t_var *var, va_list ap);
+int				pf_jo(t_flags *flags, t_var *var, va_list ap);
+int				pf_zo(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_sp_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_lx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_llx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_hx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_hhx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_jx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_zx(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
-int				pf_cap_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str);
+int				pf_x(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_sp_x(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_lx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_llx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_hx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_hhx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_jx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_zx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_cap_x(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
 
-int				pf_n(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_n(t_var *var, va_list *ap);
-int				pf_hhn(t_var *var, va_list *ap);
-int				pf_hn(t_var *var, va_list *ap);
-int				pf_zn(t_var *var, va_list *ap);
-int				pf_ln(t_var *var, va_list *ap);
-int				pf_lln(t_var *var, va_list *ap);
-int				pf_jn(t_var *var, va_list *ap);
+int				pf_n(t_flags *flags, t_var *var, va_list ap);
+int				pf_spe_n(t_var *var, va_list ap);
+int				pf_hhn(t_var *var, va_list ap);
+int				pf_hn(t_var *var, va_list ap);
+int				pf_zn(t_var *var, va_list ap);
+int				pf_ln(t_var *var, va_list ap);
+int				pf_lln(t_var *var, va_list ap);
+int				pf_jn(t_var *var, va_list ap);
 
-int				pf_b(t_flags *flags, t_var *var, va_list *ap);
+int				pf_b(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_f(t_flags *flags, t_var *var, va_list *ap);
-int				pf_fl(t_flags *flags, t_var *var, va_list *ap);
+int				pf_f(t_flags *flags, t_var *var, va_list ap);
+int				pf_fl(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_f(t_flags *flags, t_var *var, double d);
 int				pf_spe_fl(t_flags *flags, t_var *var, long double d);
-int				pf_cap_f(t_flags *flags, t_var *var, va_list *ap);
-int				pf_cap_fl(t_flags *flags, t_var *var, va_list *ap);
+int				pf_cap_f(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_fl(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_cap_f(t_flags *flags, t_var *var, double d);
 int				pf_spe_cap_fl(t_flags *flags, t_var *var, long double d);
 int				pf_spe_le(t_flags *flags, t_var *var, long double d, int count);
 int				pf_cap_l(t_flags *flags);
-int				pf_le(t_flags *flags, t_var *var, va_list *ap);
+int				pf_le(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_cap_le(t_flags *flags, t_var *var, long double d,
 				int count);
 int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
@@ -186,25 +186,25 @@ int				pf_nan(t_flags *flags, t_var *var);
 int				pf_tolsc(long double *d);
 int				pf_nanc(t_flags *flags, t_var *var);
 
-int				pf_e(t_flags *flags, t_var *var, va_list *ap);
+int				pf_e(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
-int				pf_cap_e(t_flags *flags, t_var *var, va_list *ap);
+int				pf_cap_e(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_tosc(double *d);
 
-int				pf_a(t_flags *flags, t_var *var, va_list *ap);
-int				pf_la(t_flags *flags, t_var *var, va_list *ap);
+int				pf_a(t_flags *flags, t_var *var, va_list ap);
+int				pf_la(t_flags *flags, t_var *var, va_list ap);
 void			pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
 void			pf_initoa(char modu[16]);
-int				pf_cap_a(t_flags *flags, t_var *var, va_list *ap);
+int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_toa(double *d);
 int				pf_tola(long double *d);
 
-int				pf_g(t_flags *flags, t_var *var, va_list *ap);
+int				pf_g(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_r(t_flags *flags, t_var *var, va_list *ap);
+int				pf_r(t_flags *flags, t_var *var, va_list ap);
 
-int				pf_percent(t_flags *flags, t_var *var, va_list *ap
+int				pf_percent(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
 int				pf_empty_d(t_flags *flags, t_var *var);
 int				pf_empty_o(t_flags *flags, t_var *var);
@@ -212,7 +212,7 @@ int				pf_empty_u(t_flags *flags, t_var *var);
 int				pf_empty_x(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_empty_s(t_flags *flags, t_var *var);
 
-int				pf_l(t_flags *flags, t_var *var, va_list *ap
+int				pf_l(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
 int				ft_j(t_flags *flags);
 int				pf_h(t_flags *flags);

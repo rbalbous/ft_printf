@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 16:31:04 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 	return (0);
 }
 
-int			pf_cap_a(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_a(t_flags *flags, t_var *var, va_list ap)
 {
 	double		d;
 	int			count;
 	char		width;
 
-	d = va_arg(*ap, double);
+	d = va_arg(ap, double);
 	initialise(flags, var, d);
 	count = pf_toa(&d);
 	width = ' ' + 16 * flags->zero;

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:37:59 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 16:29:30 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static char	initialise(t_flags *flags, t_uint8 d)
 	return (' ');
 }
 
-int			pf_hho(t_flags *flags, t_var *var, va_list *ap)
+int			pf_hho(t_flags *flags, t_var *var, va_list ap)
 {
 	char	width;
 	t_uint8	d;
 
-	d = (t_uint8)va_arg(*ap, int);
+	d = (t_uint8)va_arg(ap, int);
 	if (d == 0 && flags->precision == 0)
 		return (pf_empty_o(flags, var));
 	width = initialise(flags, d);

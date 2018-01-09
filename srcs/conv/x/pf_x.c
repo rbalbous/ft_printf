@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/30 13:35:58 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static char	dinitialise(t_flags *flags, t_uint32 d)
 	return (' ');
 }
 
-int			pf_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
+int			pf_x(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 {
 	static int	(*len_x[7])();
 
@@ -57,12 +57,12 @@ int			pf_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
 	return (len_x[flags->conv](flags, var, ap, str));
 }
 
-int			pf_sp_x(t_flags *flags, t_var *var, va_list *ap, t_uint8 *str)
+int			pf_sp_x(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 {
 	char		width;
 	t_uint32	d;
 
-	d = va_arg(*ap, t_uint32);
+	d = va_arg(ap, t_uint32);
 	if (d == 0 && flags->precision == 0)
 		return (pf_empty_x(flags, var, str));
 	width = dinitialise(flags, d);

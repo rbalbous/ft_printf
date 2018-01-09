@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 16:56:36 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int		pf_linfinite(long double d, t_flags *flags, t_var *var)
 	return (0);
 }
 
-int		pf_fl(t_flags *flags, t_var *var, va_list *ap)
+int		pf_fl(t_flags *flags, t_var *var, va_list ap)
 {
 	long double		d;
 
-	d = va_arg(*ap, long double);
+	d = va_arg(ap, long double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
 	flags->precision += 7 * (!flags->isp);
 	if (d == 0)

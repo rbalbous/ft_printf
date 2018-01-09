@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 22:17:53 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ static char	dinitialise(t_flags *flags, unsigned long d)
 	return (' ');
 }
 
-int			pf_cap_u(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_u(t_flags *flags, t_var *var, va_list ap)
 {
 	char			width;
 	unsigned long	d;
 
-	d = va_arg(*ap, unsigned long);
+	d = va_arg(ap, unsigned long);
 	if (d == 0 && flags->precision == 0)
 		return (pf_empty_u(flags, var));
 	width = dinitialise(flags, d);

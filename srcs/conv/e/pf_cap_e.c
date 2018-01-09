@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 16:25:11 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 	return (0);
 }
 
-int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
+int			pf_cap_e(t_flags *flags, t_var *var, va_list ap)
 {
 	int		count;
 	double	d;
@@ -52,7 +52,7 @@ int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
 	if (flags->bigl)
 		return (pf_le(flags, var, ap));
 	else
-		d = va_arg(*ap, double);
+		d = va_arg(ap, double);
 	count = pf_tosc(&d);
 	initialise(flags, var, d);
 	pf_spe_cap_e(flags, var, d, count);
