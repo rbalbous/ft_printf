@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/07 17:10:59 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/09 17:54:17 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,6 +114,11 @@ APATH = srcs/conv/a
 CONVA_PATH = $(addprefix srcs/conv/a/, $(CONVA))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVA:.c=.o))
 
+CONVR =		pf_r.c
+RPATH = srcs/conv/r
+CONVR_PATH = $(addprefix srcs/conv/r/, $(CONVR))
+OBJ += $(addprefix $(OBJ_PATH)/, $(CONVR:.c=.o))
+
 $(OBJ_PATH)/%.o : $(SPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
@@ -148,4 +153,7 @@ $(OBJ_PATH)/%.o : $(GPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
 $(OBJ_PATH)/%.o : $(APATH)/%.c $(INCLUDES)/ft_printf.h
+	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+
+$(OBJ_PATH)/%.o : $(RPATH)/%.c $(INCLUDES)/ft_printf.h
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)

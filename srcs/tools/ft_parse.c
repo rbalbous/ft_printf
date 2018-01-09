@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 14:17:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:37:40 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		pf_initflags(t_flags *flags, va_list *ap)
 	flags->hashtag = 0;
 	flags->space = 0;
 	flags->zero = 0;
-	flags->quote = 0;
 	flags->isp = 0;
 	flags->isw = 0;
 	flags->precision = -1;

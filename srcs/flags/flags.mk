@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:50:54 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/06 18:29:43 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/09 16:29:51 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ LEN =		ft_j.c \
 			pf_l.c \
 			pf_h.c \
 			pf_z.c \
+			pf_q.c \
 			pf_cap_l.c
 LEN_PATH = srcs/flags/length
 FLAGS_LEN_PATH = $(addprefix srcs/flags/length/, $(LEN))

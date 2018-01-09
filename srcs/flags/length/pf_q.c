@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_quote.c                                         :+:      :+:    :+:   */
+/*   pf_q.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rbalbous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/22 17:51:41 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/22 17:53:40 by rbalbous         ###   ########.fr       */
+/*   Created: 2018/01/09 15:19:24 by rbalbous          #+#    #+#             */
+/*   Updated: 2018/01/09 16:08:40 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			pf_quote(t_flags *flags)
+int			pf_q(t_flags *flags)
 {
-	flags->quote = 1;
+	if (flags->conv > ll)
+		return (1);
+	flags->conv = ll;
 	return (1);
 }

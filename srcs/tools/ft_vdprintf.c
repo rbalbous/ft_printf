@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_vdprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:57:25 by rbalbous         ###   ########.fr       */
+/*   Created: 2018/01/09 18:23:53 by rbalbous          #+#    #+#             */
+/*   Updated: 2018/01/09 18:40:23 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,20 @@ static void	init_flags(int (*f[256])())
 	init_conv(f);
 }
 
-int			ft_printf(const char *str, ...)
+int			ft_vdprintf(int fd, const char *str, va_list ap)
 {
 	static int	(*f[256])() = {NULL};
-	va_list		ap;
 	t_var		var;
 	int			ret;
 
 	if (f[0] == NULL)
 		init_flags(f);
 	initialise_var(&var);
-	va_start(ap, str);
 	while (str[++var.index])
 	{
 		if (str[var.index] == '%' && str[var.index + 1])
 		{
-			if ((ret = parse((t_uint8*)str, &var, ap, f)) < 0)
+			if ((ret = parse((t_uint8*)str, &var, &ap, f)) < 0)
 			{
 				if (ret == -2)
 					break ;
@@ -101,6 +99,5 @@ int			ft_printf(const char *str, ...)
 		else if (str[var.index] != '%')
 			addchar(str[var.index], &var);
 	}
-	va_end(ap);
-	return (write(1, var.buf, var.bufindex));
+	return (write(fd, var.buf, var.bufindex));
 }

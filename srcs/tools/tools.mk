@@ -6,13 +6,16 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 22:07:59 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/06 12:32:37 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/09 18:29:17 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TOOLS =		ft_printf.c \
 			ft_sprintf.c \
 			ft_dprintf.c \
+			ft_vprintf.c \
+			ft_vdprintf.c \
+			ft_vsprintf.c \
 			add.c \
 			ft_parse.c \
 			addwp.c \

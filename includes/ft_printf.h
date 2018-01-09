@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 18:13:04 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:40:38 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct	s_flags
 	t_uint8		hashtag : 1;
 	t_uint8		space : 1;
 	t_uint8		zero : 1;
-	t_uint8		quote : 1;
 	t_uint8		isp : 1;
 	t_uint8		isw : 1;
 	t_int32		precision;
@@ -79,6 +78,9 @@ typedef struct	s_flags
 int				ft_printf(const char *str, ...);
 int				ft_sprintf(char *dest, const char *str, ...);
 int				ft_dprintf(int fd, const char *str, ...);
+int				ft_vprintf(const char *str, va_list ap);
+int				ft_vdprintf(int fd, const char *str, va_list ap);
+int				ft_vsprintf(char *dest, const char *str, va_list ap);
 int				parse(t_uint8 *str, t_var *var, va_list *ap, int (*f[256])());
 
 void			addchar(const char c, t_var *var);
@@ -173,8 +175,8 @@ int				pf_spe_cap_fl(t_flags *flags, t_var *var, long double d);
 int				pf_spe_le(t_flags *flags, t_var *var, long double d, int count);
 int				pf_cap_l(t_flags *flags);
 int				pf_le(t_flags *flags, t_var *var, va_list *ap);
-int				pf_spe_cap_le(t_flags *flags, t_var *var, long double d, 
-int 			count);
+int				pf_spe_cap_le(t_flags *flags, t_var *var, long double d,
+				int count);
 int				pf_fcreate(t_flags *flags, t_var *var, double d, char width);
 int				pf_infinite(double d, t_flags *flags, t_var *var);
 int				pf_linfinite(long double d, t_flags *flags, t_var *var);
@@ -200,6 +202,8 @@ int				pf_tola(long double *d);
 
 int				pf_g(t_flags *flags, t_var *var, va_list *ap);
 
+int				pf_r(t_flags *flags, t_var *var, va_list *ap);
+
 int				pf_percent(t_flags *flags, t_var *var, va_list *ap
 				, t_uint8 *str);
 int				pf_empty_d(t_flags *flags, t_var *var);
@@ -213,6 +217,7 @@ int				pf_l(t_flags *flags, t_var *var, va_list *ap
 int				ft_j(t_flags *flags);
 int				pf_h(t_flags *flags);
 int				pf_z(t_flags *flags);
+int				pf_q(t_flags *flags);
 
 void			pf_itoa(intmax_t n, t_flags *flags, t_var *var);
 int				pf_tsep(t_flags *flags, t_var *var, char *toa);

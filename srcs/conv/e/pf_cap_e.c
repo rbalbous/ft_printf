@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 17:04:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 16:25:11 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 
 int			pf_cap_e(t_flags *flags, t_var *var, va_list *ap)
 {
-	int			count;
+	int		count;
 	double	d;
 
 	if (flags->bigl)

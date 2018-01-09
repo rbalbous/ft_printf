@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 17:18:41 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:02:14 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			pf_a(t_flags *flags, t_var *var, va_list *ap)
 		return (pf_la(flags, var, ap));
 	else
 		d = va_arg(*ap, double);
-	width =	initialise(flags, var, d);
+	width = initialise(flags, var, d);
 	count = pf_toa(&d);
 	if (d < 0)
 		addchar('-', var);
