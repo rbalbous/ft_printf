@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:50:54 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/09 16:29:51 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/11 19:43:00 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ OTH =		pf_hashtag.c \
 			pf_percent.c \
 			pf_empty.c \
 			pf_dollar.c \
+			pf_dol.c \
 			pf_apostrophe.c \
 			pf_wildcard.c 
 OTH_PATH = srcs/flags/others

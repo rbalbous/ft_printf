@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:24:59 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/09 13:54:43 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/11 20:15:02 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int		ft_j(t_flags *flags)
 	if (flags->conv > j)
 		return (1);
 	flags->conv = j;
-	return (1);
+	return ('j');
 }

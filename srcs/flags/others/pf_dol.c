@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_l.c                                             :+:      :+:    :+:   */
+/*   pf_dol.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/29 12:24:42 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/11 19:37:04 by rbalbous         ###   ########.fr       */
+/*   Created: 2018/01/11 19:34:08 by rbalbous          #+#    #+#             */
+/*   Updated: 2018/01/13 19:13:56 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_l(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
+int		pf_dol_l(t_flags *flags, t_var *var, t_uint8 *str)
 {
-	(void)ap;
 	if (flags->conv > l)
 		return (1);
 	if (flags->conv == l && str[var->index - 1] == 'l')
@@ -24,4 +23,36 @@ int		pf_l(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 	}
 	flags->conv = l;
 	return ('l');
+}
+
+int		pf_dol_h(t_flags *flags)
+{
+	if (flags->conv > h)
+		return (1);
+	if (flags->conv == h)
+	{
+		flags->conv = hh;
+		return ('H');
+	}
+	flags->conv = h;
+	return ('h');
+}
+
+int		pf_dol_j(t_flags *flags)
+{
+	if (flags->conv > j)
+		return (1);
+	flags->conv = j;
+	return ('j');
+}
+
+int		pf_dol_z(t_flags *flags)
+{
+	flags->conv = z;
+	return ('z');
+}
+
+int		pf_dol_s(void)
+{
+	return ('s');
 }

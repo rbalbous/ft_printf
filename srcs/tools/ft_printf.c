@@ -6,16 +6,19 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:57:25 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/13 20:02:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	initialise_var(t_var *var)
+static void	initialise_var(t_var *var, va_list ap)
 {
 	var->index = -1;
 	var->bufindex = 0;
+	var->dol = 0;
+	var->count = 0;
+	va_copy(var->begin, ap);
 	ft_bzero(var->buf, BUFF_SIZE);
 }
 
@@ -73,6 +76,8 @@ static void	init_flags(int (*f[256])())
 	f['L'] = pf_cap_l;
 	f['q'] = pf_q;
 	f['r'] = pf_r;
+	f['k'] = pf_k;
+	f['m'] = pf_m;
 	init_conv(f);
 }
 
@@ -85,8 +90,8 @@ int			ft_printf(const char *str, ...)
 
 	if (f[0] == NULL)
 		init_flags(f);
-	initialise_var(&var);
 	va_start(ap, str);
+	initialise_var(&var, ap);
 	while (str[++var.index])
 	{
 		if (str[var.index] == '%' && str[var.index + 1])

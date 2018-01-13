@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/13 20:02:53 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@
 # include <locale.h>
 # include <langinfo.h>
 # include <nl_types.h>
+#include <time.h>
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
+# define MONTHS {“Jan”, “Feb”, “Mar”, “Apr”, “May”, “Jun”, “Jul , “Aug”, “Sep”, “Oct”, “Nov”, “Dec”}
+# define DAYS {“Sun”, “Mon”, “Tue”, “Wed”, “Thu”, “Fri”, “Sat”}
 
 typedef unsigned char		t_uint8;
 typedef unsigned short int	t_uint16;
@@ -50,6 +53,9 @@ typedef enum	e_conv
 typedef struct	s_var
 {
 	int			index;
+	t_uint32	dol;
+	va_list		begin;
+	t_uint32	count;
 	int			bufindex;
 	char		buf[BUFF_SIZE];
 }				t_var;
@@ -66,12 +72,13 @@ typedef struct	s_flags
 	t_int32		precision;
 	t_int32		fwidth;
 	va_list		begin;
-	char		tsep;
-	char		dpt;
+	va_list		pos;
+	t_int8		tsep;
+	t_int8		dpt;
 	t_uint8		capx : 1;
 	t_uint8		bigl;
-	char		cast;
-	int			len;
+	t_int8		cast;
+	t_int32		len;
 	t_conv		conv;
 }				t_flags;
 
@@ -102,7 +109,6 @@ int				ft_space(t_flags *flags);
 int				ft_zero(t_flags *flags);
 int				pf_wildcard(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
-int				pf_dollar(t_flags *flags, t_var *var, va_list ap);
 int				pf_apostrophe(t_flags *flags);
 
 int				pf_s(t_flags *flags, t_var *var, va_list ap);
@@ -201,8 +207,9 @@ int				pf_toa(double *d);
 int				pf_tola(long double *d);
 
 int				pf_g(t_flags *flags, t_var *var, va_list ap);
-
 int				pf_r(t_flags *flags, t_var *var, va_list ap);
+int     	    pf_k(t_flags *flags, t_var *var, va_list ap);
+int     		pf_m(t_flags *flags, t_var *var, va_list ap);
 
 int				pf_percent(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
@@ -211,6 +218,13 @@ int				pf_empty_o(t_flags *flags, t_var *var);
 int				pf_empty_u(t_flags *flags, t_var *var);
 int				pf_empty_x(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_empty_s(t_flags *flags, t_var *var);
+
+int				pf_dollar(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
+int				pf_dol_s(void);
+int				pf_dol_l(t_flags *flags, t_var *var, t_uint8 *str);
+int				pf_dol_h(t_flags *flags);
+int				pf_dol_j(t_flags *flags);
+int				pf_dol_z(t_flags *flags);
 
 int				pf_l(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);

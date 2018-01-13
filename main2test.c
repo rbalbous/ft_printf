@@ -6,22 +6,39 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 19:39:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/13 20:57:04 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "includes/ft_printf.h"
+#include <time.h>
 #include <limits.h>
 #include <locale.h>
 #include <langinfo.h>
 #include <nl_types.h>
+#include <stdlib.h>
 
 int		main(void)
 {
 	double v = -1.0;
+	int i = 23456;
+	time_t		ti =   983768949;
+	time_t		tw =   1509286422;
+	time_t		te =   1509372822;
+	struct tm	*tm;
 
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, "fr_FR.UTF-8");
+ 	//time(&ti);
+	/*tm = localtime(&ti);
+	ft_printf("%s", ctime(&ti));
+	ft_printf ("%k\n", tm);
+	tm = localtime(&te);
+	ft_printf("%s", ctime(&te));
+	ft_printf ("%k\n", tm);
+	tm = localtime(&tw);
+	ft_printf("%s", ctime(&tw));
+	ft_printf ("%k\n", tm);
 	ft_printf("%C", 0x11ffff);
 	printf("%C", 0x11ffff);
 	printf("%.2g\n", 654248.235);
@@ -268,6 +285,20 @@ int		main(void)
 	printf("%La\n", 16.16L);
 	printf("%La\n", 23.75L);
 	ft_printf("%r\n", "legen\0dary");
-	ft_printf("%.15r\n", "legen\0dary");
+	ft_printf("%.15r\n", "legen\0dary");*/
+	/*ft_printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
+	printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
+	ft_printf("%3$c %1$s %4$x %2$s\n", "dd", "eee", 'm', 123);
+	printf("%3$c %1$s %4$x %2$s\n", "dd", "eee", 'm', 123);
+	ft_printf("%5$25ld %1$29llu %9$ld\n", ULONG_LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX , LONG_MAX);
+	printf("%5$25ld %1$29llu %9$ld\n", ULONG_LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX, LONG_MAX , LONG_MAX);
+	ft_printf("%3$s %1$s %2$s\n", "seb", "le", "naze");
+	printf("%3$s %1$s %2$s\n", "seb", "le", "naze");
+	ft_printf("%1$s %3$x %2$s\n", "dd", "eee", 123);
+	printf("%1$s %3$x %2$s\n", "dd", "eee", 123);
+	ft_printf("%3$c %1$s %4$d %2$s\n", "dd", "eee", 'm', 1234);
+	printf("%3$c %1$s %4$d %2$s\n", "dd", "eee", 'm', 1234);*/
+	ft_printf("%.7m\n", &i);
+
 	return (0);
 }

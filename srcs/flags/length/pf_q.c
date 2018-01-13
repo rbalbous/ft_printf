@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:19:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 16:08:40 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/11 19:38:02 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int			pf_q(t_flags *flags)
 	if (flags->conv > ll)
 		return (1);
 	flags->conv = ll;
-	return (1);
+	return ('L');
 }

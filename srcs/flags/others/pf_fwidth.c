@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 14:47:30 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/10 15:28:09 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		pf_fwidth(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 	}
 	if (str[var->index] == '$')
 	{
-		pf_dollar(flags, var, ap);
+		pf_dollar(flags, var, ap, str);
 		flags->fwidth = tmp;
 	}
 	var->index--;
