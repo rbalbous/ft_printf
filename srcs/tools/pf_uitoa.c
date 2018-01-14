@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:28:48 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/03 22:06:16 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 17:11:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ size_t	pf_uintlen(uintmax_t n, int base)
 
 void	pf_uitoa_base(uintmax_t n, int base, t_flags *flags, t_var *var)
 {
-	char		toa[flags->len];
+	char		toa[25];
 	size_t		count;
 
 	if (n == 0)

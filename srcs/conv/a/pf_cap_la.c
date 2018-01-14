@@ -1,49 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_la.c                                            :+:      :+:    :+:   */
+/*   pf_cap_la.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 16:37:56 by rbalbous         ###   ########.fr       */
+/*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
+/*   Updated: 2018/01/14 16:40:04 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int			pf_tola(long double *d)
-{
-	int		count;
-	int		sign;
-
-	count = 0;
-	sign = 1;
-	if ((intmax_t)(*d) == 0)
-	{
-		while ((intmax_t)(*d) == 0)
-		{
-			*d = *d * 2;
-			count++;
-			sign = -1;
-		}
-	}
-	while (1 < (intmax_t)(*d) || -1 > (intmax_t)(*d))
-	{
-		*d /= 2;
-		count++;
-	}
-	return (count * sign);
-}
 
 static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 {
 	int		start;
 
 	start = var->bufindex;
-	addstr("0x", var);
+	addstr("0X", var);
 	pf_fltoa_hexa(d, flags, var);
-	addchar('p', var);
+	addchar('P', var);
 	if (count < 0)
 	{
 		addchar('-', var);
@@ -58,10 +34,11 @@ static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 static int	initialise(t_flags *flags, t_var *var, long double d)
 {
 	if (d == 9221120237041090560)
-		return (pf_nan(flags, var));
+		return (pf_nanc(flags, var));
 	if (d == INFINITY || d == -INFINITY)
-		return (pf_linfinite(d, flags, var));
+		return (pf_linfinitec(d, flags, var));
 	flags->len = 1;
+	flags->capx = 1;
 	flags->precision += 15 * (!flags->isp) - 1;
 	flags->fwidth -= 1 + flags->precision + 5
 	+ (d < 0 || flags->space || flags->plus);
@@ -69,9 +46,9 @@ static int	initialise(t_flags *flags, t_var *var, long double d)
 	return (0);
 }
 
-int			pf_la(t_flags *flags, t_var *var, va_list ap)
+int			pf_cap_la(t_flags *flags, t_var *var, va_list ap)
 {
-	long double	d;
+	long double d;
 	int			count;
 	char		width;
 

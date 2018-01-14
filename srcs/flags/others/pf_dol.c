@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 19:34:08 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/13 19:13:56 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 21:44:03 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,21 +38,15 @@ int		pf_dol_h(t_flags *flags)
 	return ('h');
 }
 
-int		pf_dol_j(t_flags *flags)
-{
-	if (flags->conv > j)
-		return (1);
-	flags->conv = j;
-	return ('j');
-}
-
-int		pf_dol_z(t_flags *flags)
-{
-	flags->conv = z;
-	return ('z');
-}
-
 int		pf_dol_s(void)
 {
 	return ('s');
+}
+
+int		pf_none(t_flags *flags, t_var *var, t_uint8 *str)
+{
+	(void)flags;
+	if (str[var->index] == '%')
+		return (-1);
+	return (0);
 }

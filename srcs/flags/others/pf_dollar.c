@@ -6,19 +6,11 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/13 19:25:48 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 22:03:50 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int		pf_none(t_flags *flags, t_var *var, t_uint8 *str)
-{
-	(void)flags;
-	if (str[var->index] == '%')
-		return (-1);
-	return (0);
-}
 
 int		pf_initlar(int		(*lar[256])(), t_var *var)
 {
@@ -27,8 +19,6 @@ int		pf_initlar(int		(*lar[256])(), t_var *var)
 		lar[var->index] = pf_none;
 	lar['h'] = pf_dol_h;
 	lar['l'] = pf_dol_l;
-	lar['j'] = pf_dol_j;
-	lar['z'] = pf_dol_z;
 	lar['s'] = pf_dol_s;
 	var->index = 1;
 	return (0);

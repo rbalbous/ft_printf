@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/13 20:03:51 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/14 16:37:34 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,8 @@ OBJ += $(addprefix $(OBJ_PATH)/, $(CONVN:.c=.o))
 
 CONVA =		pf_a.c \
 			pf_la.c \
-			pf_cap_a.c
+			pf_cap_a.c \
+			pf_cap_la.c
 APATH = srcs/conv/a
 CONVA_PATH = $(addprefix srcs/conv/a/, $(CONVA))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVA:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 22:08:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 15:00:14 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 17:11:13 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pf_ftoa(double n, t_flags *flags, t_var *var)
 {
-	char	str[flags->precision + 1];
+	char	str[25];
 	int		i;
 
 	i = 0;

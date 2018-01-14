@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/08 15:00:03 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/12 01:02:33 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 17:06:14 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		pf_tsep(t_flags *flags, t_var *var, char *toa)
 	int		i;
 	int		j;
 	int		lenstr;
-	char	str[flags->len + (flags->len / 3) - (flags->len % 3 == 0)];
+	char	str[25];
 
 	i = 1;
 	j = 1;
@@ -59,7 +59,7 @@ int		pf_tsep(t_flags *flags, t_var *var, char *toa)
 
 void	pf_itoa(intmax_t n, t_flags *flags, t_var *var)
 {
-	char		toa[flags->len];
+	char		toa[25];
 	size_t		count;
 
 	if (n == 0)

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:21:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/07 18:13:09 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 17:12:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	countprec(t_flags *flags, char *str)
 
 void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 {
-	char			str[flags->precision + 2];
+	char			*str;
 	int				i;
 	static char		modu[16];
 	int				flag;
@@ -36,6 +36,7 @@ void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 	if (!modu[0])
 		pf_initoa(modu);
 	addchar('1', var);
+	str = ft_memalloc(flags->precision + 2);
 	if (flags->dpt == 0)
 		flags->dpt = '.';
 	str[0] = flags->dpt;
@@ -48,6 +49,7 @@ void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 	}
 	str[i] = 0;
 	addnstr(str, countprec(flags, str), var);
+	free(str);
 }
 
 void		pf_fltoa_hexa(long double n, t_flags *flags, t_var *var)

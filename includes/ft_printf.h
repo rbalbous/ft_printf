@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/13 20:02:53 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 21:44:19 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,6 @@ int				pf_ln(t_var *var, va_list ap);
 int				pf_lln(t_var *var, va_list ap);
 int				pf_jn(t_var *var, va_list ap);
 
-int				pf_b(t_flags *flags, t_var *var, va_list ap);
-
 int				pf_f(t_flags *flags, t_var *var, va_list ap);
 int				pf_fl(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_f(t_flags *flags, t_var *var, double d);
@@ -203,9 +201,11 @@ int				pf_la(t_flags *flags, t_var *var, va_list ap);
 void			pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
 void			pf_initoa(char modu[16]);
 int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
 int				pf_toa(double *d);
 int				pf_tola(long double *d);
 
+int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_g(t_flags *flags, t_var *var, va_list ap);
 int				pf_r(t_flags *flags, t_var *var, va_list ap);
 int     	    pf_k(t_flags *flags, t_var *var, va_list ap);
@@ -223,8 +223,7 @@ int				pf_dollar(t_flags *flags, t_var *var, va_list ap, t_uint8 *str);
 int				pf_dol_s(void);
 int				pf_dol_l(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_dol_h(t_flags *flags);
-int				pf_dol_j(t_flags *flags);
-int				pf_dol_z(t_flags *flags);
+int				pf_none(t_flags *flags, t_var *var, t_uint8 *str);
 
 int				pf_l(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);

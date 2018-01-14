@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/13 20:57:04 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/14 22:20:33 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 int		main(void)
 {
 	double v = -1.0;
-	int i = 23456;
 	time_t		ti =   983768949;
 	time_t		tw =   1509286422;
 	time_t		te =   1509372822;
@@ -285,8 +284,8 @@ int		main(void)
 	printf("%La\n", 16.16L);
 	printf("%La\n", 23.75L);
 	ft_printf("%r\n", "legen\0dary");
-	ft_printf("%.15r\n", "legen\0dary");*/
-	/*ft_printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
+	ft_printf("%.15r\n", "legen\0dary");
+	ft_printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
 	printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
 	ft_printf("%3$c %1$s %4$x %2$s\n", "dd", "eee", 'm', 123);
 	printf("%3$c %1$s %4$x %2$s\n", "dd", "eee", 'm', 123);
@@ -297,8 +296,14 @@ int		main(void)
 	ft_printf("%1$s %3$x %2$s\n", "dd", "eee", 123);
 	printf("%1$s %3$x %2$s\n", "dd", "eee", 123);
 	ft_printf("%3$c %1$s %4$d %2$s\n", "dd", "eee", 'm', 1234);
-	printf("%3$c %1$s %4$d %2$s\n", "dd", "eee", 'm', 1234);*/
-	ft_printf("%.7m\n", &i);
-
+	printf("%3$c %1$s %4$d %2$s\n", "dd", "eee", 'm', 1234);
+	ft_printf("%3$c %1$s %4$d %2$s %7$c %5$s %8$d %6$s\n", "dd", "eee", 'm', 1234, "dd", "eee", 'm', 1234);
+	printf("%3$c %1$s %4$d %2$s %7$c %5$s %8$d %6$s\n", "dd", "eee", 'm', 1234, "dd", "eee", 'm', 1234);
+	ft_printf("%3$c %1$s %4$llu %2$s %7$c %5$s %8$llu %6$s\n", "dd", "eee", 'm', 12345644566456456645, "dd", "eee", 'm', 12345644566456456645);
+	printf("%3$c %1$s %4$llu %2$s %7$c %5$s %8$llu %6$s\n", "dd", "eee", 'm', 12345644566456456645, "dd", "eee", 'm', 12345644566456456645);
+	char    *tab[10] = {"0", "23", "150", "255", "12", "16", "42", "103", "4242"};
+	ft_printf("%0.1m\n", tab, sizeof(tab));
+	print_memory(&tab, sizeof(tab));*/
+	ft_printf("%r", "\a");
 	return (0);
 }
