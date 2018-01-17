@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		pf_spe_fl(t_flags *flags, t_var *var, long double d)
 	char		width;
 	int			apo;
 
-	if (d == 9221120237041090560)
+	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_linfinite(d, flags, var));

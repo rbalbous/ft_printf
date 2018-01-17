@@ -6,11 +6,23 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		pf_ground(char *str, t_var *var)
+{
+	while (*str == '0')
+	{
+		var->bufindex--;
+		str--;
+	}
+	if (*str == '.')
+		var->bufindex--;
+	return (0);
+}
 
 int		pf_gzer(t_flags *flags, t_var *var, double d)
 {
@@ -19,7 +31,7 @@ int		pf_gzer(t_flags *flags, t_var *var, double d)
 
 	tmp = d;
 	count = 0;
-	while ((intmax_t)tmp == 0)
+	while ((intmax_t)tmp == 0 && d != 0)
 	{
 		tmp *= 10;
 		count++;
@@ -72,7 +84,8 @@ int		pf_g(t_flags *flags, t_var *var, va_list ap)
 	double		d;
 
 	d = va_arg(ap, double);
-	if (d == 9221120237041090560)
+	flags->g = 1;
+	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_infinite(d, flags, var));

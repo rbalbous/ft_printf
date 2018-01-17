@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 
 	start = var->bufindex;
 	addstr("0X", var);
-	pf_ftoa_hexa(d, flags, var);
+	if ((pf_ftoa_hexa(d, flags, var)) == -1)
+		return (-1);
 	addchar('P', var);
 	if (count < 0)
 	{
@@ -33,7 +34,7 @@ static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 
 static int	initialise(t_flags *flags, t_var *var, double d)
 {
-	if (d == 9221120237041090560)
+	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY)
 		return (pf_infinite(d, flags, var));
@@ -52,6 +53,8 @@ int			pf_cap_a(t_flags *flags, t_var *var, va_list ap)
 	int			count;
 	char		width;
 
+	if (flags->bigl)
+		return (pf_cap_la(flags, var, ap));
 	d = va_arg(ap, double);
 	initialise(flags, var, d);
 	count = pf_toa(&d);
@@ -61,14 +64,10 @@ int			pf_cap_a(t_flags *flags, t_var *var, va_list ap)
 	else if (flags->plus || flags->space)
 		addchar(flags->plus ? '+' : ' ', var);
 	if (!flags->minus)
-	{
 		flags->fwidth = addmchar(width, var, flags->fwidth);
-		pf_create(flags, var, d, count);
-	}
-	else
-	{
-		pf_create(flags, var, d, count);
+	if ((pf_create(flags, var, d, count)) == -1)
+		return (-1);
+	if (flags->minus)
 		flags->fwidth = addmchar(width, var, flags->fwidth);
-	}
 	return (0);
 }

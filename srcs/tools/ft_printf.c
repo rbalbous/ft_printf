@@ -6,11 +6,18 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/13 20:02:58 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 18:34:06 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int			pf_parserror(t_var *var, va_list ap)
+{
+	write(1, var->buf, var->error);
+	va_end(ap);
+	return (-1);
+}
 
 static void	initialise_var(t_var *var, va_list ap)
 {
@@ -18,6 +25,7 @@ static void	initialise_var(t_var *var, va_list ap)
 	var->bufindex = 0;
 	var->dol = 0;
 	var->count = 0;
+	var->error = 0;
 	va_copy(var->begin, ap);
 	ft_bzero(var->buf, BUFF_SIZE);
 }
@@ -78,6 +86,8 @@ static void	init_flags(int (*f[256])())
 	f['r'] = pf_r;
 	f['k'] = pf_k;
 	f['m'] = pf_m;
+	f['w'] = pf_w;
+	f['W'] = pf_cap_w;
 	init_conv(f);
 }
 
@@ -100,8 +110,9 @@ int			ft_printf(const char *str, ...)
 			{
 				if (ret == -2)
 					break ;
-				return (-1);
+				return (pf_parserror(&var, ap));
 			}
+			var.error = var.bufindex;
 		}
 		else if (str[var.index] != '%')
 			addchar(str[var.index], &var);

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/15 16:27:25 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		pf_cap_c(t_flags *flags, t_var *var, va_list ap)
 	static int	(*u[4])() = {len_one, len_two, len_three, len_four};
 
 	c = va_arg(ap, wint_t);
-	if (c > 0x10ffff || (0xD800 >= c && c >= 0xDFFF) || c < 0)
+	if (c > 0x10ffff || (0xd800 <= c && 0xdfff >= c) || c < 0)
 		return (-1);
 	flags->len = 1 * (!(c >> (7 + (MB_CUR_MAX == 1))));
 	flags->len += 2 * (!(c >> 11) && !flags->len);

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 22:20:33 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:13:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@
 int		main(void)
 {
 	double v = -1.0;
+	long double w = -1.0L;
 	time_t		ti =   983768949;
 	time_t		tw =   1509286422;
 	time_t		te =   1509372822;
 	struct tm	*tm;
 
-	setlocale(LC_ALL, "fr_FR.UTF-8");
+	setlocale(LC_ALL, "");
  	//time(&ti);
-	/*tm = localtime(&ti);
+	tm = localtime(&ti);
 	ft_printf("%s", ctime(&ti));
 	ft_printf ("%k\n", tm);
 	tm = localtime(&te);
@@ -167,8 +168,23 @@ int		main(void)
 	ft_printf("%g\n", -INFINITY);
 	printf("%g\n", -INFINITY);
 	ft_printf("--------\n");
-	ft_printf("%g\n", NAN);
-	printf("%g\n", NAN);
+	double		i;
+	char		lourd[15];
+	char		lour[15];
+
+	i = 1;
+	while (i < 1000)
+	{
+		ft_sprintf(lourd, "%g", 1 / (i * i * i * i));
+		sprintf(lour, "%g", 1 / (i * i * i * i));
+		if (ft_strcmp(lourd, lour) != 0)
+		{
+			ft_printf("%f ", i);
+			ft_printf("mistakes were made %s %s\n", lourd, lour);
+		}
+		i++;
+	}
+	ft_printf("done %C\n", L'👍');
 	ft_printf("--------\n");
 	ft_printf("%a\n", 43.3);
 	printf("%a\n", 43.3);
@@ -261,11 +277,33 @@ int		main(void)
 	char str2[100];
 	for (v = -1.0; v <= 1.0; v += 0.0001)
 	{
+		ft_sprintf(str, "[%e]", v);
+		sprintf(str2, "[%e]", v);
+		if (ft_strcmp(str, str2) != 0)
+		{
+			ft_printf("%f\n%s %s\n", v, str, str2);
+			ft_printf("mistakes were made");
+		}
+	}
+	ft_printf("done %C\n", L'👍');
+	for (v = -1.0; v <= 1.0; v += 0.0001)
+	{
 		sprintf(str, "%a\n", v);
 		ft_sprintf(str2, "%a\n", v);
 		if (ft_strcmp(str, str2) != 0)
 		{
 			ft_printf("%f", v);
+			ft_printf("mistakes were made");
+		}
+	}
+	ft_printf("done %C\n", L'👍');
+	for (w = -1.0L; w <= 1.0L; w += 0.0001L)
+	{
+		sprintf(str, "%La\n", w);
+		ft_sprintf(str2, "%La\n", w);
+		if (ft_strcmp(str, str2) != 0)
+		{
+			ft_printf("%Lf %s %s", w, str, str2);
 			ft_printf("mistakes were made");
 		}
 	}
@@ -280,9 +318,6 @@ int		main(void)
 	ft_printf("%Le\n", 0.0000003L);
 	printf("%Le\n", 0.0000003L);
 	ft_printf("--------\n");
-	ft_printf("%La\n", 16.16L);
-	printf("%La\n", 16.16L);
-	printf("%La\n", 23.75L);
 	ft_printf("%r\n", "legen\0dary");
 	ft_printf("%.15r\n", "legen\0dary");
 	ft_printf("%3$c %1$s %5$d %4$c %2$s\n", "dd", "eee", 'm', 'd', 1234);
@@ -300,10 +335,81 @@ int		main(void)
 	ft_printf("%3$c %1$s %4$d %2$s %7$c %5$s %8$d %6$s\n", "dd", "eee", 'm', 1234, "dd", "eee", 'm', 1234);
 	printf("%3$c %1$s %4$d %2$s %7$c %5$s %8$d %6$s\n", "dd", "eee", 'm', 1234, "dd", "eee", 'm', 1234);
 	ft_printf("%3$c %1$s %4$llu %2$s %7$c %5$s %8$llu %6$s\n", "dd", "eee", 'm', 12345644566456456645, "dd", "eee", 'm', 12345644566456456645);
-	printf("%3$c %1$s %4$llu %2$s %7$c %5$s %8$llu %6$s\n", "dd", "eee", 'm', 12345644566456456645, "dd", "eee", 'm', 12345644566456456645);
+	printf("%3$c %1$s %4$llu %2$s %7$c %5$s %8$llu %6$s\n", "dd", "eee", 'm', 12345644566456456645, "dd", "eee", 'm', 12345644566456456645); 
 	char    *tab[10] = {"0", "23", "150", "255", "12", "16", "42", "103", "4242"};
 	ft_printf("%0.1m\n", tab, sizeof(tab));
-	print_memory(&tab, sizeof(tab));*/
-	ft_printf("%r", "\a");
+	ft_printf("%r\n", "\a");
+	int f = 0;
+	int g = 0;
+	f = ft_printf("%6C et coco %C titi %C tyty\n", 3250, 0xd800, 'u');
+	ft_printf("\n");
+	g = printf("%6C et coco %C titi %C tyty\n", 3250, 0xd800, 'u');
+	printf("\n");
+	ft_printf("\n%d %d\n", f, g);
+	ft_printf("%La\n", 16.16L);
+	printf("%La\n", 16.16L);
+	ft_printf("%La\n", 1.16L);
+	printf("%La\n", 1.16L);
+	ft_printf("%La\n", .116L);
+	printf("%La\n", .116L);
+	ft_printf("%La\n", 1.12L);
+	printf("%La\n", 1.12L);
+	ft_printf("%La\n", 0.00012L);
+	printf("%La\n", 0.00012L);
+	ft_printf("%La\n", 0.0012L);
+	printf("%La\n", 0.0012L);
+	ft_printf("%La\n", -0.000100L);
+	printf("%La\n", -0.000100L);
+	ft_printf("%LA\n", 16.16L);
+	printf("%LA\n", 16.16L);
+	ft_printf("%LA\n", 1.16L);
+	printf("%LA\n", 1.16L);
+	ft_printf("%LA\n", .116L);
+	printf("%LA\n", .116L);
+	ft_printf("%LA\n", 1.12L);
+	printf("%LA\n", 1.12L);
+	ft_printf("%LA\n", 0.00012L);
+	printf("%LA\n", 0.00012L);
+	ft_printf("%LA\n", 0.0012L);
+	printf("%LA\n", 0.0012L);
+	ft_printf("%LA\n", -0.000100L);
+	printf("%LA\n", -0.000100L);
+	ft_printf("%+3.0a\n", 101.101);
+	printf("%+3.0a\n", 101.101);
+	ft_printf("%.La\n", 1.000L);
+	printf("%.La\n", 1.000L);
+	double doub;
+	doub = 999;
+	ft_printf("%e\n", 1 / (doub * doub * doub * doub));
+	printf("%e\n", 1 / (doub * doub * doub * doub));
+	ft_printf("%g\n", 0.0075605);
+	printf("%g\n", 0.0075605);
+	ft_printf("%g\n", 1.000000);
+	printf("%g\n", 1.000000);
+	ft_printf("%.4g\n", 0.0075605);
+	printf("%.4g\n", 0.0075605);
+	ft_printf("%.4g\n", 1.000000);
+	printf("%.4g\n", 1.000000);
+	ft_printf("%.8g\n", 0.0075605);
+	printf("%.8g\n", 0.0075605);
+	ft_printf("%.14g\n", 0.0075605);
+	printf("%.14g\n", 0.0075605);
+	ft_printf("[%3.0f]\n", 0.0);
+	printf("[%3.0f]\n", 0.0);
+	ft_printf("[%3F]\n", 0.0);
+	printf("[%3F]\n", 0.0);
+	ft_printf("[%15.0f]\n", 0.0);
+	printf("[%15.0f]\n", 0.0);
+	ft_printf("%w\n", "antoine a lunettes");
+	ft_printf("%W\n", "H^jVYdXeTe`\\^[[d[f");
+	ft_printf("[%'g]\n", 0.0);
+	printf("[%'g]\n", 0.0);
+	ft_printf("[%a]\n", 0.0);
+	printf("[%a]\n", 0.0);
+	ft_printf("%.35f\n", 32113213213514684.326464);
+	printf("%.35f\n", 32113213213514684.326464);
+	ft_sprintf(str, "[%e]\n", 0.000100);
+	sprintf(str2, "[%e]\n", 0.000100);
+	printf("%s%s", str, str2);
 	return (0);
 }

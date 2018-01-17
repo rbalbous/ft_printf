@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 17:11:37 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/15 17:45:18 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int			pf_nptoh(t_uint8 c, t_flags *flags, t_var *var)
 {
 	flags->len = 2;
 	addnstr("\\0x", 3, var);
-	pf_uitoa_hexa(c, flags, var);
+	if ((pf_uitoa_hexa(c, flags, var)) == -1)
+		return (-1);
 	return (1);
 }
 
@@ -30,7 +31,10 @@ int			pf_r(t_flags *flags, t_var *var, va_list ap)
 	while (flags->precision-- > 0)
 	{
 		if (ft_isprint(*str) == 0)
-			pf_nptoh((t_uint8)*str, flags, var);
+		{
+			if ((pf_nptoh((t_uint8)*str, flags, var)) == -1)
+				return (-1);
+		}
 		else
 			addchar(*str, var);
 		str++;

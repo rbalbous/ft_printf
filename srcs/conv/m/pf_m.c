@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/13 19:35:57 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 21:39:36 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/15 17:18:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int		pf_m(t_flags *flags, t_var *var, va_list ap)
 	adr = va_arg(ap, unsigned char*);
 	flags->len = va_arg(ap, int);
 	leng = flags->len * 2 + (flags->len / flags->precision + 1);
-	string = malloc(sizeof(*string) * leng);
+	if (!(string = malloc(sizeof(*string) * leng)))
+		return (-1);
 	use = string;
 	pf_mcreate(flags, adr, "0123456789abcdef", string);
 	ind = 1 * ((flags->len * 2) % flags->precision == 0);

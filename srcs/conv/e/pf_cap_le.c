@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 
 static int	initialise(t_flags *flags, t_var *var, long double d)
 {
-	if (d == 9221120237041090560)
+	if (!(d == d))
 		return (pf_nanc(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_linfinitec(d, flags, var));

@@ -6,13 +6,13 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 21:12:49 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/15 17:44:59 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	create(t_flags *flags, t_var *var, t_uint16 d)
+static int	create(t_flags *flags, t_var *var, t_uint16 d)
 {
 	char	x;
 
@@ -23,7 +23,9 @@ static void	create(t_flags *flags, t_var *var, t_uint16 d)
 		addchar(x, var);
 	}
 	flags->precision = addmchar('0', var, flags->precision);
-	pf_uitoa_hexa(d, flags, var);
+	if ((pf_uitoa_hexa(d, flags, var)) == -1)
+		return (-1);
+	return (0);
 }
 
 static char	dinitialise(t_flags *flags, t_uint16 d)
@@ -54,11 +56,13 @@ int			pf_hx(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 			flags->fwidth = 0;
 		}
 		flags->fwidth = addmchar(width, var, flags->fwidth);
-		create(flags, var, d);
+		if ((create(flags, var, d)) == -1)
+			return (-1);
 	}
 	else
 	{
-		create(flags, var, d);
+		if ((create(flags, var, d)) == -1)
+			return (-1);
 		flags->fwidth = addmchar(width, var, flags->fwidth);
 	}
 	return (0);

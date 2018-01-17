@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:21:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 17:12:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 17:55:16 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	countprec(t_flags *flags, char *str)
 {
 	int		i;
 
-	i = 13;
+	i = 14 + flags->bigl;
 	if (flags->isp)
 		return (flags->precision + 2);
 	while (str[i] == '0')
@@ -25,7 +25,7 @@ static int	countprec(t_flags *flags, char *str)
 	return (i);
 }
 
-void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
+int			pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 {
 	char			*str;
 	int				i;
@@ -35,11 +35,12 @@ void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 	i = 1;
 	if (!modu[0])
 		pf_initoa(modu);
-	addchar('1', var);
-	str = ft_memalloc(flags->precision + 2);
+	addchar('1' - (n == 0), var);
+	if (!(str = ft_memalloc(flags->precision + 2)))
+		return (-1);
 	if (flags->dpt == 0)
 		flags->dpt = '.';
-	str[0] = flags->dpt;
+	str[0] = flags->dpt * (flags->precision > 0);
 	while (i < flags->precision + 2)
 	{
 		n = (n - (intmax_t)n) * 16 * (-2 * (n < 0) + 1);
@@ -50,11 +51,12 @@ void		pf_ftoa_hexa(double n, t_flags *flags, t_var *var)
 	str[i] = 0;
 	addnstr(str, countprec(flags, str), var);
 	free(str);
+	return (0);
 }
 
-void		pf_fltoa_hexa(long double n, t_flags *flags, t_var *var)
+int			pf_fltoa_hexa(long double n, t_flags *flags, t_var *var)
 {
-	char			str[flags->precision + 2];
+	char			*str;
 	int				i;
 	static char		modu[16];
 	int				flag;
@@ -62,10 +64,11 @@ void		pf_fltoa_hexa(long double n, t_flags *flags, t_var *var)
 	i = 1;
 	if (!modu[0])
 		pf_initoa(modu);
-	addchar('1', var);
+	if (!(str = ft_memalloc(flags->precision + 2)))
+		return (-1);
 	if (flags->dpt == 0)
 		flags->dpt = '.';
-	str[0] = flags->dpt;
+	str[0] = flags->dpt * (flags->precision > 0);
 	while (i < flags->precision + 2)
 	{
 		n = (n - (intmax_t)n) * 16 * (-2 * (n < 0) + 1);
@@ -75,4 +78,6 @@ void		pf_fltoa_hexa(long double n, t_flags *flags, t_var *var)
 	}
 	str[i] = 0;
 	addnstr(str, countprec(flags, str), var);
+	free(str);
+	return (0);
 }

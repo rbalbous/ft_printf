@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 22:03:50 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/15 17:17:30 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ int		pf_dollar(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 	if (!doll)
 	{
 		var->count = pf_nbdol(str);
-		doll = ft_memalloc((size_t)(var->count) * 4);
+		if (!(doll = ft_memalloc((size_t)(var->count) * 4)))
+			return (-1);
 		pf_initdol(flags, var, str, doll);
 	}
 	len = flags->fwidth - (1 * (flags->fwidth > 0));

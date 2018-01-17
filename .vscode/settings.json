@@ -1,9 +1,0 @@
-{
-	"files.associations": {
-		"ft_printf.h": "c",
-		"stdarg.h": "c",
-		"nl_types.h": "c",
-		"limits.h": "c",
-		"time.h": "c"
-	}
-}

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:10:01 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int		pf_round(char *str, t_flags *flags, t_var *var)
 		var->bufindex--;
 	}
 	var->bufindex--;
+	if (flags->g)
+		return (pf_ground(&var->buf[var->bufindex - 1], var));
 	return (0);
 }
 
@@ -98,7 +100,7 @@ int		pf_f(t_flags *flags, t_var *var, va_list ap)
 		d = va_arg(ap, double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
 	flags->precision += 7 * (!flags->isp);
-	if (d == 0)
+	if (d == 0 && flags->precision > 0)
 	{
 		addstr("0.", var);
 		while (flags->precision-- > 0)
@@ -113,7 +115,7 @@ int		pf_spe_f(t_flags *flags, t_var *var, double d)
 	char		width;
 	int			apo;
 
-	if (d == 9221120237041090560)
+	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_infinite(d, flags, var));

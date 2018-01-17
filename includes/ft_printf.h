@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/14 21:44:19 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/17 19:16:05 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
-# define MONTHS {“Jan”, “Feb”, “Mar”, “Apr”, “May”, “Jun”, “Jul , “Aug”, “Sep”, “Oct”, “Nov”, “Dec”}
-# define DAYS {“Sun”, “Mon”, “Tue”, “Wed”, “Thu”, “Fri”, “Sat”}
+# define KEY "foufoureres"
 
 typedef unsigned char		t_uint8;
 typedef unsigned short int	t_uint16;
@@ -52,11 +51,12 @@ typedef enum	e_conv
 
 typedef struct	s_var
 {
-	int			index;
+	t_uint32	index;
+	t_uint32	error;
 	t_uint32	dol;
 	va_list		begin;
 	t_uint32	count;
-	int			bufindex;
+	t_uint32	bufindex;
 	char		buf[BUFF_SIZE];
 }				t_var;
 
@@ -75,6 +75,7 @@ typedef struct	s_flags
 	va_list		pos;
 	t_int8		tsep;
 	t_int8		dpt;
+	t_uint8		g;
 	t_uint8		capx : 1;
 	t_uint8		bigl;
 	t_int8		cast;
@@ -95,8 +96,6 @@ void			addnstr(void *str, size_t len, t_var *var);
 void			addstr(char *str, t_var *var);
 int				addnull(t_var *var);
 int				addmchar(char c, t_var *var, int len);
-int				addwp(t_flags *flags, t_var *var, char n);
-int				wandp(t_flags *flags, t_var *var);
 
 int				pf_hashtag(t_flags *flags);
 int				ft_minus(t_flags *flags);
@@ -195,10 +194,12 @@ int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count);
 int				pf_tosc(double *d);
+void			pf_eround(char *str, t_flags *flags, t_var *var);
+int				pf_ground(char *str, t_var *var);
 
 int				pf_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_la(t_flags *flags, t_var *var, va_list ap);
-void			pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
+int				pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
 void			pf_initoa(char modu[16]);
 int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
@@ -210,6 +211,8 @@ int				pf_g(t_flags *flags, t_var *var, va_list ap);
 int				pf_r(t_flags *flags, t_var *var, va_list ap);
 int     	    pf_k(t_flags *flags, t_var *var, va_list ap);
 int     		pf_m(t_flags *flags, t_var *var, va_list ap);
+int				pf_w(t_flags *flags, t_var *var, va_list ap);
+int				pf_cap_w(t_flags *flags, t_var *var, va_list ap);
 
 int				pf_percent(t_flags *flags, t_var *var, va_list ap
 				, t_uint8 *str);
@@ -240,8 +243,8 @@ size_t			pf_uintlen(uintmax_t n, int base);
 void			pf_uitoa_base(uintmax_t n, int base, t_flags *flags
 				, t_var *var);
 void			pf_ftoa(double n, t_flags *flags, t_var *var);
-void			pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
-void			pf_fltoa_hexa(long double n, t_flags *flags, t_var *var);
+int				pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
+int				pf_fltoa_hexa(long double n, t_flags *flags, t_var *var);
 int				pf_round(char *str, t_flags *flags, t_var *var);
 
 int				pf_memcpy(void *dest, const void *src, int n);

@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 22:07:59 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/14 19:24:33 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/01/15 16:29:59 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ TOOLS =		ft_printf.c \
 			ft_vsprintf.c \
 			add.c \
 			ft_parse.c \
-			addwp.c \
 			pf_itoa.c \
 			pf_uitoa.c \
 			pf_ftoa.c \
