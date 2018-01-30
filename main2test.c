@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:13:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/30 14:56:56 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		main(void)
 
 	setlocale(LC_ALL, "");
  	//time(&ti);
-	tm = localtime(&ti);
+	/*tm = localtime(&ti);
 	ft_printf("%s", ctime(&ti));
 	ft_printf ("%k\n", tm);
 	tm = localtime(&te);
@@ -410,6 +410,13 @@ int		main(void)
 	printf("%.35f\n", 32113213213514684.326464);
 	ft_sprintf(str, "[%e]\n", 0.000100);
 	sprintf(str2, "[%e]\n", 0.000100);
-	printf("%s%s", str, str2);
+	printf("%s%s", str, str2);*/
+	double i = 1;
+	ft_printf("%0- 3zf" "\n", i);
+	printf("%0- 3zf" "\n", i);
+	ft_printf("%#0+jf" "\n", 11011.11011);
+	printf("%#0+jf" "\n", 11011.11011);
+	ft_printf("%0+15zf" "\n", i);
+	printf("%0+15zf" "\n", i);
 	return (0);
 }
