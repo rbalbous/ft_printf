@@ -6,13 +6,32 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/15 17:17:30 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/19 15:34:49 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_initlar(int		(*lar[256])(), t_var *var)
+int		pf_va_inc(t_var *var, va_list temp, int *doll, int len)
+{
+	var->dol = len + 1;
+	while (len > 0)
+	{
+		if (doll[len] == 's')
+			va_arg(temp, char*);
+		else if (doll[len] == 'l')
+			va_arg(temp, long);
+		else if (doll[len] == 'L')
+			va_arg(temp, long long);
+		else if (doll[len] == 'n')
+			va_arg(temp, int);
+		len--;
+	}
+	var->count--;
+	return (0);
+}
+
+int		pf_initlar(int (*lar[256])(), t_var *var)
 {
 	var->index = 0;
 	while (++var->index < 256)
@@ -84,20 +103,7 @@ int		pf_dollar(t_flags *flags, t_var *var, va_list ap, t_uint8 *str)
 	}
 	len = flags->fwidth - (1 * (flags->fwidth > 0));
 	va_copy(temp, var->begin);
-	var->dol = len + 1;
-	while (len > 0)
-	{
-		if (doll[len] == 's')
-			va_arg(temp, char*);
-		else if (doll[len] == 'l')
-			va_arg(temp, long);
-		else if (doll[len] == 'L')
-			va_arg(temp, long long);
-		else if (doll[len] == 'n')
-			va_arg(temp, int);
-		len--;
-	}
-	var->count--;
+	pf_va_inc(var, temp, doll, len);
 	va_copy(ap, temp);
 	va_end(temp);
 	var->index++;

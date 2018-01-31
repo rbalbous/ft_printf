@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/19 16:29:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 {
 	if (!flags->minus)
 	{
+		flags->fwidth = addmchar(width, var, flags->fwidth);
 		if (d < 0)
 			addchar('-', var);
 		else if (flags->plus || flags->space)
 			addchar(flags->plus ? '+' : ' ', var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
 		pf_ftoa(d, flags, var);
 		pf_round(&var->buf[var->bufindex - 1], flags, var);
 	}

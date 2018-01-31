@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 17:31:45 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		pf_s(t_flags *flags, t_var *var, va_list ap)
 	char	*tmp;
 	char	width;
 
+	if (flags->precision == 0)
+		return (0);
 	if (flags->conv == l)
 		return (pf_cap_s(flags, var, ap));
 	tmp = va_arg(ap, char*);

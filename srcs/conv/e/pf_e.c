@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:03:37 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/20 19:18:06 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int			pf_tosc(double *d)
 	int		count;
 
 	count = 0;
+	if (*d == 0)
+		return (0);
 	if ((intmax_t)(*d) == 0)
 	{
 		while ((intmax_t)(*d) == 0)
@@ -66,7 +68,7 @@ static int	initialise(t_flags *flags, t_var *var, double d)
 		return (pf_infinite(d, flags, var));
 	flags->len = 1;
 	flags->precision += 7 * (!flags->isp);
-	flags->fwidth -= 1 + flags->precision + 5
+	flags->fwidth -= 1 + flags->precision * (!flags->isp) - 5
 	+ (d < 0 || flags->space || flags->plus);
 	flags->fwidth *= (flags->fwidth > 0);
 	return (0);
@@ -92,6 +94,8 @@ int			pf_spe_e(t_flags *flags, t_var *var, double d, int count)
 	char		width;
 
 	width = ' ' + 16 * flags->zero;
+	flags->fwidth -= 5 * (flags->g || flags->fwidth != 0);
+	flags->fwidth *= (flags->fwidth > 0);
 	if (d < 0)
 		addchar('-', var);
 	else if (flags->plus || flags->space)

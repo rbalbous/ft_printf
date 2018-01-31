@@ -6,77 +6,11 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 22:24:19 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/16 15:57:05 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/19 15:45:41 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	initialise_var(t_var *var)
-{
-	var->index = -1;
-	var->bufindex = 0;
-	ft_bzero(var->buf, BUFF_SIZE);
-}
-
-static void	init_conv(int (*f[256])())
-{
-	f['s'] = pf_s;
-	f['c'] = pf_c;
-	f['S'] = pf_cap_s;
-	f['p'] = pf_lx;
-	f['d'] = pf_d;
-	f['D'] = pf_cap_d;
-	f['i'] = pf_d;
-	f['o'] = pf_o;
-	f['O'] = pf_cap_o;
-	f['u'] = pf_u;
-	f['U'] = pf_cap_u;
-	f['x'] = pf_x;
-	f['X'] = pf_cap_x;
-	f['C'] = pf_cap_c;
-	f['%'] = pf_percent;
-	f['*'] = pf_wildcard;
-	f['b'] = pf_b;
-	f['f'] = pf_f;
-	f['F'] = pf_cap_f;
-	f['n'] = pf_n;
-	f['e'] = pf_e;
-	f['E'] = pf_cap_e;
-	f['$'] = pf_dollar;
-	f['\''] = pf_apostrophe;
-	f['g'] = pf_g;
-}
-
-static void	init_flags(int (*f[256])())
-{
-	int		i;
-
-	i = -1;
-	while (++i < 256)
-		f[i] = pf_percent;
-	i = -1;
-	f['0'] = ft_zero;
-	f['.'] = ft_preci;
-	f['+'] = ft_plus;
-	f['-'] = ft_minus;
-	f['#'] = pf_hashtag;
-	f[' '] = ft_space;
-	while (++i < 9)
-		f['1' + i] = pf_fwidth;
-	f['h'] = pf_h;
-	f['l'] = pf_l;
-	f['j'] = ft_j;
-	f['z'] = pf_z;
-	f['a'] = pf_a;
-	f['A'] = pf_cap_a;
-	f['L'] = pf_cap_l;
-	f['q'] = pf_q;
-	f['r'] = pf_r;
-	f['k'] = pf_k;
-	f['m'] = pf_m;
-	init_conv(f);
-}
 
 int			ft_sprintf(char *dest, const char *str, ...)
 {
@@ -85,10 +19,8 @@ int			ft_sprintf(char *dest, const char *str, ...)
 	t_var		var;
 	int			ret;
 
-	if (f[0] == NULL)
-		init_flags(f);
-	initialise_var(&var);
 	va_start(ap, str);
+	initialise_var(&var, ap, f);
 	while (str[++var.index])
 	{
 		if (str[var.index] == '%' && str[var.index + 1])
@@ -97,8 +29,9 @@ int			ft_sprintf(char *dest, const char *str, ...)
 			{
 				if (ret == -2)
 					break ;
-				return (-1);
+				return (pf_parserror(&var, ap));
 			}
+			var.error = var.bufindex;
 		}
 		else if (str[var.index] != '%')
 			addchar(str[var.index], &var);

@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:13:57 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 18:09:55 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		main(void)
 	time_t		ti =   983768949;
 	time_t		tw =   1509286422;
 	time_t		te =   1509372822;
+	int			n = 0;
+	int			m = 0;
 	struct tm	*tm;
 
 	setlocale(LC_ALL, "");
@@ -179,7 +181,7 @@ int		main(void)
 		sprintf(lour, "%g", 1 / (i * i * i * i));
 		if (ft_strcmp(lourd, lour) != 0)
 		{
-			ft_printf("%f ", i);
+			ft_printf("%f", i);
 			ft_printf("mistakes were made %s %s\n", lourd, lour);
 		}
 		i++;
@@ -411,5 +413,68 @@ int		main(void)
 	ft_sprintf(str, "[%e]\n", 0.000100);
 	sprintf(str2, "[%e]\n", 0.000100);
 	printf("%s%s", str, str2);
+	ft_sprintf(str, "[%e]\n", 1.000000);
+	sprintf(str2, "[%e]\n", 1.000000);
+	printf("%s%s", str, str2);
+	ft_printf("[%15f]\n", 1.0);
+	printf("[%15f]\n", 1.0);
+	ft_printf("[%15.15g]\n", 1.0);
+	printf("[%15.15g]\n", 1.0);
+	ft_printf("[%15.15f]\n", 1.0);
+	printf("[%15.15f]\n", 1.0);
+	ft_printf("[%15.15f]\n", 1.1);
+	printf("[%15.15f]\n", 1.1);
+	ft_printf("[%+15.0f]\n", 1.1);
+	printf("[%+15.0f]\n", 1.1);
+	ft_printf("[%+15.5f]\n", 1.1);
+	printf("[%+15.5f]\n", 1.1);
+	ft_printf("[%+15.15f]\n", 1.1);
+	printf("[%+15.15f]\n", 1.1);
+	ft_printf("[%015.0g]\n", 42.42);
+	printf("[%015.0g]\n", 42.42);
+	ft_printf("[%g]\n", -243.376767676666);
+	printf("[%g]\n", -243.376767676666);
+	n = ft_printf("%s\n", "Hello World");
+	m = printf("%s\n", "Hello World");
+	ft_printf("%d\n", n);
+	ft_printf("%d\n", m);
+	n = ft_printf("[%3.2ls]\n", L"❤ coeur ሴ ☂" );
+	m = printf("[%3.2ls]\n", L"❤ coeur ሴ ☂" );
+	ft_printf("[%ls]\n", L"❤ coeur ሴ ☂" );
+	printf("[%ls]\n", L"❤ coeur ሴ ☂" );
+	ft_printf("[%3.5ls]\n", L"❤ coeur ሴ ☂" );
+	printf("[%3.5ls]\n", L"❤ coeur ሴ ☂" );
+	ft_printf("[%3ls]\n", L"❤ coeur ሴ ☂" );
+	printf("[%3ls]\n", L"❤ coeur ሴ ☂" );
+	ft_printf("[%25.5ls]\n", L"❤ coeur ሴ ☂" );
+	printf("[%25.5ls]\n", L"❤ coeur ሴ ☂" );
+	int		r;
+	r = ft_printf("%ls\n", L"❤" );
+	m = printf("[%25.5ls]\n", L"❤" );
+	ft_printf("LA%d\n", r);
+	ft_printf("%d\n", m);
+	n = ft_printf("[test %s %C]", "bla", 0xd800);
+	m = printf("[test %s %C]", "bla", 0xd800);
+	ft_printf("%d\n", n);
+	ft_printf("%d\n", m);
+	n = ft_printf("[test0123456789]\n");
+	m = printf("[test0123456789]\n");
+	ft_printf("%d\n", n);
+	ft_printf("%d\n", m);
+	ft_printf("[%0.0e]\n", 0.0);
+	printf("[%0.0e]\n", 0.0);
+	ft_printf("%#0-3.15e\n", 42.402);
+	printf("%#0-3.15e\n", 42.402);
+	int tabl[3];
+    tabl[0] = 0x1234;
+    tabl[1] = 0x1234;
+    tabl[2] = 0x1234;
+    ft_printf("%S\n", tabl);
+    printf("%S\n", tabl);
+	int k;
+    k = ft_printf("%5.0s", 42);
+	ft_printf("%d\n", k);
+	ft_printf("{%15.20e}\n", 654321.123456);
+	printf("{%15.20e}\n", 654321.123456);
 	return (0);
 }

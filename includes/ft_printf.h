@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:16:05 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 17:31:49 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,10 @@ int				ft_vprintf(const char *str, va_list ap);
 int				ft_vdprintf(int fd, const char *str, va_list ap);
 int				ft_vsprintf(char *dest, const char *str, va_list ap);
 int				parse(t_uint8 *str, t_var *var, va_list ap, int (*f[256])());
+void			init_conv(int (*f[256])());
+void			init_flags(int (*f[256])(), int i);
+void	 		initialise_var(t_var *var, va_list ap, int (*f[256])());
+int				pf_parserror(t_var *var, va_list ap);
 
 void			addchar(const char c, t_var *var);
 void			addnstr(void *str, size_t len, t_var *var);
