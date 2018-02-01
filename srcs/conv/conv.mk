@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/17 17:25:29 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/02/01 11:19:08 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,6 +137,7 @@ CONVW_PATH = $(addprefix srcs/conv/w/, $(CONVW))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVW:.c=.o))
 
 $(OBJ_PATH)/%.o : $(SPATH)/%.c $(INCLUDES)/ft_printf.h
+	@mkdir $(OBJ_PATH) 2> /dev/null || true
 	$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
 
 $(OBJ_PATH)/%.o : $(CPATH)/%.c $(INCLUDES)/ft_printf.h
