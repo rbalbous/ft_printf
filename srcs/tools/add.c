@@ -6,26 +6,20 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2017/12/18 18:22:44 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 21:43:52 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		addnull(t_var *var)
+int		addnull(t_flags *flags, t_var *var)
 {
-	var->buf[var->bufindex] = '(';
-	var->bufindex++;
-	var->buf[var->bufindex] = 'n';
-	var->bufindex++;
-	var->buf[var->bufindex] = 'u';
-	var->bufindex++;
-	var->buf[var->bufindex] = 'l';
-	var->bufindex++;
-	var->buf[var->bufindex] = 'l';
-	var->bufindex++;
-	var->buf[var->bufindex] = ')';
-	var->bufindex++;
+	int n;
+
+	n = 6;
+	if (flags->precision < 6 && flags->isp)
+		n = flags->precision;
+	addnstr("(null)", n, var);
 	return (0);
 }
 

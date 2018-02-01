@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 17:31:45 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 22:50:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 int		pf_isnull(t_flags *flags, t_var *var)
 {
-	if (!flags->isp)
-		return (addnull(var));
+	char	width;
+
+	width = ' ' + 16 * (flags->zero);
+	flags->fwidth -= flags->precision * (flags->precision > 0);
+	flags->fwidth *= (flags->fwidth > 0);
+	if (!flags->minus)
+	{
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		return (addnull(flags, var));
+	}
 	else
-		return (pf_empty_s(flags, var));
+	{
+		addnull(flags, var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);\
+		return (0);
+	}
+	
 }
 
 int		pf_s(t_flags *flags, t_var *var, va_list ap)

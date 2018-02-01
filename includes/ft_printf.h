@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 17:31:49 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 21:57:32 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ int				pf_parserror(t_var *var, va_list ap);
 void			addchar(const char c, t_var *var);
 void			addnstr(void *str, size_t len, t_var *var);
 void			addstr(char *str, t_var *var);
-int				addnull(t_var *var);
+int				addnull(t_flags *flags, t_var *var);
 int				addmchar(char c, t_var *var, int len);
+int				pf_isnull(t_flags *flags, t_var *var);
 
 int				pf_hashtag(t_flags *flags);
 int				ft_minus(t_flags *flags);

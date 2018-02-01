@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:20 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 18:05:26 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 22:21:45 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,8 @@ int		pf_cap_s(t_flags *flags, t_var *var, va_list ap)
 	int			stock[1000];
 
 	tmp = va_arg(ap, wchar_t*);
-	if (tmp == NULL && !flags->isp)
-		return (addnull(var));
-	else if (tmp == NULL && flags->isp)
-		return (pf_empty_s(flags, var));
+	if (tmp == NULL)
+		return (pf_isnull(flags, var));
 	if (pf_wcharlen(tmp, flags, stock) == -1)
 		return (-1);
 	flags->fwidth -= flags->len;

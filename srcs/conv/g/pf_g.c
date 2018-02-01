@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/19 22:13:34 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/01/31 19:56:43 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ int		pf_g(t_flags *flags, t_var *var, va_list ap)
 
 	d = va_arg(ap, double);
 	flags->g = 1;
+	if (d == 0 && flags->precision == 0)
+	{
+		flags->hashtag = 1;
+		return (pf_empty_o(flags, var));
+	}
 	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)

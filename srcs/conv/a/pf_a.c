@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/01 10:52:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static char	initialise(t_flags *flags, t_var *var, double d)
 		return (pf_infinite(d, flags, var));
 	flags->len = 1;
 	flags->precision += 15 * (!flags->isp) - 1;
-	flags->fwidth -= 1 + flags->precision + 5
+	flags->fwidth -= 2 + flags->precision + 5
 	+ (d < 0 || flags->space || flags->plus);
 	flags->fwidth *= (flags->fwidth > 0);
 	return (' ' + 16 * flags->zero);
