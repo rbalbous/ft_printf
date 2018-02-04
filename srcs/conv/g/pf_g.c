@@ -6,11 +6,31 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 19:56:43 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/04 18:17:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		pf_gzero(t_flags *flags, t_var *var)
+{
+	char	width;
+
+	width = ' ' + 16 * flags->zero;
+	flags->fwidth -= 1 + (flags->plus || flags->space) + flags->hashtag;
+	if ((flags->plus || flags->space) && flags->zero)
+		addchar(flags->plus ? '+' : ' ', var);
+	if (!flags->minus)
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	if ((flags->plus || flags->space) && !flags->zero)
+		addchar(flags->plus ? '+' : ' ', var);
+	addchar('0', var);
+	if (flags->hashtag)
+		addchar('.', var);
+	if (flags->minus)
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+	return (0);
+}
 
 int		pf_ground(char *str, t_var *var)
 {
@@ -58,6 +78,10 @@ int		pf_gpos(t_flags *flags, t_var *var, double d)
 	int			count;
 
 	count = 0;
+	if (flags->fwidth >= flags->precision)
+		flags->fwidth -= flags->precision + (flags->precision == 0 || !flags->isp) + (flags->space || flags->plus);
+	else
+		flags->fwidth = 0;
 	if (flags->len > flags->precision + 1)
 	{
 		flags->len = 1;
@@ -82,20 +106,41 @@ int		pf_gpos(t_flags *flags, t_var *var, double d)
 int		pf_g(t_flags *flags, t_var *var, va_list ap)
 {
 	double		d;
+	char		width;
 
 	d = va_arg(ap, double);
 	flags->g = 1;
 	if (d == 0 && flags->precision == 0)
-	{
-		flags->hashtag = 1;
-		return (pf_empty_o(flags, var));
-	}
+		return (pf_gzero(flags, var));
 	if (!(d == d))
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
 		return (pf_infinite(d, flags, var));
-	flags->precision += (!flags->isp) * 7 - 1;
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
+	width = ' ' + 16 * flags->zero;
+	if (d == 0 && flags->precision != 0)
+	{
+		flags->precision += ((!flags->isp) * 7 - 1) * flags->hashtag;
+		flags->fwidth -= (flags->precision + 1) * flags->hashtag + 1 + (flags->plus || flags->space);
+		if ((flags->plus || flags->space) && flags->zero)
+			addchar(flags->plus ? '+' : ' ', var);
+		if (!flags->minus)
+			flags->fwidth = addmchar(width, var, flags->fwidth);
+		if ((flags->plus || flags->space) && !flags->zero)
+			addchar(flags->plus ? '+' : ' ', var);
+		addchar('0', var);
+		if (flags->hashtag)
+		{
+			addchar('.', var);
+			while (flags->precision-- > 0)
+				addchar('0', var);
+		}
+		if (flags->minus)
+			flags->fwidth = addmchar(width, var, flags->fwidth);
+		return (0);
+	}
+	flags->precision += (!flags->isp) * 7 - 1;
+	flags->precision *= (flags->precision > 0);
 	if ((intmax_t)d == 0)
 		pf_gzer(flags, var, d);
 	else

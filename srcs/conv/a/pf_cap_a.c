@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/04 20:59:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,11 @@
 static int	pf_create(t_flags *flags, t_var *var, double d, int count)
 {
 	int		start;
+	char	*num;
 
 	start = var->bufindex;
 	addstr("0X", var);
-	if ((pf_ftoa_hexa(d, flags, var)) == -1)
+	if ((num = (pf_ftoa_hexa(d, flags))) == NULL)
 		return (-1);
 	addchar('P', var);
 	if (count < 0)

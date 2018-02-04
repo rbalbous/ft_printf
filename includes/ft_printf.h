@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 21:57:32 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/04 20:58:33 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,9 @@ void			addnstr(void *str, size_t len, t_var *var);
 void			addstr(char *str, t_var *var);
 int				addnull(t_flags *flags, t_var *var);
 int				addmchar(char c, t_var *var, int len);
+int				pf_addzero(t_flags *flags, t_var *var);
 int				pf_isnull(t_flags *flags, t_var *var);
+int				pf_fzero(double d, t_flags *flags, t_var *var);
 
 int				pf_hashtag(t_flags *flags);
 int				ft_minus(t_flags *flags);
@@ -204,7 +206,7 @@ int				pf_ground(char *str, t_var *var);
 
 int				pf_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_la(t_flags *flags, t_var *var, va_list ap);
-int				pf_ftoa_hexa(double n, t_flags *flags, t_var *var);
+char			*pf_ftoa_hexa(double n, t_flags *flags);
 void			pf_initoa(char modu[16]);
 int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
@@ -250,6 +252,7 @@ void			pf_uitoa_base(uintmax_t n, int base, t_flags *flags
 void			pf_ftoa(double n, t_flags *flags, t_var *var);
 int				pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
 int				pf_fltoa_hexa(long double n, t_flags *flags, t_var *var);
+char			*pf_cuitoa_hexa(uintmax_t n, t_flags *flags);
 int				pf_round(char *str, t_flags *flags, t_var *var);
 
 int				pf_memcpy(void *dest, const void *src, int n);

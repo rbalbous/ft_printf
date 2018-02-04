@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 22:50:27 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/01 12:24:53 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ int		pf_isnull(t_flags *flags, t_var *var)
 	char	width;
 
 	width = ' ' + 16 * (flags->zero);
-	flags->fwidth -= flags->precision * (flags->precision > 0);
+	if (flags->precision > 6 || !flags->isp)
+		flags->fwidth -= 6;
+	else
+		flags->fwidth -= flags->precision;
 	flags->fwidth *= (flags->fwidth > 0);
 	if (!flags->minus)
 	{
@@ -30,7 +33,17 @@ int		pf_isnull(t_flags *flags, t_var *var)
 		flags->fwidth = addmchar(width, var, flags->fwidth);\
 		return (0);
 	}
-	
+}
+
+int		pf_addzero(t_flags *flags, t_var *var)
+{
+	char	width;
+
+	width = ' ' + 16 * (flags->zero);
+	flags->fwidth -= flags->precision * (flags->precision > 0);
+	flags->fwidth *= (flags->fwidth > 0);
+	flags->fwidth = addmchar(width, var, flags->fwidth);
+	return (addnull(flags, var));
 }
 
 int		pf_s(t_flags *flags, t_var *var, va_list ap)
@@ -39,7 +52,7 @@ int		pf_s(t_flags *flags, t_var *var, va_list ap)
 	char	width;
 
 	if (flags->precision == 0)
-		return (0);
+		return (pf_addzero(flags, var));
 	if (flags->conv == l)
 		return (pf_cap_s(flags, var, ap));
 	tmp = va_arg(ap, char*);

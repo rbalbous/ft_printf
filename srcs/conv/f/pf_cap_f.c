@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/19 16:29:24 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:52:52 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,14 @@ int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 {
 	if (!flags->minus)
 	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
-		if (d < 0)
+		if (d < 0 && flags->zero)
 			addchar('-', var);
-		else if (flags->plus || flags->space)
+		else if ((flags->plus || flags->space) && flags->zero)
+			addchar(flags->plus ? '+' : ' ', var);
+		flags->fwidth = addmchar(width, var, flags->fwidth);
+		if (d < 0 && !flags->zero)
+			addchar('-', var);
+		else if ((flags->plus || flags->space) && !flags->zero)
 			addchar(flags->plus ? '+' : ' ', var);
 		pf_ftoa(d, flags, var);
 		pf_round(&var->buf[var->bufindex - 1], flags, var);
@@ -89,6 +93,7 @@ int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 int		pf_cap_f(t_flags *flags, t_var *var, va_list ap)
 {
 	double		d;
+	char		width;
 
 	if (flags->bigl)
 		return (pf_cap_fl(flags, var, ap));
@@ -96,11 +101,24 @@ int		pf_cap_f(t_flags *flags, t_var *var, va_list ap)
 		d = va_arg(ap, double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
 	flags->precision += 7 * (!flags->isp);
+	width = ' ' + 16 * flags->zero;
+	if (flags->precision == 0)
+		return (pf_fzero(d, flags, var));
 	if (d == 0 && flags->precision > 0)
 	{
+		flags->fwidth -= flags->precision + 2 + (flags->plus || flags->space);
+		if ((flags->plus || flags->space) && flags->zero)
+			addchar(flags->plus ? '+' : ' ', var);
+		if (!flags->minus)
+			flags->fwidth = addmchar(width, var, flags->fwidth);
+		if ((flags->plus || flags->space) && !flags->zero)
+			addchar(flags->plus ? '+' : ' ', var);
 		addstr("0.", var);
 		while (flags->precision-- > 0)
 			addchar('0', var);
+		if (flags->minus)
+			flags->fwidth = addmchar(width, var, flags->fwidth);
+		flags->precision += 7 * (!flags->isp);
 		return (0);
 	}
 	return (pf_spe_cap_f(flags, var, d));
@@ -118,8 +136,9 @@ int		pf_spe_cap_f(t_flags *flags, t_var *var, double d)
 	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
 	flags->fwidth -= (flags->hashtag && flags->precision == 0);
 	flags->fwidth *= (flags->fwidth > 0);
-	flags->fwidth -= flags->precision + flags->len + (flags->precision != 0)
-	+ (flags->space || flags->plus) + apo;
+	flags->fwidth -= flags->precision * (!flags->g) + flags->len
+	+ (flags->space || flags->plus || d < 0) + apo + (!flags->g);
+	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);
 	var->buf[var->bufindex] = 0;
