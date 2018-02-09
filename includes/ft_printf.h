@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/04 20:58:33 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/09 12:12:07 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,6 +212,8 @@ int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
 int				pf_toa(double *d);
 int				pf_tola(long double *d);
+int				pf_acreate(t_var *var, t_flags *flags, int count);
+int				pf_around(char *str, t_flags *flags, t_var *var);
 
 int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_g(t_flags *flags, t_var *var, va_list ap);
@@ -251,7 +253,7 @@ void			pf_uitoa_base(uintmax_t n, int base, t_flags *flags
 				, t_var *var);
 void			pf_ftoa(double n, t_flags *flags, t_var *var);
 int				pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
-int				pf_fltoa_hexa(long double n, t_flags *flags, t_var *var);
+char			*pf_fltoa_hexa(long double n, t_flags *flags);
 char			*pf_cuitoa_hexa(uintmax_t n, t_flags *flags);
 int				pf_round(char *str, t_flags *flags, t_var *var);
 

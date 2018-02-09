@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:36:20 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/31 22:21:45 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/06 16:30:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		pf_wcharlen(wchar_t *tmp, t_flags *flags, int stock[1000])
 	i = 0;
 	while (tmp[i])
 	{
-		if (tmp[i] > 0x10FFFF || (0xD800 >= tmp[i] && tmp[i] >= 0xDFFF)
+		if (tmp[i] > 0x10FFFF || (0xD800 <= tmp[i] && tmp[i] <= 0xDFFF)
 		|| tmp[i] < 0)
 			return (-1);
 		stock[i] = 0;

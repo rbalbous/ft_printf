@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/01 12:24:53 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/06 16:11:32 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int		pf_s(t_flags *flags, t_var *var, va_list ap)
 	char	*tmp;
 	char	width;
 
-	if (flags->precision == 0)
-		return (pf_addzero(flags, var));
 	if (flags->conv == l)
 		return (pf_cap_s(flags, var, ap));
 	tmp = va_arg(ap, char*);
+	if (flags->precision == 0)
+		return (pf_addzero(flags, var));
 	if (tmp == NULL)
 		return (pf_isnull(flags, var));
 	flags->len = ft_strlen(tmp);

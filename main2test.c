@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/04 22:25:23 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/09 18:04:39 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -577,5 +577,56 @@ int		main(void)
 	printf("[%a]\n", 42.42);
 	ft_printf("[%25.10a]\n", 42.42);
 	printf("[%25.10a]\n", 42.42);
+	ft_printf("[%a]\n", 42.42);
+	printf("[%a]\n", 42.42);
+	ft_printf("[%.0a]\n", 42.42);
+	printf("[%.0a]\n", 42.42);
+	ft_printf("[%25.10a]\n", 42.42);
+	printf("[%25.10a]\n", 42.42);
+	ft_printf("[%25.6a]\n", 42.42);
+	printf("[%25.6a]\n", 42.42);
+	ft_printf("[%25.12a]\n", 42.44);
+	printf("[%25.12a]\n", 42.44);
+	ft_printf("[%+25.6a]\n", 42.42);
+	printf("[%+25.6a]\n", 42.42);
+	/*ft_printf("Coucou %.0s\n%s%---12s", "hi", "coco", NULL);
+	ft_printf("\n");
+	printf("Coucou %.0s\n%s%---12s", "hi", "coco", NULL);
+	wchar_t	s[4];
+	s[0] = 0x53;
+	s[1] = 0xd800;
+	s[2] = 0x81000;
+	s[3] = '\0';
+	n = ft_printf("%S\n", s);
+	printf("%S\n", s);
+	ft_printf("%d", n);*/
+	ft_printf("%La\n", 0.L);
+	v = 0;
+	ft_printf("[%#25.0a]\n", v);
+	printf("[%#25.0a]\n", v);
+	ft_printf("[%025.0a]\n", v);
+	printf("[%025.0a]\n", v);
+	ft_printf("[%-025.0a]\n", v);
+	printf("[%-025.0a]\n", v);
+	ft_printf("[%25.0La]\n", 0.L);
+	printf("[%25.0La]\n", 0.L);
+	ft_printf("[%3.2La]\n", 0.L);
+	printf("[%3.2La]\n", 0.L);
+	ft_printf("[%15.5La]\n", 0.L);
+	printf("[%15.5La]\n", 0.L);
+	ft_printf("[%15La]\n", 0.L);
+	printf("[%15La]\n", 0.L);
+	ft_printf("[%+025.0a]\n", v);
+	printf("[%+025.0a]\n", v);
+	ft_printf("[%15.0a]\n", 0.000000005);
+	printf("[%15.0a]\n", 0.000000005);
+	ft_printf("[%15La]\n", 654321.123456L);
+	printf("[%15La]\n", 654321.123456L);
+	ft_printf("[%15La]\n", -654321.123456L);
+	printf("[%15La]\n", -654321.123456L);
+	ft_printf("[%15.0La]\n", -654321.123456L);
+	printf("[%15.0La]\n", -654321.123456L);
+	ft_printf("[%15a]\n", -654321.123456);
+	printf("[%15a]\n", -654321.123456);
 	return (0);
 }
