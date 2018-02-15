@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/04 18:01:38 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:22:13 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int		pf_round(char *str, t_flags *flags, t_var *var)
 		var->bufindex--;
 	}
 	var->bufindex--;
-	if (flags->g)
+	if (flags->g && !flags->hashtag)
 		return (pf_ground(&var->buf[var->bufindex - 1], var));
 	return (0);
 }
@@ -113,7 +113,7 @@ int		pf_f(t_flags *flags, t_var *var, va_list ap)
 	int			apo;
 
 	if (flags->bigl)
-		return (pf_cap_fl(flags, var, ap));
+		return (pf_fl(flags, var, ap));
 	else
 		d = va_arg(ap, double);
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);

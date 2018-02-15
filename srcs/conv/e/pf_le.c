@@ -6,36 +6,11 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/17 19:03:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:01:36 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int			pf_tolsc(long double *d)
-{
-	int		count;
-
-	count = 0;
-	if ((intmax_t)(*d) == 0)
-	{
-		while ((intmax_t)(*d) == 0)
-		{
-			*d = *d * 10;
-			count++;
-		}
-		count *= -1;
-	}
-	else
-	{
-		while ((intmax_t)(*d) < -10 || (intmax_t)(*d) > 10)
-		{
-			*d /= 10;
-			count++;
-		}
-	}
-	return (count);
-}
 
 static int	pf_lcreate(t_flags *flags, t_var *var, long double d, int count)
 {
@@ -78,7 +53,7 @@ int			pf_le(t_flags *flags, t_var *var, va_list ap)
 	int				count;
 
 	d = va_arg(ap, long double);
-	count = pf_tolsc(&d);
+	count = pf_tosc(&d);
 	initialise(flags, var, d);
 	pf_spe_le(flags, var, d, count);
 	return (1);

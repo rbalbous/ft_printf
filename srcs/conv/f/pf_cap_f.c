@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/02 15:52:52 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/15 15:21:09 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 		else if ((flags->plus || flags->space) && !flags->zero)
 			addchar(flags->plus ? '+' : ' ', var);
 		pf_ftoa(d, flags, var);
+		if (flags->precision == 0 && flags->hashtag)
+			var->bufindex--;
 		pf_round(&var->buf[var->bufindex - 1], flags, var);
 	}
 	else
@@ -84,6 +86,8 @@ int		pf_fcreate(t_flags *flags, t_var *var, double d, char width)
 		else if (flags->plus || flags->space)
 			addchar(flags->plus ? '+' : ' ', var);
 		pf_ftoa(d, flags, var);
+		if (flags->precision == 0 && flags->hashtag)
+			var->bufindex--;
 		pf_round(&var->buf[var->bufindex - 1], flags, var);
 		flags->fwidth = addmchar(width, var, flags->fwidth);
 	}

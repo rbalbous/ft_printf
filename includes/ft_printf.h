@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/09 12:12:07 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/15 16:17:42 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,23 +197,24 @@ int				pf_tolsc(long double *d);
 int				pf_nanc(t_flags *flags, t_var *var);
 
 int				pf_e(t_flags *flags, t_var *var, va_list ap);
-int				pf_spe_e(t_flags *flags, t_var *var, double d, int count);
+int				pf_spe_e(t_flags *flags, t_var *var, long double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list ap);
-int				pf_spe_cap_e(t_flags *flags, t_var *var, double d, int count);
-int				pf_tosc(double *d);
+int				pf_spe_cap_e(t_flags *flags, t_var *var, long double d, 
+				int count);
+int				pf_tosc(long double *d);
 void			pf_eround(char *str, t_flags *flags, t_var *var);
 int				pf_ground(char *str, t_var *var);
 
 int				pf_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_la(t_flags *flags, t_var *var, va_list ap);
-char			*pf_ftoa_hexa(double n, t_flags *flags);
+char			*pf_ftoa_hexa(long double n, t_flags *flags);
 void			pf_initoa(char modu[16]);
 int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
-int				pf_toa(double *d);
+int				pf_toa(long double *d);
 int				pf_tola(long double *d);
 int				pf_acreate(t_var *var, t_flags *flags, int count);
-int				pf_around(char *str, t_flags *flags, t_var *var);
+int				pf_around(char *str, char *base, t_flags *flags, long double d);
 
 int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_g(t_flags *flags, t_var *var, va_list ap);
@@ -251,11 +252,13 @@ size_t			pf_intlen(intmax_t n, int base);
 size_t			pf_uintlen(uintmax_t n, int base);
 void			pf_uitoa_base(uintmax_t n, int base, t_flags *flags
 				, t_var *var);
-void			pf_ftoa(double n, t_flags *flags, t_var *var);
+void			pf_ftoa(long double n, t_flags *flags, t_var *var);
 int				pf_uitoa_hexa(uintmax_t n, t_flags *flags, t_var *var);
 char			*pf_fltoa_hexa(long double n, t_flags *flags);
 char			*pf_cuitoa_hexa(uintmax_t n, t_flags *flags);
 int				pf_round(char *str, t_flags *flags, t_var *var);
+void			pf_ftoa_neg(double n, t_flags *flags, t_var *var, int sc);
+int				pf_azero(t_flags *flags, t_var *var, long double d);
 
 int				pf_memcpy(void *dest, const void *src, int n);
 #endif

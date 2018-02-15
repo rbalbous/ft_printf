@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/09 18:04:39 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/15 20:59:53 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -572,7 +572,7 @@ int		main(void)
 	ft_printf("[%3.0g]\n", 1.42532);
 	printf("[%3.0g]\n", 1.42532);
 	ft_printf("[%19.10g]\n", 42.42);
-	printf("[%19.10g]\n", 42.42);*/
+	printf("[%19.10g]\n", 42.42);
 	ft_printf("[%a]\n", 42.42);
 	printf("[%a]\n", 42.42);
 	ft_printf("[%25.10a]\n", 42.42);
@@ -589,7 +589,7 @@ int		main(void)
 	printf("[%25.12a]\n", 42.44);
 	ft_printf("[%+25.6a]\n", 42.42);
 	printf("[%+25.6a]\n", 42.42);
-	/*ft_printf("Coucou %.0s\n%s%---12s", "hi", "coco", NULL);
+	ft_printf("Coucou %.0s\n%s%---12s", "hi", "coco", NULL);
 	ft_printf("\n");
 	printf("Coucou %.0s\n%s%---12s", "hi", "coco", NULL);
 	wchar_t	s[4];
@@ -599,9 +599,9 @@ int		main(void)
 	s[3] = '\0';
 	n = ft_printf("%S\n", s);
 	printf("%S\n", s);
-	ft_printf("%d", n);*/
-	ft_printf("%La\n", 0.L);
-	v = 0;
+	ft_printf("%d", n);
+	ft_printf("%La\n", 0.L);*/
+	/*v = 0;
 	ft_printf("[%#25.0a]\n", v);
 	printf("[%#25.0a]\n", v);
 	ft_printf("[%025.0a]\n", v);
@@ -622,11 +622,82 @@ int		main(void)
 	printf("[%15.0a]\n", 0.000000005);
 	ft_printf("[%15La]\n", 654321.123456L);
 	printf("[%15La]\n", 654321.123456L);
+	ft_printf("[%15a]\n", -654321.123456);
+	printf("[%15a]\n", -654321.123456);
 	ft_printf("[%15La]\n", -654321.123456L);
 	printf("[%15La]\n", -654321.123456L);
 	ft_printf("[%15.0La]\n", -654321.123456L);
 	printf("[%15.0La]\n", -654321.123456L);
-	ft_printf("[%15a]\n", -654321.123456);
-	printf("[%15a]\n", -654321.123456);
+	ft_printf("[%.a]\n", 1.9);
+	printf("[%.a]\n", 1.9);
+	ft_printf("[%15LA]\n", 654321.123456L);
+	printf("[%15LA]\n", 654321.123456L);
+	v = 0;
+	ft_printf("[%15.0e]\n", v);
+	printf("[%15.0e]\n", v);
+	ft_printf("[%#15.0e]\n", v);
+	printf("[%#15.0e]\n", v);
+	ft_printf("[%#0+15.0e]\n", v);
+	printf("[%#0+15.0e]\n", v);
+	ft_printf("[%+15e]\n", -101.101);
+	printf("[%+15e]\n", -101.101);
+	ft_printf("[%15.0Le]\n", 0.L);
+	printf("[%15.0Le]\n", 0.L);
+	ft_printf("[%e]\n", 1.425315487);
+	printf("[%e]\n", 1.425315487);
+	ft_printf("[%15.15Le]\n", 8008.2L);
+	printf("[%15.15Le]\n", 8008.2L);
+	ft_printf("[%15.18Le]\n", 8008.2L);
+	printf("[%15.18Le]\n", 8008.2L);
+	ft_printf("[%3.0e]\n", 8008.2);
+	printf("[%3.0e]\n", 8008.2);
+	ft_printf("[%3.0e]\n",	42.42);
+	printf("[%3.0e]\n", 42.42);
+	ft_printf("[%3.2e]\n",	42.42);
+	printf("[%3.2e]\n", 42.42);
+	ft_printf("[%3e]\n", 42.42);
+	printf("[%3e]\n", 42.42);
+	ft_printf("%15.0e\n", 654321.123456);
+	printf("%15.0e\n", 654321.123456);
+	ft_printf("[%#3.0e]\n", v);
+	printf("[%#3.0e]\n", v);
+	ft_printf("[% a]\n", 1703.0541684);
+	printf("[% a]\n", 1703.0541684);
+	ft_printf("[%a]\n", 0.);
+	printf("[%a]\n", 0.);
+	ft_printf("[%.0a]\n", 1703.0541684);
+	printf("[%.0a]\n", 1703.0541684);
+	ft_printf("[%3.2g]\n", 1.425315487);
+	printf("[%3.2g]\n", 1.425315487);
+	ft_printf("[%3.0g]\n", 1.425315487);
+	printf("[%3.0g]\n", 1.425315487);
+	ft_printf("[%15.13g]\n", 1.425315487);
+	printf("[%15.13g]\n", 1.425315487);
+	ft_printf("[%#3.0g]\n", 1.425315487);
+	printf("[%#3.0g]\n", 1.425315487);
+	ft_printf("[%#3.0a]\n", 0.);
+	printf("[%#3.0a]\n", 0.);
+	ft_printf("[%3.0a]\n", 0.);
+	printf("[%3.0a]\n", 0.);
+	ft_printf("[%#.0a]\n", 1703.0541684);
+	printf("[%#.0a]\n", 1703.0541684);
+	ft_printf("[%#a]\n", 0.);
+	printf("[%#a]\n", 0.);
+	ft_printf("[%3.0La]\n", 654321.123456L);
+	printf("[%3.0La]\n", 654321.123456L);
+	ft_printf("[%La]\n", 654321.123456L);
+	printf("[%La]\n", 654321.123456L);
+	ft_printf("[%3.0La]\n", -42.402L);
+	printf("[%3.0La]\n", -42.402L);*/
+	ft_printf("[%#3.0La]\n", 654321.123456L);
+	printf("[%#3.0La]\n", 654321.123456L);
+	ft_printf("[%3.0a]\n", 50000.0);
+	printf("[%3.0a]\n", 50000.0);
+	ft_printf("[%#3.0a]\n", 50000.0);
+	printf("[%#3.0a]\n", 50000.0);
+	ft_printf("[%#a]\n", 1.);
+	printf("[%#a]\n", 1.);
+	ft_printf("[%#a]\n", 42.);
+	printf("[%#a]\n", 42.);
 	return (0);
 }

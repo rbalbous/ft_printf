@@ -308,7 +308,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%15lE]] - l.%d\n", ft_printf("[%15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%15.0lE]] - l.%d\n", ft_printf("[%15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%15.5lE]] - l.%d\n", ft_printf("[%15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%15.20lE]] - l.%d\n", ft_printf("[%15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%15.15lE]] - l.%d\n", ft_printf("[%15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#lE]] - l.%d\n", ft_printf("[%#LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#3lE]] - l.%d\n", ft_printf("[%#3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#3.0lE]] - l.%d\n", ft_printf("[%#3.0LE]]", Ld) - 2, __LINE__);
@@ -318,7 +318,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#15lE]] - l.%d\n", ft_printf("[%#15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#15.0lE]] - l.%d\n", ft_printf("[%#15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#15.5lE]] - l.%d\n", ft_printf("[%#15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#15.20lE]] - l.%d\n", ft_printf("[%#15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#15.15lE]] - l.%d\n", ft_printf("[%#15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0lE]] - l.%d\n", ft_printf("[%0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%03lE]] - l.%d\n", ft_printf("[%03LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%03.0lE]] - l.%d\n", ft_printf("[%03.0LE]]", Ld) - 2, __LINE__);
@@ -328,7 +328,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%015lE]] - l.%d\n", ft_printf("[%015LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%015.0lE]] - l.%d\n", ft_printf("[%015.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%015.5lE]] - l.%d\n", ft_printf("[%015.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%015.20lE]] - l.%d\n", ft_printf("[%015.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%015.15lE]] - l.%d\n", ft_printf("[%015.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-lE]] - l.%d\n", ft_printf("[%-LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-3lE]] - l.%d\n", ft_printf("[%-3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-3.0lE]] - l.%d\n", ft_printf("[%-3.0LE]]", Ld) - 2, __LINE__);
@@ -343,7 +343,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%+15lE]] - l.%d\n", ft_printf("[%+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%+15.0lE]] - l.%d\n", ft_printf("[%+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%+15.5lE]] - l.%d\n", ft_printf("[%+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%+15.20lE]] - l.%d\n", ft_printf("[%+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%+15.15lE]] - l.%d\n", ft_printf("[%+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%% lE]] - l.%d\n", ft_printf("[% LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%% 3lE]] - l.%d\n", ft_printf("[% 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%% 3.0lE]] - l.%d\n", ft_printf("[% 3.0LE]]", Ld) - 2, __LINE__);
@@ -353,7 +353,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%% 15lE]] - l.%d\n", ft_printf("[% 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%% 15.0lE]] - l.%d\n", ft_printf("[% 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%% 15.5lE]] - l.%d\n", ft_printf("[% 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%% 15.20lE]] - l.%d\n", ft_printf("[% 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%% 15.15lE]] - l.%d\n", ft_printf("[% 15.15LE]]", Ld) - 2, __LINE__);
 		// j
 		ft_printf(" - %d - [%%jE] - l.%d\n", ft_printf("[%jE]", im) - 2, __LINE__);
 		ft_printf(" - %d - [%%3jE] - l.%d\n", ft_printf("[%3jE]", im) - 2, __LINE__);
@@ -1832,7 +1832,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#015lE]] - l.%d\n", ft_printf("[%#015LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#015.0lE]] - l.%d\n", ft_printf("[%#015.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#015.5lE]] - l.%d\n", ft_printf("[%#015.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#015.20lE]] - l.%d\n", ft_printf("[%#015.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#015.15lE]] - l.%d\n", ft_printf("[%#015.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-lE]] - l.%d\n", ft_printf("[%#0-LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-3lE]] - l.%d\n", ft_printf("[%#0-3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-3.0lE]] - l.%d\n", ft_printf("[%#0-3.0LE]]", Ld) - 2, __LINE__);
@@ -1842,7 +1842,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0-15lE]] - l.%d\n", ft_printf("[%#0-15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-15.0lE]] - l.%d\n", ft_printf("[%#0-15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-15.5lE]] - l.%d\n", ft_printf("[%#0-15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0-15.20lE]] - l.%d\n", ft_printf("[%#0-15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0-15.15lE]] - l.%d\n", ft_printf("[%#0-15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+lE]] - l.%d\n", ft_printf("[%#0-+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+3lE]] - l.%d\n", ft_printf("[%#0-+3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+3.0lE]] - l.%d\n", ft_printf("[%#0-+3.0LE]]", Ld) - 2, __LINE__);
@@ -1852,7 +1852,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0-+15lE]] - l.%d\n", ft_printf("[%#0-+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+15.0lE]] - l.%d\n", ft_printf("[%#0-+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+15.5lE]] - l.%d\n", ft_printf("[%#0-+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0-+15.20lE]] - l.%d\n", ft_printf("[%#0-+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0-+15.15lE]] - l.%d\n", ft_printf("[%#0-+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0- lE]] - l.%d\n", ft_printf("[%#0- LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0- 3lE]] - l.%d\n", ft_printf("[%#0- 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0- 3.0lE]] - l.%d\n", ft_printf("[%#0- 3.0LE]]", Ld) - 2, __LINE__);
@@ -1862,7 +1862,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0- 15lE]] - l.%d\n", ft_printf("[%#0- 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0- 15.0lE]] - l.%d\n", ft_printf("[%#0- 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0- 15.5lE]] - l.%d\n", ft_printf("[%#0- 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0- 15.20lE]] - l.%d\n", ft_printf("[%#0- 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0- 15.15lE]] - l.%d\n", ft_printf("[%#0- 15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+ lE]] - l.%d\n", ft_printf("[%#0-+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+ 3lE]] - l.%d\n", ft_printf("[%#0-+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+ 3.0lE]] - l.%d\n", ft_printf("[%#0-+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -1872,7 +1872,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0-+ 15lE]] - l.%d\n", ft_printf("[%#0-+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+ 15.0lE]] - l.%d\n", ft_printf("[%#0-+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0-+ 15.5lE]] - l.%d\n", ft_printf("[%#0-+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0-+ 15.20lE]] - l.%d\n", ft_printf("[%#0-+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0-+ 15.15lE]] - l.%d\n", ft_printf("[%#0-+ 15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+lE]] - l.%d\n", ft_printf("[%#0+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+3lE]] - l.%d\n", ft_printf("[%#0+3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+3.0lE]] - l.%d\n", ft_printf("[%#0+3.0LE]]", Ld) - 2, __LINE__);
@@ -1882,7 +1882,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0+15lE]] - l.%d\n", ft_printf("[%#0+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+15.0lE]] - l.%d\n", ft_printf("[%#0+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+15.5lE]] - l.%d\n", ft_printf("[%#0+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0+15.20lE]] - l.%d\n", ft_printf("[%#0+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0+15.15lE]] - l.%d\n", ft_printf("[%#0+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+ lE]] - l.%d\n", ft_printf("[%#0+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+ 3lE]] - l.%d\n", ft_printf("[%#0+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+ 3.0lE]] - l.%d\n", ft_printf("[%#0+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -1892,7 +1892,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0+ 15lE]] - l.%d\n", ft_printf("[%#0+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+ 15.0lE]] - l.%d\n", ft_printf("[%#0+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0+ 15.5lE]] - l.%d\n", ft_printf("[%#0+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0+ 15.20lE]] - l.%d\n", ft_printf("[%#0+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0+ 15.15lE]] - l.%d\n", ft_printf("[%#0+ 15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0 lE]] - l.%d\n", ft_printf("[%#0 LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0 3lE]] - l.%d\n", ft_printf("[%#0 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0 3.0lE]] - l.%d\n", ft_printf("[%#0 3.0LE]]", Ld) - 2, __LINE__);
@@ -1902,7 +1902,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#0 15lE]] - l.%d\n", ft_printf("[%#0 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0 15.0lE]] - l.%d\n", ft_printf("[%#0 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#0 15.5lE]] - l.%d\n", ft_printf("[%#0 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#0 15.20lE]] - l.%d\n", ft_printf("[%#0 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#0 15.15lE]] - l.%d\n", ft_printf("[%#0 15.15LE]]", Ld) - 2, __LINE__);
 		// #-L
 		ft_printf(" - %d - [%%#-lE]] - l.%d\n", ft_printf("[%#-LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-3lE]] - l.%d\n", ft_printf("[%#-3LE]]", Ld) - 2, __LINE__);
@@ -1913,7 +1913,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#-15lE]] - l.%d\n", ft_printf("[%#-15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-15.0lE]] - l.%d\n", ft_printf("[%#-15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-15.5lE]] - l.%d\n", ft_printf("[%#-15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#-15.20lE]] - l.%d\n", ft_printf("[%#-15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#-15.15lE]] - l.%d\n", ft_printf("[%#-15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+lE]] - l.%d\n", ft_printf("[%#-+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+3lE]] - l.%d\n", ft_printf("[%#-+3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+3.0lE]] - l.%d\n", ft_printf("[%#-+3.0LE]]", Ld) - 2, __LINE__);
@@ -1923,7 +1923,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#-+15lE]] - l.%d\n", ft_printf("[%#-+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+15.0lE]] - l.%d\n", ft_printf("[%#-+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+15.5lE]] - l.%d\n", ft_printf("[%#-+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#-+15.20lE]] - l.%d\n", ft_printf("[%#-+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#-+15.15lE]] - l.%d\n", ft_printf("[%#-+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#- lE]] - l.%d\n", ft_printf("[%#- LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#- 3lE]] - l.%d\n", ft_printf("[%#- 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#- 3.0lE]] - l.%d\n", ft_printf("[%#- 3.0LE]]", Ld) - 2, __LINE__);
@@ -1933,7 +1933,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#- 15lE]] - l.%d\n", ft_printf("[%#- 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#- 15.0lE]] - l.%d\n", ft_printf("[%#- 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#- 15.5lE]] - l.%d\n", ft_printf("[%#- 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#- 15.20lE]] - l.%d\n", ft_printf("[%#- 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#- 15.15lE]] - l.%d\n", ft_printf("[%#- 15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+ lE]] - l.%d\n", ft_printf("[%#-+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+ 3lE]] - l.%d\n", ft_printf("[%#-+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+ 3.0lE]] - l.%d\n", ft_printf("[%#-+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -1943,7 +1943,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#-+ 15lE]] - l.%d\n", ft_printf("[%#-+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+ 15.0lE]] - l.%d\n", ft_printf("[%#-+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#-+ 15.5lE]] - l.%d\n", ft_printf("[%#-+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#-+ 15.20lE]] - l.%d\n", ft_printf("[%#-+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#-+ 15.15lE]] - l.%d\n", ft_printf("[%#-+ 15.15LE]]", Ld) - 2, __LINE__);
 		// +L
 		ft_printf(" - %d - [%%#+lE]] - l.%d\n", ft_printf("[%#+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+3lE]] - l.%d\n", ft_printf("[%#+3LE]]", Ld) - 2, __LINE__);
@@ -1954,7 +1954,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#+15lE]] - l.%d\n", ft_printf("[%#+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+15.0lE]] - l.%d\n", ft_printf("[%#+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+15.5lE]] - l.%d\n", ft_printf("[%#+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#+15.20lE]] - l.%d\n", ft_printf("[%#+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#+15.15lE]] - l.%d\n", ft_printf("[%#+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+ lE]] - l.%d\n", ft_printf("[%#+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+ 3lE]] - l.%d\n", ft_printf("[%#+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+ 3.0lE]] - l.%d\n", ft_printf("[%#+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -1964,7 +1964,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%#+ 15lE]] - l.%d\n", ft_printf("[%#+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+ 15.0lE]] - l.%d\n", ft_printf("[%#+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%#+ 15.5lE]] - l.%d\n", ft_printf("[%#+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%#+ 15.20lE]] - l.%d\n", ft_printf("[%#+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%#+ 15.15lE]] - l.%d\n", ft_printf("[%#+ 15.15LE]]", Ld) - 2, __LINE__);
 		// #' 'L
 		ft_printf(" - %d - [%%# lE]] - l.%d\n", ft_printf("[%# LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%# 3lE]] - l.%d\n", ft_printf("[%# 3LE]]", Ld) - 2, __LINE__);
@@ -1975,7 +1975,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%# 15lE]] - l.%d\n", ft_printf("[%# 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%# 15.0lE]] - l.%d\n", ft_printf("[%# 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%# 15.5lE]] - l.%d\n", ft_printf("[%# 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%# 15.20lE]] - l.%d\n", ft_printf("[%# 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%# 15.15lE]] - l.%d\n", ft_printf("[%# 15.15LE]]", Ld) - 2, __LINE__);
 		// 0-L
 		ft_printf(" - %d - [%%0-lE]] - l.%d\n", ft_printf("[%0-LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-3lE]] - l.%d\n", ft_printf("[%0-3LE]]", Ld) - 2, __LINE__);
@@ -1986,7 +1986,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0-15lE]] - l.%d\n", ft_printf("[%0-15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-15.0lE]] - l.%d\n", ft_printf("[%0-15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-15.5lE]] - l.%d\n", ft_printf("[%0-15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0-15.20lE]] - l.%d\n", ft_printf("[%0-15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0-15.15lE]] - l.%d\n", ft_printf("[%0-15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+lE]] - l.%d\n", ft_printf("[%0-+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+3lE]] - l.%d\n", ft_printf("[%0-+3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+3.0lE]] - l.%d\n", ft_printf("[%0-+3.0LE]]", Ld) - 2, __LINE__);
@@ -1996,7 +1996,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0-+15lE]] - l.%d\n", ft_printf("[%0-+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+15.0lE]] - l.%d\n", ft_printf("[%0-+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+15.5lE]] - l.%d\n", ft_printf("[%0-+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0-+15.20lE]] - l.%d\n", ft_printf("[%0-+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0-+15.15lE]] - l.%d\n", ft_printf("[%0-+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+ lE]] - l.%d\n", ft_printf("[%0-+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+ 3lE]] - l.%d\n", ft_printf("[%0-+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+ 3.0lE]] - l.%d\n", ft_printf("[%0-+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -2006,7 +2006,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0-+ 15lE]] - l.%d\n", ft_printf("[%0-+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+ 15.0lE]] - l.%d\n", ft_printf("[%0-+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0-+ 15.5lE]] - l.%d\n", ft_printf("[%0-+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0-+ 15.20lE]] - l.%d\n", ft_printf("[%0-+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0-+ 15.15lE]] - l.%d\n", ft_printf("[%0-+ 15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0- lE]] - l.%d\n", ft_printf("[%0- LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0- 3lE]] - l.%d\n", ft_printf("[%0- 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0- 3.0lE]] - l.%d\n", ft_printf("[%0- 3.0LE]]", Ld) - 2, __LINE__);
@@ -2016,7 +2016,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0- 15lE]] - l.%d\n", ft_printf("[%0- 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0- 15.0lE]] - l.%d\n", ft_printf("[%0- 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0- 15.5lE]] - l.%d\n", ft_printf("[%0- 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0- 15.20lE]] - l.%d\n", ft_printf("[%0- 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0- 15.15lE]] - l.%d\n", ft_printf("[%0- 15.15LE]]", Ld) - 2, __LINE__);
 		// 0+L
 		ft_printf(" - %d - [%%0+lE]] - l.%d\n", ft_printf("[%0+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+3lE]] - l.%d\n", ft_printf("[%0+3LE]]", Ld) - 2, __LINE__);
@@ -2027,7 +2027,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0+15lE]] - l.%d\n", ft_printf("[%0+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+15.0lE]] - l.%d\n", ft_printf("[%0+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+15.5lE]] - l.%d\n", ft_printf("[%0+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0+15.20lE]] - l.%d\n", ft_printf("[%0+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0+15.15lE]] - l.%d\n", ft_printf("[%0+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+ lE]] - l.%d\n", ft_printf("[%0+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+ 3lE]] - l.%d\n", ft_printf("[%0+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+ 3.0lE]] - l.%d\n", ft_printf("[%0+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -2037,7 +2037,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0+ 15lE]] - l.%d\n", ft_printf("[%0+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+ 15.0lE]] - l.%d\n", ft_printf("[%0+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0+ 15.5lE]] - l.%d\n", ft_printf("[%0+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0+ 15.20lE]] - l.%d\n", ft_printf("[%0+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0+ 15.15lE]] - l.%d\n", ft_printf("[%0+ 15.15LE]]", Ld) - 2, __LINE__);
 		// 0' 'L
 		ft_printf(" - %d - [%%0 lE]] - l.%d\n", ft_printf("[%0 LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0 3lE]] - l.%d\n", ft_printf("[%0 3LE]]", Ld) - 2, __LINE__);
@@ -2048,7 +2048,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%0 15lE]] - l.%d\n", ft_printf("[%0 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0 15.0lE]] - l.%d\n", ft_printf("[%0 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%0 15.5lE]] - l.%d\n", ft_printf("[%0 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%0 15.20lE]] - l.%d\n", ft_printf("[%0 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%0 15.15lE]] - l.%d\n", ft_printf("[%0 15.15LE]]", Ld) - 2, __LINE__);
 		// -+L
 		ft_printf(" - %d - [%%-+lE]] - l.%d\n", ft_printf("[%-+LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+3lE]] - l.%d\n", ft_printf("[%-+3LE]]", Ld) - 2, __LINE__);
@@ -2059,7 +2059,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%-+15lE]] - l.%d\n", ft_printf("[%-+15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+15.0lE]] - l.%d\n", ft_printf("[%-+15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+15.5lE]] - l.%d\n", ft_printf("[%-+15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%-+15.20lE]] - l.%d\n", ft_printf("[%-+15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%-+15.15lE]] - l.%d\n", ft_printf("[%-+15.15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+ lE]] - l.%d\n", ft_printf("[%-+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+ 3lE]] - l.%d\n", ft_printf("[%-+ 3LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+ 3.0lE]] - l.%d\n", ft_printf("[%-+ 3.0LE]]", Ld) - 2, __LINE__);
@@ -2069,7 +2069,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%-+ 15lE]] - l.%d\n", ft_printf("[%-+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+ 15.0lE]] - l.%d\n", ft_printf("[%-+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%-+ 15.5lE]] - l.%d\n", ft_printf("[%-+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%-+ 15.20lE]] - l.%d\n", ft_printf("[%-+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%-+ 15.15lE]] - l.%d\n", ft_printf("[%-+ 15.15LE]]", Ld) - 2, __LINE__);
 		// -' 'L
 		ft_printf(" - %d - [%%- lE]] - l.%d\n", ft_printf("[%- LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%- 3lE]] - l.%d\n", ft_printf("[%- 3LE]]", Ld) - 2, __LINE__);
@@ -2080,7 +2080,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%- 15lE]] - l.%d\n", ft_printf("[%- 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%- 15.0lE]] - l.%d\n", ft_printf("[%- 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%- 15.5lE]] - l.%d\n", ft_printf("[%- 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%- 15.20lE]] - l.%d\n", ft_printf("[%- 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%- 15.15lE]] - l.%d\n", ft_printf("[%- 15.15LE]]", Ld) - 2, __LINE__);
 		// +' 'L
 		ft_printf(" - %d - [%%+ lE]] - l.%d\n", ft_printf("[%+ LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%+ 3lE]] - l.%d\n", ft_printf("[%+ 3LE]]", Ld) - 2, __LINE__);
@@ -2091,7 +2091,7 @@ int				main(int argc, char *argv[])
 		ft_printf(" - %d - [%%+ 15lE]] - l.%d\n", ft_printf("[%+ 15LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%+ 15.0lE]] - l.%d\n", ft_printf("[%+ 15.0LE]]", Ld) - 2, __LINE__);
 		ft_printf(" - %d - [%%+ 15.5lE]] - l.%d\n", ft_printf("[%+ 15.5LE]]", Ld) - 2, __LINE__);
-		ft_printf(" - %d - [%%+ 15.20lE]] - l.%d\n", ft_printf("[%+ 15.20LE]]", Ld) - 2, __LINE__);
+		ft_printf(" - %d - [%%+ 15.15lE]] - l.%d\n", ft_printf("[%+ 15.15LE]]", Ld) - 2, __LINE__);
 
 		// #0j
 		ft_printf(" - %d - [%%#0jE] - l.%d\n", ft_printf("[%#0jE]", im) - 2, __LINE__);
