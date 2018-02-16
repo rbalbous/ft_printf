@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/12 19:31:45 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:30:16 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static int	initialise(t_flags *flags, t_var *var, long double d)
 		return (pf_infinite(d, flags, var));
 	flags->len = 1;
 	flags->precision += 7 * (!flags->isp);
-	flags->fwidth -= flags->precision + 5 + (flags->precision != 0 || flags->hashtag)
+	flags->fwidth -= flags->precision + 5
+	+ (flags->precision != 0 || flags->hashtag)
 	+ (d < 0 || flags->space || flags->plus);
 	flags->fwidth *= (flags->fwidth > 0);
 	return (0);
@@ -48,7 +49,7 @@ static int	initialise(t_flags *flags, t_var *var, long double d)
 
 int			pf_cap_e(t_flags *flags, t_var *var, va_list ap)
 {
-	int		count;
+	int			count;
 	long double	d;
 
 	if (flags->bigl)
@@ -63,40 +64,27 @@ int			pf_cap_e(t_flags *flags, t_var *var, va_list ap)
 
 int			pf_spe_cap_e(t_flags *flags, t_var *var, long double d, int count)
 {
-	char		width;
-
-	width = ' ' + 16 * flags->zero;
 	flags->fwidth -= 5 * (flags->g);
 	flags->fwidth *= (flags->fwidth > 0);
-
 	if (!flags->minus)
 	{
 		if (flags->zero)
 		{
-			if (d < 0)
-				addchar('-', var);
-			else if (flags->plus || flags->space)
-				addchar(flags->plus ? '+' : ' ', var);
-			flags->fwidth = addmchar(width, var, flags->fwidth);
+			pf_addminp(flags, var, d);
+			flags->fwidth = addmchar('0', var, flags->fwidth);
 		}
 		else
 		{
-			flags->fwidth = addmchar(width, var, flags->fwidth);
-			if (d < 0)
-				addchar('-', var);
-			else if (flags->plus || flags->space)
-				addchar(flags->plus ? '+' : ' ', var);
+			flags->fwidth = addmchar(' ', var, flags->fwidth);
+			pf_addminp(flags, var, d);
 		}
 		pf_create(flags, var, d, count);
 	}
 	else
 	{
-		if (d < 0)
-			addchar('-', var);
-		else if (flags->plus || flags->space)
-			addchar(flags->plus ? '+' : ' ', var);
+		pf_addminp(flags, var, d);
 		pf_create(flags, var, d, count);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
+		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
 	}
 	return (0);
 }

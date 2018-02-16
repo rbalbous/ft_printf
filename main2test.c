@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/15 20:59:53 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:56:48 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -688,7 +688,7 @@ int		main(void)
 	ft_printf("[%La]\n", 654321.123456L);
 	printf("[%La]\n", 654321.123456L);
 	ft_printf("[%3.0La]\n", -42.402L);
-	printf("[%3.0La]\n", -42.402L);*/
+	printf("[%3.0La]\n", -42.402L);
 	ft_printf("[%#3.0La]\n", 654321.123456L);
 	printf("[%#3.0La]\n", 654321.123456L);
 	ft_printf("[%3.0a]\n", 50000.0);
@@ -699,5 +699,34 @@ int		main(void)
 	printf("[%#a]\n", 1.);
 	ft_printf("[%#a]\n", 42.);
 	printf("[%#a]\n", 42.);
+	ft_printf("%0 3.5a\n", 54321.12345);
+	printf("%0 3.5a\n", 54321.12345);
+	ft_printf("[%#3.0LA]\n", 654321.123456L);
+	printf("[%#3.0LA]\n", 654321.123456L);
+	ft_printf("[%3.0A]\n", 50000.0);
+	printf("[%3.0A]\n", 50000.0);
+	ft_printf("[%#3.0A]\n", 50000.0);
+	printf("[%#3.0A]\n", 50000.0);
+	ft_printf("[%#A]\n", 1.);
+	printf("[%#A]\n", 1.);
+	ft_printf("[%#A]\n", 42.);
+	printf("[%#A]\n", 42.);
+	ft_printf("%0 3.5A\n", 54321.12345);
+	printf("%0 3.5A\n", 54321.12345);
+	n = ft_printf("%A\n", 0.0);
+	m = printf("%A\n", 0.0);
+	ft_printf("[%#3.0LA]\n", -42.42L);
+	printf("[%#3.0LA]\n", -42.42L);
+	ft_printf("[%LA]\n", 654321.123456L);
+	printf("[%#LA]\n", 654321.123456L);
+	ft_printf("[%A]\n", NAN);
+	printf("[%#A]\n", NAN);
+	ft_printf("[%a]\n", NAN);
+	printf("[%#a]\n", NAN);
+	ft_printf("[%+-12.8F]\n", INFINITY);
+	printf("[%+-12.8F]\n", INFINITY);
+	ft_printf("[%+-12f]\n", INFINITY);
+	printf("[%+-12f]\n", INFINITY);*/
+	ft_printf("%+f\n", 0.);
 	return (0);
 }

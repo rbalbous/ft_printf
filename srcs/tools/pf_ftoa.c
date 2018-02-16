@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 22:08:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/12 18:28:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:36:09 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	pf_ftoa(long double n, t_flags *flags, t_var *var)
 	if (flags->dpt == 0)
 		flags->dpt = '.';
 	str[0] = flags->dpt;
-	count = flags->precision + 2 + 
+	count = flags->precision + 2 +
 	flags->hashtag * (!flags->precision);
 	while (i < count)
 	{

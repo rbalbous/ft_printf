@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/01/19 15:51:37 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:36:50 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			pf_parserror(t_var *var, va_list ap)
 	return (-1);
 }
 
-void	init_conv(int (*f[256])())
+void		init_conv(int (*f[256])())
 {
 	f['s'] = pf_s;
 	f['c'] = pf_c;
@@ -48,7 +48,7 @@ void	init_conv(int (*f[256])())
 	f['g'] = pf_g;
 }
 
-void	init_flags(int (*f[256])(), int i)
+void		init_flags(int (*f[256])(), int i)
 {
 	while (++i < 256)
 		f[i] = pf_percent;
@@ -77,7 +77,7 @@ void	init_flags(int (*f[256])(), int i)
 	init_conv(f);
 }
 
-void	initialise_var(t_var *var, va_list ap, int (*f[256])())
+void		initialise_var(t_var *var, va_list ap, int (*f[256])())
 {
 	int		i;
 

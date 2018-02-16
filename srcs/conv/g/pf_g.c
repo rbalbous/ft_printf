@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/13 15:48:50 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 17:32:07 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,7 @@ int		pf_gzer(t_flags *flags, t_var *var, long double d)
 		if (flags->hashtag)
 		{
 			flags->precision += count + (flags->precision == -1);
-			if (flags->bigl)
-				return (pf_spe_fl(flags, var, d));
-			else
-				return (pf_spe_f(flags, var, d));
+			return (pf_spe_f(flags, var, d));
 		}
 		//else
 		//	return (pf_fzer(flags, var, d));

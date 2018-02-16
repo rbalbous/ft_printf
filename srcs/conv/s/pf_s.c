@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/06 16:11:32 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/16 18:32:38 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int		pf_addzero(t_flags *flags, t_var *var)
 int		pf_s(t_flags *flags, t_var *var, va_list ap)
 {
 	char	*tmp;
-	char	width;
 
 	if (flags->conv == l)
 		return (pf_cap_s(flags, var, ap));
@@ -59,20 +58,19 @@ int		pf_s(t_flags *flags, t_var *var, va_list ap)
 	if (tmp == NULL)
 		return (pf_isnull(flags, var));
 	flags->len = ft_strlen(tmp);
-	width = ' ' + 16 * (flags->zero);
 	if (flags->precision >= 0 && flags->precision < flags->len)
 		flags->len = flags->precision;
 	flags->fwidth -= flags->len;
 	flags->fwidth *= (flags->fwidth > 0);
 	if (flags->minus == 0)
 	{
-		flags->fwidth = addmchar(width, var, flags->fwidth);
+		addmchar(' ' + 16 * (flags->zero), var, flags->fwidth);
 		addnstr(tmp, (size_t)flags->len, var);
 	}
 	else
 	{
 		addnstr(tmp, (size_t)flags->len, var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);
+		addmchar(' ' + 16 * (flags->zero), var, flags->fwidth);
 	}
 	return (0);
 }
