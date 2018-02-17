@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 17:32:07 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/17 19:55:12 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,11 @@ int		pf_gzer(t_flags *flags, t_var *var, long double d)
 	}
 	if (count > 4)
 	{
-		if (flags->hashtag)
-			return (pf_spe_e(flags, var, tmp, -count));
-		//else
-		//	return (pf_ehzer(flags, var, tmp, -count));
+		return (pf_ge(flags, var, tmp, -count));
 	}
 	else
 	{
-		if (flags->hashtag)
-		{
-			flags->precision += count + (flags->precision == -1);
-			return (pf_spe_f(flags, var, d));
-		}
-		//else
-		//	return (pf_fzer(flags, var, d));
+		return (pf_gf(flags, var, d));
 	}
 	return (0);
 }
@@ -85,19 +76,16 @@ int		pf_gpos(t_flags *flags, t_var *var, long double d)
 	{
 		flags->len = 1;
 		count = pf_tosc(&d);
-		pf_spe_e(flags, var, d, count);
+		pf_ge(flags, var, d, count);
 	}
 	else
-	{
-		pf_spe_f(flags, var, d);
-	}
+		pf_gf(flags, var, d);
 	return (1);
 }
 
 int		pf_g(t_flags *flags, t_var *var, va_list ap)
 {
-	long double		d;
-	char		width;
+	long double	d;
 
 	if (flags->bigl)
 		d = va_arg(ap, long double);
@@ -110,32 +98,10 @@ int		pf_g(t_flags *flags, t_var *var, va_list ap)
 		return (pf_nan(flags, var));
 	if (d == INFINITY || d == -INFINITY)
 		return (pf_infinite(d, flags, var));
-	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
-	width = ' ' + 16 * flags->zero;
-	/*if (d == 0 && flags->precision != 0)
-	{
-		flags->precision += ((!flags->isp) * 7 - 1) * flags->hashtag;
-		flags->fwidth -= (flags->precision + 1) * flags->hashtag + 1 + (flags->plus || flags->space);
-		if ((flags->plus || flags->space) && flags->zero)
-			addchar(flags->plus ? '+' : ' ', var);
-		if (!flags->minus)
-			flags->fwidth = addmchar(width, var, flags->fwidth);
-		if ((flags->plus || flags->space) && !flags->zero)
-			addchar(flags->plus ? '+' : ' ', var);
-		addchar('0', var);
-		if (flags->hashtag)
-		{
-			addchar('.', var);
-			while (flags->precision-- > 0)
-				addchar('0', var);
-		}
-		if (flags->minus)
-			flags->fwidth = addmchar(width, var, flags->fwidth);
-		return (0);
-	}*/
+	/*flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
 	flags->fwidth += (flags->precision == 0) * !flags->hashtag;
 	flags->precision += (!flags->isp) * 7 - 1;
-	flags->precision *= (flags->precision > 0);
+	flags->precision *= (flags->precision > 0);*/
 	if ((intmax_t)d == 0) 
 		pf_gzer(flags, var, d);
 	else

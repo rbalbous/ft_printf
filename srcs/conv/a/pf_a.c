@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 14:26:24 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/17 18:35:13 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ int			pf_a(t_flags *flags, t_var *var, va_list ap)
 	len_count = pf_intlen(count, 10) - (count < 0);
 	pf_makea(flags, var, d, len_count);
 	addnstr(num, flags->len, var);
-	if ((pf_acreate(var, flags, count)) == -1)
-		return (-1);
+	pf_acreate(var, flags, count);
 	if (flags->minus)
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
 	free(num);

@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 21:09:17 by rbalbous          #+#    #+#              #
-#    Updated: 2018/02/16 18:18:50 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/02/17 19:21:14 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,9 @@ EPATH = srcs/conv/e
 CONVE_PATH = $(addprefix srcs/conv/e/, $(CONVE))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVE:.c=.o))
 
-CONVG =		pf_g.c
+CONVG =		pf_g.c \
+			pf_ge.c \
+			pf_gf.c
 GPATH = srcs/conv/g
 CONVG_PATH = $(addprefix srcs/conv/g/, $(CONVG))
 OBJ += $(addprefix $(OBJ_PATH)/, $(CONVG:.c=.o))

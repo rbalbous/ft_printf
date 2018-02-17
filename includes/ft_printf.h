@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 18:06:56 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/02/17 19:51:20 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,8 +216,14 @@ int				pf_makea(t_flags *flags, t_var *var, long double d, int len_count);
 int				pf_capazero(t_flags *flags, t_var *var, long double d);
 int				pf_makecapa(t_flags *flags, t_var *var, long double d, int lc);
 
-int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_g(t_flags *flags, t_var *var, va_list ap);
+char			*pf_ftostr(long double n, t_flags *flags);
+int				pf_itostr(char *str, t_flags *flags, intmax_t n);
+int				pf_ge(t_flags *flags, t_var *var, long double d, int count);
+int				pf_gf(t_flags *flags, t_var *var, long double d);
+int				pf_aground(char *str, t_flags *flags, long double d);
+
+int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_r(t_flags *flags, t_var *var, va_list ap);
 int     	    pf_k(t_flags *flags, t_var *var, va_list ap);
 int     		pf_m(t_flags *flags, t_var *var, va_list ap);
