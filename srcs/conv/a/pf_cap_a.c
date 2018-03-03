@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 15:33:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 17:02:34 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:46:43 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			pf_caparound(char *str, char *base, t_flags *flags, long double d)
 	return (0);
 }
 
-int			pf_capacreate(t_var *var, t_flags *flags, int count)
+int			pf_capacreate(t_var *var, t_flags *flags, int count, int len_count)
 {
 	int		start;
 
@@ -54,7 +54,7 @@ int			pf_capacreate(t_var *var, t_flags *flags, int count)
 	}
 	else
 		addchar('+', var);
-	addstr(ft_itoa(count), var);
+	addnstr(ft_itoa(count), len_count, var);
 	return (0);
 }
 
@@ -92,8 +92,7 @@ int			pf_cap_a(t_flags *flags, t_var *var, va_list ap)
 	len_count = pf_intlen(count, 10) - (count < 0);
 	pf_makecapa(flags, var, d, len_count);
 	addnstr(num, flags->len, var);
-	if ((pf_capacreate(var, flags, count)) == -1)
-		return (-1);
+	pf_capacreate(var, flags, count, len_count);
 	if (flags->minus)
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
 	free(num);

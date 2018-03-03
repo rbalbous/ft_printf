@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 16:58:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:04:48 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int			pf_makea(t_flags *flags, t_var *var, long double d, int lc)
 			addchar('-', var);
 		else if (flags->plus || flags->space)
 			addchar(flags->plus * 11 + ' ', var);
-		addstr("0x", var);
+		addnstr("0x", 2, var);
 	}
 	if (!flags->minus)
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
@@ -35,7 +35,7 @@ int			pf_makea(t_flags *flags, t_var *var, long double d, int lc)
 			addchar('-', var);
 		else if (flags->plus || flags->space)
 			addchar(flags->plus * 11 + ' ', var);
-		addstr("0x", var);
+		addnstr("0x", 2, var);
 	}
 	return (0);
 }

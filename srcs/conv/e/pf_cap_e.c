@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 18:29:35 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:40:41 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	pf_create(t_flags *flags, t_var *var, long double d, int count)
 		addchar('+', var);
 	if (count < 10)
 		addchar('0', var);
-	addstr(ft_itoa(count), var);
+	addnstr(ft_itoa(count), 1, var);
 	return (0);
 }
 
@@ -58,14 +58,11 @@ int			pf_cap_e(t_flags *flags, t_var *var, va_list ap)
 		d = va_arg(ap, double);
 	count = pf_tosc(&d);
 	initialise(flags, var, d);
-	pf_spe_cap_e(flags, var, d, count);
-	return (1);
+	return (pf_spe_cap_e(flags, var, d, count));
 }
 
 int			pf_spe_cap_e(t_flags *flags, t_var *var, long double d, int count)
 {
-	flags->fwidth -= 5;
-	flags->fwidth *= (flags->fwidth > 0);
 	if (!flags->minus)
 	{
 		if (flags->zero)

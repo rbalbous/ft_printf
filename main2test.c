@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 18:33:37 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:19:23 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -726,7 +726,7 @@ int		main(void)
 	ft_printf("[%+-12.8F]\n", INFINITY);
 	printf("[%+-12.8F]\n", INFINITY);
 	ft_printf("[%+-12f]\n", INFINITY);
-	printf("[%+-12f]\n", INFINITY);*/
+	printf("[%+-12f]\n", INFINITY);
 	ft_printf("%g\n", -0.00000045365897452);
 	printf("%g\n", -0.00000045365897452);
 	ft_printf("%g\n", 0.00000045365897452);
@@ -795,13 +795,31 @@ int		main(void)
 	printf("[%0g]\n", 8008.2);
 	ft_printf("[%3.2g]\n", 1.01);
 	printf("[%3.2g]\n", 1.01);
+	ft_printf("[%3.2f]\n", 1.01);
+	printf("[%3.2f]\n", 1.01);
 	ft_printf("[%3.5g]\n", 1.01);
 	printf("[%3.5g]\n", 1.01);
 	ft_printf("[%g]\n", 50000.0);
 	printf("[%g]\n", 50000.0);
 	ft_printf("[%3.2LG]\n", -42.402L);
 	printf("[%3.2LG]\n", -42.402L);
+	ft_printf("[%'g]\n", 5.0);
+	printf("[%'g]\n", 5.0);
+	ft_printf("[%'g]\n", 50.0);
+	printf("[%'g]\n", 50.0);
+	ft_printf("[%'g]\n", 500.0);
+	printf("[%'g]\n", 500.0);
+	ft_printf("[%'g]\n", 5000.0);
+	printf("[%'g]\n", 5000.0);
 	ft_printf("[%'g]\n", 50000.0);
 	printf("[%'g]\n", 50000.0);
+	ft_printf("[%'15g]\n", 500000.0);
+	printf("[%'15g]\n", 500000.0);
+	ft_printf("[%'15g]\n", 8008.2);
+	printf("[%'15g]\n", 8008.2);
+	ft_printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
+	printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);*/
+	ft_printf("%15F\n", 0.0);
+	printf("%15F\n", 0.0);
 	return (0);
 }

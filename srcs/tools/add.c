@@ -6,11 +6,17 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/01 12:25:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:48:20 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int		clean_buff(t_vat *var)
+{
+	write(1, var->buf, var->bufindex);
+	
+}
 
 int		addnull(t_flags *flags, t_var *var)
 {
@@ -37,20 +43,6 @@ void	addchar(const char c, t_var *var)
 {
 	var->buf[var->bufindex] = c;
 	var->bufindex++;
-	return ;
-}
-
-void	addstr(char *str, t_var *var)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		var->buf[var->bufindex] = str[i];
-		var->bufindex++;
-		i++;
-	}
 	return ;
 }
 

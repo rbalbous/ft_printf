@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 18:28:24 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:34:27 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,40 +61,26 @@ int		pf_infinitec(long double d, t_flags *flags, t_var *var)
 int		pf_cap_f(t_flags *flags, t_var *var, va_list ap)
 {
 	long double	d;
+	int			apo;
 	char		width;
 
 	if (flags->bigl)
 		d = va_arg(ap, long double);
 	else
 		d = va_arg(ap, double);
+	width = ' ' + 16 * flags->zero;
 	if (!(d == d))
 		return (pf_nanc(flags, var));
-	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
+	if (d == INFINITY || d == -INFINITY)
 		return (pf_infinitec(d, flags, var));
 	flags->len = pf_intlen((intmax_t)d, 10) - (d < 0);
-	flags->precision += 7 * (!flags->isp);
-	width = ' ' + 16 * flags->zero;
 	if (flags->precision == 0)
 		return (pf_fzero(d, flags, var));
-	return (pf_spe_cap_f(flags, var, d));
-}
-
-int		pf_spe_cap_f(t_flags *flags, t_var *var, long double d)
-{
-	char		width;
-	int			apo;
-
-	if (!(d == d))
-		return (pf_nanc(flags, var));
-	if (d == INFINITY || d == -INFINITY || d == 9221120237041090560)
-		return (pf_infinitec(d, flags, var));
+	flags->precision += 7 * (!flags->isp);
 	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
-	flags->fwidth -= (flags->hashtag && flags->precision == 0);
-	flags->fwidth *= (flags->fwidth > 0);
 	flags->fwidth -= flags->precision + flags->len
-	+ (flags->space || flags->plus || d < 0) + apo;
+	+ (flags->space || flags->plus || d < 0) + apo + 1;
 	flags->fwidth *= (flags->fwidth > 0);
-	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);
 	var->buf[var->bufindex] = 0;
 	return (0);

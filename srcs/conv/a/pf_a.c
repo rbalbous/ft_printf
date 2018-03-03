@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/06 12:07:23 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/17 18:35:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:44:07 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			pf_toa(long double *d, t_flags *flags)
 	return (count * sign);
 }
 
-int			pf_acreate(t_var *var, t_flags *flags, int count)
+int			pf_acreate(t_var *var, t_flags *flags, int count, int len_count)
 {
 	int		start;
 
@@ -80,7 +80,7 @@ int			pf_acreate(t_var *var, t_flags *flags, int count)
 	}
 	else
 		addchar('+', var);
-	addstr(ft_itoa(count), var);
+	addnstr(ft_itoa(count), len_count, var);
 	return (0);
 }
 
@@ -117,7 +117,7 @@ int			pf_a(t_flags *flags, t_var *var, va_list ap)
 	len_count = pf_intlen(count, 10) - (count < 0);
 	pf_makea(flags, var, d, len_count);
 	addnstr(num, flags->len, var);
-	pf_acreate(var, flags, count);
+	pf_acreate(var, flags, count, len_count);
 	if (flags->minus)
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
 	free(num);

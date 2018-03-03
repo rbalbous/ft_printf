@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/13 15:26:17 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 18:14:10 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 00:40:11 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	pf_create(t_flags *flags, t_var *var, int count)
 		addchar('+', var);
 	if (count < 10)
 		addchar('0', var);
-	addstr(ft_itoa(count), var);
+	addnstr(ft_itoa(count), 1, var);
 	return (0);
 }
 
