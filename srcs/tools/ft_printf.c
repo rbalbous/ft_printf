@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 18:36:50 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 17:01:37 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		init_conv(int (*f[256])())
 	f['$'] = pf_dollar;
 	f['\''] = pf_apostrophe;
 	f['g'] = pf_g;
+	f['G'] = pf_cap_g;
 }
 
 void		init_flags(int (*f[256])(), int i)

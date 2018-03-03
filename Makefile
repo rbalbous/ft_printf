@@ -6,13 +6,13 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/21 17:34:45 by rbalbous          #+#    #+#              #
-#    Updated: 2018/02/17 18:20:33 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/02/20 14:31:38 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Ofast
+CFLAGS = -Wall -Wextra -Werror -g
 
 INCLUDES = includes
 OBJ_PATH = obj

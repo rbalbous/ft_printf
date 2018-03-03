@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/19 22:08:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/17 19:52:33 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:15:07 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	*pf_ftostr(long double n, t_flags *flags)
 		i++;
 	}
 	str[i] = 0;
-	//ft_printf("ftoa done\n");
 	return (str);
 }
 
@@ -69,7 +68,6 @@ int		pf_itostr(char *str, t_flags *flags, intmax_t n)
 	}
 	count = pf_intlen(n, 10) - 1;
 	tmp = count;
-	//ft_printf("%d %d\n", flags->len + 1, count);
 	if (count > flags->len)
 		count = flags->len + 1;
 	str[count] = '.';

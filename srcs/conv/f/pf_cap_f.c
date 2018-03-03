@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 17:22:00 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 17:52:45 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:28:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int		pf_spe_cap_f(t_flags *flags, t_var *var, long double d)
 	apo = (flags->tsep != 0) * ((flags->len / 3) - (flags->len % 3 == 0));
 	flags->fwidth -= (flags->hashtag && flags->precision == 0);
 	flags->fwidth *= (flags->fwidth > 0);
-	flags->fwidth -= flags->precision * (!flags->g) + flags->len
-	+ (flags->space || flags->plus || d < 0) + apo + (!flags->g);
+	flags->fwidth -= flags->precision + flags->len
+	+ (flags->space || flags->plus || d < 0) + apo;
 	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);

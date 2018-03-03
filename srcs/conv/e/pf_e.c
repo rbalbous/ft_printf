@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:44:53 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/17 19:45:14 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:28:55 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int			pf_e(t_flags *flags, t_var *var, va_list ap)
 
 int			pf_spe_e(t_flags *flags, t_var *var, long double d, int count)
 {
-	flags->fwidth -= 5 * (flags->g);
+	flags->fwidth -= 5;
 	flags->fwidth *= (flags->fwidth > 0);
 	if (!flags->minus)
 	{

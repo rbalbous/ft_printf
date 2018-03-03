@@ -6,26 +6,38 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 19:21:22 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/17 19:51:55 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 17:51:07 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		pf_gf(t_flags *flags, t_var *var, long double d)
+int			pf_agfround(char *str, t_flags *flags, long double d)
 {
-	char	*num;
+	(void)d;
+	if (*str >= '5')
+	{
+		while (*(--str) == '9')
+		{
+			*str = '0';
+			flags->len -= (!flags->hashtag);
+		}
+		if (*str != '.')
+			*str += 1;
+		else
+			*(--str) += 1;
+	}
+	while (*(--str) == '0' && (*(str + 1) == '0' || *(str - 1) == '.')
+	&& !flags->hashtag)
+		flags->len--;
+	if (*str == '.' && (pf_intlen((intmax_t)d, 10) - (d < 0)
+	== (size_t)flags->len - 1) && !flags->hashtag)
+		flags->len--;
+	return (0);
+}
 
-	flags->precision += (!flags->isp) * 7 - 1;
-	flags->precision *= (flags->precision > 0);
-	flags->len = flags->precision + 2;
-	if ((num = pf_ftostr(d, flags)) == NULL)
-		return (-1);
-	//ft_printf("%s %c %d\n", num, num[flags->len], flags->len);
-	pf_aground(num + flags->len, flags, d);
-	//ft_printf("%s %d\n", num, flags->len);
-	flags->fwidth -= flags->len + (d < 0 || flags->space || flags->plus);
-	flags->fwidth *= (flags->fwidth > 0);
+void		pf_addgf(t_flags *flags, t_var *var, long double d, char *num)
+{
 	if (!flags->minus)
 	{
 		if (flags->zero)
@@ -46,5 +58,20 @@ int		pf_gf(t_flags *flags, t_var *var, long double d)
 		addnstr(num, flags->len, var);
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
 	}
+}
+
+int			pf_gf(t_flags *flags, t_var *var, long double d)
+{
+	char	*num;
+
+	flags->len = flags->precision + 2;
+	if (pf_intlen((intmax_t)d, 10) == (size_t)flags->len - 1 && !flags->hashtag)
+		flags->len--;
+	if ((num = pf_ftostr(d, flags)) == NULL)
+		return (-1);
+	pf_agfround(num + flags->len, flags, d);
+	flags->fwidth -= flags->len + (d < 0 || flags->space || flags->plus);
+	flags->fwidth *= (flags->fwidth > 0);
+	pf_addgf(flags, var, d, num);
 	return (0);
 }

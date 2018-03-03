@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 21:30:50 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 17:32:49 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/03 18:31:24 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ int		pf_fzero(long double d, t_flags *flags, t_var *var)
 {
 	char	width;
 
-	flags->fwidth -= (flags->hashtag);
-	flags->fwidth *= (flags->fwidth > 0);
-	flags->fwidth -= (flags->space || flags->plus || (d < 0));
-	flags->fwidth *= (flags->fwidth > 0);
-	flags->fwidth -= flags->len;
+	flags->fwidth -= (flags->hashtag) -
+	(flags->space || flags->plus || (d < 0)) - flags->len;
 	flags->fwidth *= (flags->fwidth > 0);
 	width = ' ' + 16 * flags->zero;
 	pf_fcreate(flags, var, d, width);
@@ -69,8 +66,6 @@ int		pf_round(char *str, t_flags *flags, t_var *var)
 	else if (*(--str) == '.' && !flags->hashtag)
 		var->bufindex--;
 	var->bufindex--;
-	if (flags->g && !flags->hashtag)
-		return (pf_ground(&var->buf[var->bufindex - 1], var));
 	return (0);
 }
 

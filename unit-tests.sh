@@ -303,7 +303,6 @@ do
 		compile xu
 		compile c
 		compile cu
-		compile others
 		compile f
 		compile fu
 		compile e
@@ -312,7 +311,6 @@ do
 		compile au
 		compile g
 		compile gu
-		compile n
 	elif [ ${ARG} = "bonus" ]
 	then
 		make
