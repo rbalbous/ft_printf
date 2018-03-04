@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 12:22:21 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:31:22 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef enum	e_conv
 
 typedef struct	s_var
 {
+	t_int32		ret;
 	t_uint32	index;
 	t_uint32	error;
 	t_uint32	dol;
@@ -58,6 +59,7 @@ typedef struct	s_var
 	t_uint32	count;
 	t_uint32	bufindex;
 	t_uint32	alwritten;
+	char		*string;
 	char		buf[BUFF_SIZE];
 }				t_var;
 
@@ -85,6 +87,7 @@ typedef struct	s_flags
 
 int				ft_printf(const char *str, ...);
 int				ft_sprintf(char *dest, const char *str, ...);
+void			pf_stringinit(t_var *var, char *dest);
 int				ft_dprintf(int fd, const char *str, ...);
 int				ft_vprintf(const char *str, va_list ap);
 int				ft_vdprintf(int fd, const char *str, va_list ap);
@@ -92,7 +95,8 @@ int				ft_vsprintf(char *dest, const char *str, va_list ap);
 int				parse(t_uint8 *str, t_var *var, va_list ap, int (*f[256])());
 void			init_conv(int (*f[256])());
 void			init_flags(int (*f[256])(), int i);
-void	 		initialise_var(t_var *var, va_list ap, int (*f[256])());
+int				initialise_var(t_var *var, va_list ap, int (*f[256])()
+				, char *str);
 int				pf_parserror(t_var *var, va_list ap);
 
 void			addchar(const char c, t_var *var);
@@ -236,7 +240,7 @@ int				pf_dol_s(void);
 int				pf_dol_l(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_dol_h(t_flags *flags);
 int				pf_none(t_flags *flags, t_var *var, t_uint8 *str);
-int				pf_dol_f(void);
+int				pf_dol_f(t_flags *flags, t_var *var, t_uint8 *str);
 int				pf_dol_bl(void);
 
 int				pf_l(t_flags *flags, t_var *var, va_list ap

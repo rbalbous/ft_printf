@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 18:20:33 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 18:37:11 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 16:40:35 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int			ft_vsprintf(char *dest, const char *str, va_list ap)
 	t_var		var;
 	int			ret;
 
-	initialise_var(&var, ap, f);
+	if (initialise_var(&var, ap, f, (char*)str))
+		return (-1);
 	while (str[++var.index])
 	{
 		if (str[var.index] == '%' && str[var.index + 1])

@@ -6,7 +6,7 @@
 #    By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/15 22:07:59 by rbalbous          #+#    #+#              #
-#    Updated: 2018/01/15 16:29:59 by rbalbous         ###   ########.fr        #
+#    Updated: 2018/03/04 14:30:07 by rbalbous         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ TOOLS =		ft_printf.c \
 			pf_ftoa.c \
 			pf_ftoa_hexa.c \
 			pf_uitoa_hexa.c \
-			pf_memcpy.c
+			pf_memcpy.c \
+			pf_init_struct.c
 TOOLS_PATH = srcs/tools/
 
 OBJ += $(addprefix $(OBJ_PATH)/, $(TOOLS:.c=.o))

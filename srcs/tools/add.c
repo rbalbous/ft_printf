@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 12:28:50 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:14:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	clean_buff(t_var *var)
 {
-	write(1, var->buf, var->bufindex);
+	if (!var->string)
+		write(1, var->buf, var->bufindex);
+	else
+		pf_memcpy(var->string, var->buf, var->bufindex);
 	var->alwritten += var->bufindex;
 	var->bufindex = 0;
 }
@@ -60,13 +63,13 @@ void	addnstr(void *str, size_t len, t_var *var)
 
 	tmp = str;
 	i = 0;
-	if (var->bufindex + len > BUFF_SIZE - 1)
-		clean_buff(var);
 	while (len > i)
 	{
 		var->buf[var->bufindex] = tmp[i];
 		i++;
 		var->bufindex++;
+		if (var->bufindex + len > BUFF_SIZE - 1)
+			clean_buff(var);
 	}
 	return ;
 }

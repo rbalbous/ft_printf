@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 12:29:46 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 18:06:30 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -816,11 +816,22 @@ int		main(void)
 	ft_printf("[%'15g]\n", 500000.0);
 	printf("[%'15g]\n", 500000.0);
 	ft_printf("[%'15g]\n", 8008.2);
-	printf("[%'15g]\n", 8008.2);
-	ft_printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
-	printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);*/
-	n = ft_printf("%*f\n", 5000, 0.0);
-	m = printf("%*f\n", 5000, 0.0);
+	printf("[%'15g]\n", 8008.2);*/
+	ft_printf("%5$d %1$f %2$d %3$d %4$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
+	printf("%5$d %1$f %2$d %3$d %4$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
+	ft_printf("%5$d %1$Lf %2$d %3$d %4$d\n", 42.42L, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
+	printf("%5$d %1$Lf %2$d %3$d %4$d\n", 42.42L, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
+	/*n = ft_printf("%f\n", 0.0);
+	m = printf("%f\n", 0.0);
 	ft_printf("%d %d\n", n, m);
+	char	str[5000];
+	char	str2[5000];
+
+	ft_sprintf(str, "%*d", 4200, 15);
+	n = ft_printf("%s\n", str);
+	ft_sprintf(str2, "%*d", 4200, 15);
+	m = printf("%s\n", str2);
+	ft_printf("%d %d\n", n, m);
+	ft_printf(0);*/
 	return (0);
 }

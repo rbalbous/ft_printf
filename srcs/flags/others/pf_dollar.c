@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/30 12:44:11 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 00:03:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 17:29:34 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		pf_initlar(int (*lar[256])(), t_var *var)
 	lar['g'] = pf_dol_f;
 	lar['e'] = pf_dol_f;
 	lar['a'] = pf_dol_f;
-	lar['L'] = pf_dol_f;
 	lar['w'] = pf_dol_s;
 	var->index = 1;
 	return (0);
