@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 17:01:37 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 12:21:57 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,5 @@ int			ft_printf(const char *str, ...)
 			addchar(str[var.index], &var);
 	}
 	va_end(ap);
-	return (write(1, var.buf, var.bufindex));
+	return (var.alwritten + write(1, var.buf, var.bufindex));
 }

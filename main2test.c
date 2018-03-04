@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/20 18:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 00:19:23 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/04 12:29:46 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -819,7 +819,8 @@ int		main(void)
 	printf("[%'15g]\n", 8008.2);
 	ft_printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);
 	printf("%9$d %1$f %2$d %3$d %4$d %5$d %6$d %7$d %8$d %10$d %11$d\n", 42.42, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX, INT_MAX);*/
-	ft_printf("%15F\n", 0.0);
-	printf("%15F\n", 0.0);
+	n = ft_printf("%*f\n", 5000, 0.0);
+	m = printf("%*f\n", 5000, 0.0);
+	ft_printf("%d %d\n", n, m);
 	return (0);
 }
