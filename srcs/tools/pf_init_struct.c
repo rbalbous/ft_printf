@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 14:25:10 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 18:31:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/05 14:01:58 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int			initialise_var(t_var *var, va_list ap, int (*f[256])(), char *str)
 	var->count = 0;
 	var->error = 0;
 	var->alwritten = 0;
+	var->fd = 1;
 	va_copy(var->begin, ap);
 	ft_bzero(var->buf, BUFF_SIZE);
 	if (f[0] == NULL)

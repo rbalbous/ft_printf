@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/27 16:33:39 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 18:14:54 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:20:49 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	clean_buff(t_var *var)
 {
 	if (!var->string)
-		write(1, var->buf, var->bufindex);
+		write(var->fd, var->buf, var->bufindex);
 	else
 		pf_memcpy(var->string, var->buf, var->bufindex);
 	var->alwritten += var->bufindex;

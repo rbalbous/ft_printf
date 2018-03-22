@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 16:36:44 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/02/16 18:32:38 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:50:41 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		pf_isnull(t_flags *flags, t_var *var)
 	else
 	{
 		addnull(flags, var);
-		flags->fwidth = addmchar(width, var, flags->fwidth);\
+		flags->fwidth = addmchar(width, var, flags->fwidth);
 		return (0);
 	}
 }

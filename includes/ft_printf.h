@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 16:49:43 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 18:31:22 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:07:52 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <locale.h>
 # include <langinfo.h>
 # include <nl_types.h>
-#include <time.h>
+# include <time.h>
 # include "../srcs/libft/libft.h"
 
 # define BUFF_SIZE 4096
@@ -59,6 +59,7 @@ typedef struct	s_var
 	t_uint32	count;
 	t_uint32	bufindex;
 	t_uint32	alwritten;
+	t_int32		fd;
 	char		*string;
 	char		buf[BUFF_SIZE];
 }				t_var;
@@ -181,7 +182,8 @@ int				pf_f(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_f(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_cap_f(t_flags *flags, t_var *var, long double d);
 int				pf_cap_l(t_flags *flags);
-int				pf_fcreate(t_flags *flags, t_var *var, long double d, char width);
+int				pf_fcreate(t_flags *flags, t_var *var, long double d,
+				char width);
 int				pf_infinite(long double d, t_flags *flags, t_var *var);
 int				pf_infinitec(long double d, t_flags *flags, t_var *var);
 int				pf_nan(t_flags *flags, t_var *var);
@@ -190,7 +192,7 @@ int				pf_nanc(t_flags *flags, t_var *var);
 int				pf_e(t_flags *flags, t_var *var, va_list ap);
 int				pf_spe_e(t_flags *flags, t_var *var, long double d, int count);
 int				pf_cap_e(t_flags *flags, t_var *var, va_list ap);
-int				pf_spe_cap_e(t_flags *flags, t_var *var, long double d, 
+int				pf_spe_cap_e(t_flags *flags, t_var *var, long double d,
 				int count);
 int				pf_tosc(long double *d);
 void			pf_eround(char *str, t_flags *flags, t_var *var);
@@ -204,9 +206,11 @@ int				pf_cap_a(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_la(t_flags *flags, t_var *var, va_list ap);
 int				pf_toa(long double *d, t_flags *flags);
 int				pf_tola(long double *d);
-int				pf_acreate(t_var *var, t_flags *flags, int count, int len_count);
+int				pf_acreate(t_var *var, t_flags *flags, int count,
+				int len_count);
 int				pf_around(char *str, char *base, t_flags *flags, long double d);
-int				pf_makea(t_flags *flags, t_var *var, long double d, int len_count);
+int				pf_makea(t_flags *flags, t_var *var, long double d,
+				int len_count);
 int				pf_capazero(t_flags *flags, t_var *var, long double d);
 int				pf_makecapa(t_flags *flags, t_var *var, long double d, int lc);
 int				pf_capacreate(t_var *var, t_flags *flags, int count,
@@ -222,8 +226,8 @@ int				pf_aground(char *str, t_flags *flags, long double d);
 
 int				pf_b(t_flags *flags, t_var *var, va_list ap);
 int				pf_r(t_flags *flags, t_var *var, va_list ap);
-int     	    pf_k(t_flags *flags, t_var *var, va_list ap);
-int     		pf_m(t_flags *flags, t_var *var, va_list ap);
+int				pf_k(t_flags *flags, t_var *var, va_list ap);
+int				pf_m(t_flags *flags, t_var *var, va_list ap);
 int				pf_w(t_flags *flags, t_var *var, va_list ap);
 int				pf_cap_w(t_flags *flags, t_var *var, va_list ap);
 

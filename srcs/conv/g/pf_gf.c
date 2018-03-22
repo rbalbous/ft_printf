@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 19:21:22 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/03 22:23:59 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/12 16:25:54 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ int			pf_gf(t_flags *flags, t_var *var, long double d)
 		pf_add_apo(flags, var, num, apo);
 	if (flags->minus)
 		flags->fwidth = addmchar(' ' + 16 * flags->zero, var, flags->fwidth);
+	free(num);
 	return (0);
 }

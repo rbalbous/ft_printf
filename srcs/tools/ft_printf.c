@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:14:24 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/04 16:39:06 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/05 12:35:18 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int			pf_parserror(t_var *var, va_list ap)
 {
-	write(1, var->buf, var->error);
+	if (!var->string)
+		write(var->fd, var->buf, var->error);
+	else
+		pf_memcpy(var->string, var->buf, var->bufindex);
 	va_end(ap);
 	return (-1);
 }
