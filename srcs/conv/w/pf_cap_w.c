@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/17 17:17:07 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/12 16:28:06 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/22 14:05:25 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int			pf_cap_w(t_flags *flags, t_var *var, va_list ap)
 	ind = -1;
 	i = 0;
 	s = va_arg(ap, char*);
-	if (s = NULL)
+	if (s == NULL)
 		return (pf_isnull(flags, var));
 	flags->len = ft_strlen(s);
 	keylen = ft_strlen(KEY);
