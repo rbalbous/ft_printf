@@ -6,7 +6,7 @@
 /*   By: rbalbous <rbalbous@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 20:42:14 by rbalbous          #+#    #+#             */
-/*   Updated: 2018/03/22 14:44:13 by rbalbous         ###   ########.fr       */
+/*   Updated: 2018/03/22 15:02:19 by rbalbous         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int		pf_gpos(t_flags *flags, t_var *var, long double d)
 {
 	int			count;
 	int			leng;
+
 	leng = pf_intlen((intmax_t)d, 10) - (d < 0);
 	if (leng > 6 || (flags->precision + 1 < leng))
 	{
